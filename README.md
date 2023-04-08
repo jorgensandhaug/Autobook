@@ -27,10 +27,10 @@ Autobook is an innovative e-book and website generation project powered by GPT-4
 
 2. Install the required dependencies:
 
-`
+```bash
 cd autobook
 pip install -r requirements.txt
-`
+```
 
 
 ## Usage

@@ -22,7 +22,9 @@ Autobook is an innovative e-book and website generation project powered by GPT-4
 
 1. Clone the repository:
 
-`git clone https://github.com/SandhaugAS/Autobook.git`
+```bash
+git clone https://github.com/SandhaugAS/Autobook.git
+```
 
 
 2. Install the required dependencies:
@@ -37,7 +39,9 @@ pip install -r requirements.txt
 
 1. Launch the Autobook application:
 
-`python app.py`
+```bash
+python app.py
+```
 
 
 2. Follow the on-screen instructions to generate your e-book, marketing materials, and website.

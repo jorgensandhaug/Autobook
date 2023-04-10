@@ -1,0 +1,13 @@
+# Exercises
+
+To ensure that you have understood the material presented in this chapter, try out the following exercises. These exercises are designed to challenge your understanding of classes, objects, and methods in Python.
+
+1. **Class methods**: Create a Python class named `Rectangle` with two properties `length` and `width`. Add a method named `area` that returns the area of the rectangle. Next, add a class method named `from_diagonal` that creates a `Rectangle` object given its diagonal length (Hint: pythagoras theorem). Test your class by creating a `Rectangle` object and verifying that it computes the area correctly.
+
+2. **Static methods**: Create a static method named `days_in_year` that returns the number of days in a year. Call this static method without instantiating the class.
+
+3. **Inheritance**: Create a class named `Person` with properties `name` and `age`. Add a method named `greet` that returns a greeting message. Next, create a class named `Student` that inherits from `Person` with an additional property `school`. Override the `greet` method to include the name of the school in the greeting message.
+
+4. **Polymorphism**: Create a Python program that accepts a list of different objects (e.g., integers, strings, objects of your custom classes) and iterates over the list to perform a unique action on each object. For instance, the action could be printing or counting some attribute of the object, or calling a specific method only applicable to that object.
+
+These exercises are designed to test your understanding of the material presented in this chapter. Don't worry if you find them challenging; practice and experimentation are key to mastering the concepts of classes, objects, and methods in Python.

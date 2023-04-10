@@ -1,0 +1,284 @@
+Chapter 6: Advanced OOP topics
+
+# Composition
+
+Composition is a programming technique that allows us to combine multiple smaller classes to create a larger, more complex class. In other words, composition is the process of creating larger objects by using other smaller objects as its properties. It creates a relationship between the composite object and its components. 
+In composition, the composite object does not own the smaller object as in inheritance. It just uses them as a part of its internal implementation. An object can be composed of one or more objects of a different class.
+
+## How to use Composition in Python
+
+Composition can be implemented in Python classes by creating an instance of the other class as an attribute inside the main class. 
+
+```python
+class Book:
+    def __init__(self, title, author, publisher):
+        self.title = title
+        self.author = author
+        self.publisher = publisher
+         
+class Library:
+    def __init__(self):
+        self.books = []
+ 
+    def add_book(self, book):
+        self.books.append(book)
+         
+book1 = Book("Python for Beginners", "Joseph Smith", "Tech Books Publishing House")
+book2 = Book("Python Programming", "Eric Matthes", "No Starch Press")
+library = Library()
+library.add_book(book1)
+library.add_book(book2)
+```
+
+In the example above, the `Library` class is composed of one or more `Book` objects. The `Library` class creates a list of books as an attribute, and then the `add_book()` method is used to add `Book` objects to this list.
+
+## Composition vs Inheritance
+
+The main difference between composition and inheritance is that composition combines smaller classes to create a larger one, whereas inheritance involves creating new classes from existing ones. 
+Composition is flexible, and allows a class to be composed of one or more objects of a different class, whereas inheritance can lead to a rigid hierarchy of classes, which can be difficult to update or modify.
+
+Inheritance can be useful when we want to create a new class that inherits certain properties of an existing class. For example, if we want to create a new class called `Dog` that inherits from the existing class `Animal`, we can create it like this:
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+         
+    def speak(self):
+        pass
+         
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+```
+
+In the example above, the `Dog` class inherits from the `Animal` class and overrides its `speak()` method to return `"Woof!"`. 
+
+Composition can also be useful when we want to create a class that uses one or more objects of a different class. For example, if we have a `Car` class that is composed of an `Engine` object, we can create it like this:
+
+```python
+class Engine:
+    def start(self):
+        pass
+         
+    def stop(self):
+        pass
+         
+class Car:
+    def __init__(self):
+        self.engine = Engine()
+         
+    def start(self):
+        self.engine.start()
+         
+    def stop(self):
+        self.engine.stop()
+```
+
+In the example above, the `Car` class is composed of an `Engine` object, which is created in its constructor. The `Car` class uses the `start()` and `stop()` methods of the `Engine` object to start and stop the car's engine.
+
+## Tips on using Composition effectively
+
+Here are some tips on how to use composition effectively in Python:
+
+- Identify the smaller classes that can be used to create the larger class
+- Create the smaller class objects as attributes inside the larger class
+- Define methods in the larger class that use the objects of the smaller classes
+- Use encapsulation to hide the implementation details of the smaller classes from the larger class
+
+## Conclusion
+
+Composition is a powerful programming technique that allows us to create complex classes by using objects of other classes as their attributes. It is a flexible and effective alternative to inheritance, and can be used to create more modular and maintainable code. By using composition, we can create classes that are easier to update, modify, and reuse.
+
+## Aggregation
+
+In object-oriented programming (OOP), aggregation is a way to combine different objects into a single new object. This is often achieved by creating a new class that references other objects as attributes. The new class does not own the objects it references, meaning that it does not control their lifetime or behavior. Instead, it simply aggregates these objects together into a new abstraction that represents a higher-level concept.
+
+One of the main benefits of using aggregation is that it allows you to represent complex relationships between objects without having to create complex class hierarchies. For example, consider a school database that has classes for students, teachers, and classes. To represent the relationship between a class and its students, you could create a new class called "Class" that has a list attribute called "students" which aggregates all the student objects assigned to that class.
+
+```python
+class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+
+class Class:
+    def __init__(self, number, teacher, students):
+        self.number = number
+        self.teacher = teacher
+        self.students = students
+    
+teacher = Teacher("John Smith", "Math")
+students = [
+    Student("Alice", 12),
+    Student("Bob", 11),
+    Student("Charlie", 12),
+]
+class_1 = Class(1, teacher, students)
+```
+
+In this example, the `Class` class is aggregating a list of student objects into a higher-level abstraction that represents a class.
+
+It's important to note that aggregation is different from composition. Composition is a stronger form of aggregation that implies a stronger ownership relationship between the aggregated objects and the new object. In composition, the new object owns the objects it references, meaning that it controls their lifetime and behavior. In contrast, aggregation does not imply ownership.
+
+When deciding whether to use aggregation or composition, it's important to consider the lifetime of the aggregated objects. If the aggregated objects are temporary or can exist independently of the new object, then aggregation is likely the better choice. If the aggregated objects are permanent and should only exist in relation to the new object, then composition is likely the better choice.
+
+In summary, aggregation is a useful concept in OOP that allows you to combine different objects into a single new object. It is often used to represent complex relationships between objects without having to create complex class hierarchies. When deciding whether to use aggregation or composition, it's important to consider the lifetime of the aggregated objects and how they relate to the new object.
+
+# Encapsulation
+
+Encapsulation is a fundamental concept in Object-Oriented Programming (OOP). It refers to the approach of wrapping data and methods within a single unit, and restricting access to the internal details of a class. Encapsulation provides several benefits, including:
+
+- Data protection: encapsulated data can only be accessed using approved methods within the class, preventing unauthorized access or modification of data.
+- Reduced complexity: encapsulation reduces the complexity of a program by hiding the internal details of a class and providing simple interfaces to work with.
+- Modularity: encapsulation provides a way to group related data and methods into a single unit or module.
+
+In Python, encapsulation is achieved through the use of access modifiers such as private and protected attributes and methods.
+
+# Access Modifiers
+
+Access modifiers are keywords that modify the scope of class members (attributes and methods) in Python. Python has three access modifiers: public, protected, and private.
+
+- Public: public members are accessible from anywhere in the program, both within and outside the class. The access modifier for public members is not specified in Python, as all members are public by default.
+
+- Protected: protected members are accessible within the class and its subclasses. The access modifier for protected members in Python is a single underscore (_).
+
+- Private: private members are only accessible within the class in which they are defined. The access modifier for private members in Python is two underscores (__).
+
+# Creating Private and Protected Attributes and Methods
+
+To create private and protected attributes and methods in Python, we specify the access modifier before the attribute or method name. 
+
+Here's an example of creating private and protected attributes in Python:
+
+```
+class Employee:
+    def __init__(self, name, emp_id, salary):
+        self._name = name       # protected attribute
+        self.__emp_id = emp_id  # private attribute
+        self.salary = salary    # public attribute
+```
+
+In this example, `_name` is a protected attribute accessible within the class and its sub-classes. `__emp_id` is a private attribute and is only accessible within the `Employee` class.
+
+To create private and protected methods in Python, we follow the same syntax as for attributes:
+
+```
+class Employee:
+    def __init__(self, name, emp_id, salary):
+        self.__name = name     # private attribute
+        self._emp_id = emp_id   # protected attribute
+        self.salary = salary    # public attribute
+    
+    # private method
+    def __calculate_bonus(self):
+        return self.salary * 0.1
+        
+    # protected method
+    def _display_employee_details(self):
+        print("Name:", self.__name)
+        print("Emp Id:", self._emp_id)
+```
+
+In this example,  `__calculate_bonus()` is a private method and can only be accessed within the `Employee` class. `_display_employee_details()` is a protected method and can be accessed within the class and its sub-classes.
+
+# Importance of Encapsulation
+
+Encapsulation is essential in good OOP design because of its many benefits. It helps to control the complexity of large programs by grouping related data and functionality, providing a clear interface to work with, and protecting data from unauthorized access.
+
+Encapsulation also helps with code reusability. By grouping related functionality and data into a single unit, we can reuse that unit across multiple programs. It also makes it easier to modify the internal details of a class without affecting other parts of the program, as long as the interface remains the same.
+
+Ultimately, proper use of encapsulation can make your code more modular, easier to maintain, and more reusable. As such, it is an essential concept for all programmers to understand.
+
+# Conclusion
+
+In this sub-chapter, we covered the concept of encapsulation in Python. We discussed how to create private and protected attributes and methods in Python and why encapsulation is essential for good OOP design. Encapsulation is crucial for keeping programs organized, protected, and extensible, and understanding it is a key step in becoming a proficient programmer.
+
+# Designing Effective Class Hierarchies
+
+An effective class hierarchy is one that is easy to understand, maintain, and extend. Here are some tips on how to design such a hierarchy:
+
+## Identify Base Classes
+
+The first step in designing a class hierarchy is to identify the base classes. A base class is a class that establishes the basic properties and behaviors that all the sub-classes will share. It is important to identify these base classes because they provide the foundation for the rest of the hierarchy.
+
+## Create Sub-Classes
+
+Once you have identified the base classes, you can start creating the sub-classes. Sub-classes inherit the properties and behaviors of the base class, but they can also add their own properties and behaviors. It is important to create sub-classes that are organized in a logical and meaningful way.
+
+For example, suppose you are designing a class hierarchy for a game. You might have a base class called "Character", and sub-classes called "Warrior", "Mage", and "Thief". Each of these sub-classes would inherit the properties and behaviors of the "Character" class, but they would also have their own unique properties and behaviors.
+
+## Use Inheritance Wisely
+
+Inheritance can be a powerful tool for creating a class hierarchy, but it should be used wisely. Overuse of inheritance can make the hierarchy difficult to understand and maintain. It is important to only use inheritance when it is necessary.
+
+One way to avoid overuse of inheritance is to use composition instead. Composition is a technique where an object is built by combining other objects. This can often be a better alternative to inheritance because it allows for greater flexibility and reduces the complexity of the hierarchy.
+
+## Consider Encapsulation
+
+Encapsulation is the practice of hiding the implementation details of a class and only exposing the necessary properties and methods. Encapsulation can make a class hierarchy easier to understand and maintain because it reduces complexity.
+
+One way to achieve encapsulation is by using access modifiers such as private and protected. These modifiers control the visibility of the properties and methods of a class, ensuring that they are only accessible where necessary.
+
+## Use Aggregation When Appropriate
+
+Aggregation is a technique where one class contains a reference to another class. It is often used when one class needs to use the properties and methods of another class, but does not inherit from it.
+
+Aggregation can be a useful alternative to inheritance when there is no clear relationship between the two classes. It can also help to reduce the complexity of the class hierarchy.
+
+## Practical Examples
+
+Let us consider an example of a class hierarchy for a company's employee management system. We might have a base class called "Employee", and sub-classes called "Manager" and "Programmer". Each of these sub-classes would inherit the properties and behaviors of the "Employee" class, but they would also have their own unique properties and behaviors.
+
+For the "Manager" sub-class, we might add properties such as "department" and "responsibilities". For the "Programmer" sub-class, we might add properties such as "programming_language" and "projects_completed". By organizing our employees into these sub-classes, we can make our employee management system easier to understand and maintain.
+
+## Conclusion
+
+Designing an effective class hierarchy is an important part of creating a well-structured object-oriented program. By identifying base classes, creating sub-classes, using inheritance and aggregation wisely, and considering encapsulation, you can design a hierarchy that is easy to understand, maintain, and extend.
+
+## Review of OOP in Python
+
+In this book, we have explored the fundamental concepts of Object-Oriented Programming (OOP) such as classes, objects, and methods, and progressed through more advanced topics such as inheritance and polymorphism. We have focused on the use of these concepts in Python programming and have seen how they can be implemented using simple code examples.
+
+In Chapter 1, we introduced OOP and its importance in modern-day programming. We explained how OOP provides a modular and reusable approach to programming that makes it easier to write, debug and maintain code. We provided an overview of basic terms and concepts such as classes, objects, and methods, and explained their relevance in OOP. 
+
+In Chapter 2, we explored the basics of classes and objects in Python. We defined what classes are and how they can be used to create objects. We explained how to define classes, create objects from classes and how to access attributes and methods of the created objects.
+
+In Chapter 3, we focused on methods in Python classes. We explained what methods are and how they are different from regular functions. We described the types of methods such as instance methods, class methods, and static methods, and showed how to define and use them.
+
+Chapter 4 was on inheritance. We explained what inheritance is and how it can be used to create new classes from existing ones. We showed how to define derived classes and how to use the properties and methods of the base class in the derived class.
+
+In Chapter 5, we explored polymorphism in Python. We explained what polymorphism is and how it works. We also demonstrated how to implement polymorphism using methods, classes, and objects, and how to use it to create more flexible and reusable code.
+
+Finally, in this chapter, Chapter 6,  we delved into more advanced topics in OOP such as composition, aggregation, and encapsulation. We explained each concept in detail and provided code examples of how each can be used in Python. We also provided tips on how to design effective class hierarchies and when to use each of these concepts.
+
+In conclusion, this book has provided a comprehensive introduction to OOP in Python. It has equipped the reader with the knowledge and skills required to write, debug and maintain object-oriented Python programs. However, learning never stops. To continue learning OOP beyond this book, readers should practice writing code, join online communities, participate in open-source projects, read blogs and attend meetups and workshops.
+
+# Continuing learning OOP beyond the book
+
+Congratulations on mastering the basics of Object-Oriented Programming (OOP) using Python! As you round up your journey in this book, it's important to note that OOP is a vast and dynamic subject. Beyond the scope of this beginner's book, there is still so much to learn and explore. This section aims to provide you with a list of resources that you can use to continue learning OOP beyond this book.
+
+## Books on OOP
+As with any subject, books are a great resource for diving deeper into OOP. There are many books on OOP that you can use to supplement your knowledge from this book. Here are a few recommended ones:
+
+- Head First Object-Oriented Analysis and Design by Brett D. McLaughlin, Gary Pollice, and David West
+- Clean Code: A Handbook of Agile Software Craftsmanship by Robert C. Martin
+- Object-Oriented Thought Process by Matt Weisfeld
+- Python 3 Object-Oriented Programming by Dusty Phillips
+
+## Online courses on OOP
+Online courses are another resource for learning OOP. They offer a structured way of learning with dedicated instructors and can provide a more interactive learning experience. Here are some recommended online courses:
+
+- Object-Oriented Programming (OOP) in Python 3 by Corey Schafer on YouTube
+- Object-Oriented Programming in Python by Joe Marini on LinkedIn Learning
+- Python: Object-Oriented Programming by Joe Marini on LinkedIn Learning
+
+## Other resources
+Apart from books and online courses, there are many other resources you can use to continue learning OOP. Here are some recommended ones:
+
+- Documentations: the official Python documentation offers detailed information about OOP in Python. You can also find documentation on OOP for other programming languages.
+- GitHub: GitHub is a platform for software development collaboration. It offers a wide range of open-source projects that can serve as reference points for learning OOP.
+- StackOverflow: StackOverflow is an excellent platform where you can ask and answer questions on OOP and other programming concepts.
+
+## Conclusion
+In conclusion, OOP is a vast subject, and this book provides an ideal beginner's guide to the basics of OOP. To continue learning OOP, we recommend using the recommended resources above. It's important to note that practice is the key to mastering OOP and that mastering it takes time and dedication. With consistent practice and using the recommended resources, you can become proficient in OOP with Python. Good luck!

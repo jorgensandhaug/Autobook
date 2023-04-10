@@ -1,0 +1,49 @@
+# Public Access Modifier
+
+In object-oriented programming, encapsulation refers to the process of hiding the implementation details of an object from the outside world while exposing only what is necessary to interact with it. The public access modifier is used to declare public attributes or methods of a class, which can be accessed from outside the class, making them visible to all other classes and objects. 
+
+In Python, the public access modifier is denoted by using a single underscore (_) before the attribute or method name. While this doesn't technically make the attribute or method private, it is a convention among Python developers to treat these attributes and methods as public. 
+
+For example, consider the following code:
+
+```python
+class Car:
+    
+    def __init__(self, make, model, year):
+        self._make = make
+        self._model = model
+        self._year = year
+    
+    def get_make(self):
+        return self._make
+    
+    def get_model(self):
+        return self._model
+    
+    def get_year(self):
+        return self._year
+```
+
+In this example, we have defined a Car class with three attributes: make, model, and year. Each one is preceded by a single underscore, indicating that they are public attributes. We have also defined three methods to get the values of these attributes.
+
+We can create objects of the Car class and access its attributes and methods using the dot operator:
+
+```python
+my_car = Car("Toyota", "Camry", 2021)
+
+print("Make:", my_car.get_make())
+print("Model:", my_car.get_model())
+print("Year:", my_car.get_year())
+```
+
+The output of the above code will be:
+
+```
+Make: Toyota
+Model: Camry
+Year: 2021
+```
+
+As we can see from this example, the public access modifier allows us to define attributes and methods that can be accessed outside the class. It is important to note that even though these attributes and methods are public, they should still be used responsibly and only exposed when necessary. 
+
+In conclusion, the public access modifier in Python is a convention used to denote attributes and methods that are visible to all other classes and objects. It is an important concept in encapsulation and allows us to create flexible and modular code.

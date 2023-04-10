@@ -1,0 +1,5 @@
+{
+  "book_title": "Python OOP for Beginners",
+  "book_instructions": "This book is an introduction to Object-Oriented Programming (OOP) using Python. The target audience for this book are beginners with no prior experience in OOP. The book should start by explaining the concept of OOP, and gradually move into more advanced topics such as classes, objects, inheritance, and polymorphism. The writing style should be clear and concise, using simple language and plenty of code examples. The tone of the book should be friendly and approachable, making the reader feel comfortable and confident as they learn. It is important to note that while the author has personal experience in the subject, this should not be mentioned explicitly, and the author should not be talked about at all in the book. Please ensure that all code examples are easy to follow and well-commented. At the end of each chapter, the reader should be presented with a set of exercises to test their understanding of the material. All concepts should be explained thoroughly, without assuming any prior knowledge on the part of the reader.",
+  "title_folder_name": "Python_OOP_Beginners"
+}

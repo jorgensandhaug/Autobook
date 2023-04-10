@@ -1,0 +1,23 @@
+{
+  "chapter_title": "Chapter 7",
+  "sub_chapters": [
+    {
+      "title": "Composition and Interfaces",
+      "outline": "Introduction to composition and interfaces in OOP. Explanation of what they are and how they are used in Python. Real-world examples of their implementation.",
+      "instructions": "Use real-world examples to better illustrate the explanations. Avoid overlapping content between this sub-chapter and the others. Length should be around 5-7 pages.",
+      "index": 1
+    },
+    {
+      "title": "Abstract Classes",
+      "outline": "Introduction to abstract classes in OOP. Explanation of what they are and how they are used in Python. Analysis of the difference between an abstract class and an interface, followed by real-world examples of their implementation.",
+      "instructions": "Focus on the differences between abstract classes and interfaces. Use real-world examples to better illustrate the explanations. Length should be around 5-7 pages.",
+      "index": 2
+    },
+    {
+      "title": "Decorators",
+      "outline": "Introduction to decorators in OOP. Explanation of what they are and how they are used in Python. Real-world examples of their implementation.",
+      "instructions": "Use real-world examples to better illustrate the explanations. Avoid overlapping content between this sub-chapter and the others. Length should be around 5-7 pages.",
+      "index": 3
+    }
+  ]
+}

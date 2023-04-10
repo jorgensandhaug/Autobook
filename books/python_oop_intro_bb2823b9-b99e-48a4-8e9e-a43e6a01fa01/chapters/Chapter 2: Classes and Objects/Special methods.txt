@@ -1,0 +1,63 @@
+# Special methods
+
+Special methods are also called magic methods in Python. They are methods that have double underscores at the beginning and end of their names. By default, these methods are called by specific Python behaviors, such as object initialization or evaluation of the object string representation.
+
+## Implementing special methods
+
+To implement special methods, you must define methods in your class with certain names of the form `__name__()`. The double underscores indicate that these methods are special methods. These methods are called implicitly under certain circumstances that correspond to their functionality.
+
+## Examples of special methods
+
+### `__str__()`
+
+`__str__()` is a special method that returns a string representation of an object. This method is called when you use the `str()` or `print()` functions to represent an object.
+
+Below, is an example of the `__str__()` method in action.
+
+```python
+class Dog:
+    def __init__(self, name):
+        self.name = name
+    
+    def __str__(self):
+        return f"the dog's name is {self.name}"
+
+my_dog = Dog('Spot')
+print(my_dog) #Outputs "the dog's name is Spot"
+```
+
+### `__repr__()`
+
+`__repr__()` is similar to `__str__()`, as it returns a string representation of an object. However, it is instead called when you want a more precise and unambiguous representation of an object. You should define`__repr__()` as though it might be used to recreate the object when called.
+
+Below, is an example of the `__repr__()` method in action.
+
+```python
+class Dog:
+    def __init__(self, name):
+        self.name = name
+    
+    def __repr__(self):
+        return f"Dog(name='{self.name}')"
+
+my_dog = Dog('Spot')
+print(repr(my_dog)) #Outputs "Dog(name='Spot')"
+```
+
+### `__len__()`
+
+`__len__()` returns the length of the container objects such as lists, strings, and so on. `__len__()` is called when you use the `len()` built-in function.
+
+Below, is an example of the `__len__()` method in action.
+
+```python
+class MyClass:
+    def __init__(self, data):
+        self.data = data
+    
+    def __len__(self):
+        return len(self.data)
+
+my_obj = MyClass([1, 2, 3, 4, 5])
+print(len(my_obj)) #Outputs 5
+```

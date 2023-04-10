@@ -1,0 +1,92 @@
+# Object Attributes and Methods
+
+In Python, **attributes** are variables that belong to an object while **methods** are functions that belong to an object. In other words, attributes represent the state of an object while methods represent the behavior of an object. 
+
+## Accessing Attributes and Methods
+
+We can access attributes and methods of an object using the dot notation. Consider a class and an object created from that class:
+
+```python
+class Car:
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+    
+    def go(self):
+        print("The car is moving.")
+        
+mustang = Car("Ford", "Mustang")
+```
+
+We can access the attributes of the object `mustang` as follows:
+
+```python
+print(mustang.make) # output: Ford
+print(mustang.model) # output: Mustang
+```
+
+Similarly, we can access the methods of the object as follows:
+
+```python
+mustang.go() # output: The car is moving.
+```
+
+## Visibility and Name Mangling
+
+In Python, attributes and methods can have different levels of visibility. By default, all attributes and methods are public and can be accessed from anywhere. However, we can use a single underscore prefix to indicate that an attribute or method is protected, which means it can only be accessed from within the same class or from a subclass. Similarly, we can use a double underscore prefix to indicate that an attribute or method is private, which means it can only be accessed from within the same class.
+
+For example,
+
+```python
+class Car:
+    def __init__(self, make, model):
+        self._make = make   # Protected attribute
+        self.__model = model  # Private attribute
+        
+    def go(self):
+        print("The car is moving.")
+```
+
+We can still access both the protected and private attributes using the dot notation, but using a double underscore prefix for a private attribute causes the interpreter to perform **name mangling**. Name mangling is a mechanism where the interpreter changes the name of a private attribute to avoid name clashes. 
+
+Using the example above, we can access the protected attribute as follows:
+
+```python
+mustang = Car("Ford", "Mustang")
+print(mustang._make) # output: Ford
+```
+
+To access the private attribute, we need to use the mangled name:
+
+```python
+print(mustang._Car__model) # output: Mustang
+```
+
+Note that it is generally not recommended to access protected or private attributes directly from outside the class. Instead, we should use methods within the class to access or modify the attribute values. This promotes better encapsulation and abstraction of the class.
+
+## Examples of Attributes and Methods in a Class
+
+Let's consider a class `Rectangle` that represents a rectangle. The class will have a constructor method to initialize the width and height attributes of the rectangle. We'll also include methods to calculate the area and perimeter of the rectangle.
+
+```python
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    
+    def area(self):
+        return self.width * self.height
+    
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+```
+
+We can create an instance of the Rectangle class and call its methods to get the area and perimeter.
+
+```python
+rect = Rectangle(5, 4)
+print(rect.area()) # output: 20
+print(rect.perimeter()) # output: 18
+```
+
+In this example, the `width` and `height` attributes represent the state of the object, while the `area()` and `perimeter()` methods represent the behavior of the object.

@@ -1,0 +1,148 @@
+Chapter 1: Introduction to OOP in Python
+
+# Overview of Python data types and control structures
+
+This sub-chapter provides an overview of the basic data types and control structures in Python. It is intended as a refresher for readers already familiar with Python and covers only the basics. There won't be too many technical details or code examples, but the content will be concise and easy to follow.
+
+One of the most essential features of any programming language is its data types. Python has several built-in data types, including:
+
+- Numbers (integers, floats, complex)
+- Booleans
+- Strings
+- Lists
+- Tuples
+- Dictionaries
+- Sets
+
+Each data type has its specific characteristics and can be used in different ways. For instance, strings are sequences of characters enclosed in quotation marks and can be manipulated with string methods. Lists, on the other hand, are sequences of values that can be added, removed or sorted.
+
+In addition to data types, Python has control structures that allow us to perform operations on data. The most common control structures in Python are:
+
+- Loops (for and while loops)
+- Conditionals (if, else, and elif statements)
+
+Loops allow us to perform a set of instructions multiple times. For example, a for loop can be used to iterate over a set of values in a list. A while loop is often used when we want to execute a set of instructions while a condition is true.
+
+The conditional statements, if, else, and elif, evaluate an expression and perform an action based on whether the expression is true or false. This is particularly useful when we want to execute a specific set of instructions based on the value of a condition.
+
+In conclusion, data types and control structures are the backbone of any programming language, including Python. Understanding how to work with these concepts in Python is crucial to building applications and solving problems. This sub-chapter provides a foundation for readers familiar with Python and serves as a starting point for the subsequent chapters on object-oriented programming.
+
+# Introduction to Object-Oriented Programming Concepts
+
+Object-oriented programming (OOP) is a programming paradigm that emphasizes objects rather than functions or procedures. In this sub-chapter, we will introduce the basic concepts of OOP and explain how they can be applied in Python. 
+
+We will cover the following topics:
+
+- Encapsulation
+- Inheritance
+- Polymorphism
+
+## Encapsulation
+
+Encapsulation is the process of bundling data and functions that work on that data within one unit, called a class. The data is stored inside the class and is protected from outside interference. The functions, also known as methods, are used to manipulate the data.
+
+Encapsulation allows for an object's internal state to be changed without affecting other parts of the program that use the object. This is achieved by making certain class members private, so they can only be accessed from within the class. Other members can be made protected or public, depending on the intended usage.
+
+```python
+class Car:
+    def __init__(self, make, model, year):
+        self._make = make
+        self._model = model
+        self._year = year
+    
+    def get_make(self):
+        return self._make
+    
+    def set_make(self, make):
+        self._make = make
+```
+
+In this example, we have a Car class with make, model, and year attributes. The `get_make()` method retrieves the value of the `make` attribute, while the `set_make()` method changes it. The `make` attribute is marked as protected using a single underscore before the variable name, indicating it should not be accessed outside the class. 
+
+## Inheritance
+
+Inheritance is the process of creating a new class that is a modified version of an existing class, called the base class or parent class. The new class is called the derived class or child class. The child class inherits all the attributes and methods of the parent class, and can add its own attributes and methods or override existing ones.
+
+```python
+class Vehicle:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+    
+    def start(self):
+        print('Starting the engine')
+
+class Car(Vehicle):
+    def __init__(self, make, model, year, num_doors):
+        super().__init__(make, model, year)
+        self.num_doors = num_doors
+    
+    def start(self):
+        print('Insert key and turn ignition to start engine')
+
+class Bicycle(Vehicle):
+    def __init__(self, make, model, year, num_gears):
+        super().__init__(make, model, year)
+        self.num_gears = num_gears
+
+car = Car('Toyota', 'Corolla', 2022, 4)
+bike = Bicycle('Trek', 'Mountain Bike', 2021, 21)
+
+car.start()  # Output: Insert key and turn ignition to start engine
+bike.start()  # Output: Starting the engine
+```
+
+In this example, we have a Vehicle class with make, model, and year attributes and a `start()` method. The Car and Bicycle classes are derived from the Vehicle class and inherit its attributes and methods. The Car class has an additional attribute `num_doors` and overrides the `start()` method to provide customized behavior. The Bicycle class has an additional attribute `num_gears`.
+
+## Polymorphism
+
+Polymorphism is the ability of objects to take on different forms or behaviors depending on the context in which they are used. This is achieved through the use of inheritance and overriding methods.
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    
+    def make_sound(self):
+        pass
+
+class Cat(Animal):
+    def make_sound(self):
+        print('Meow')
+
+class Dog(Animal):
+    def make_sound(self):
+        print('Woof')
+
+def animal_sound(animal):
+    animal.make_sound()
+
+cat = Cat('Whiskers')
+dog = Dog('Fido')
+
+animal_sound(cat)  # Output: Meow
+animal_sound(dog)  # Output: Woof
+```
+
+In this example, we have Animal, Cat, and Dog classes. The Animal class is a base class for the Cat and Dog classes, and has a `make_sound()` method that does nothing. The Cat and Dog classes override the `make_sound()` method to provide their own implementation. The `animal_sound()` function takes an Animal object as a parameter and calls its `make_sound()` method. When this function is called with a Cat object or Dog object, their respective `make_sound()` methods are called instead. This is an example of polymorphism.
+
+## Exercises
+
+1. Create a class representing a bank account with a balance, an account number, and interest rate. Add methods to deposit, withdraw, and calculate interest. 
+2. Create a class representing a book with a title, author, and publication year. Add a method to display the book's information. 
+3. Create a derived class from the book class representing an e-book, with an additional attribute for the file size. Override the display method to include the file size.
+
+In the next chapter, we will cover the creation and use of classes and objects in Python.
+
+# Practical examples and exercises
+
+This sub-chapter provides practical examples and exercises to reinforce the reader's understanding of object-oriented programming concepts in Python. The examples and exercises presented are easy to follow and will use the concepts presented in the previous sub-chapter.
+
+One simple example that illustrates the concepts of encapsulation and inheritance is creating a `Person` class that has a `name` attribute and a `talk()` method. The `talk()` method will simply return the person's name with the message "is talking". We can then create a `Student` class that inherits from the `Person` class and has an additional `student_id` attribute. We can also override the `talk()` method to include the message "is a student". This example shows how inheritance allows us to create a more specialized class from a more general one.
+
+Another example that illustrates the concept of polymorphism is creating a `Shape` class with a `draw()` method that does not have a body. We can then create several subclasses, such as `Circle`, `Square`, and `Triangle`, each with its own implementation of the `draw()` method. This example shows how we can write more flexible and reusable code by using polymorphism.
+
+The exercises provided will challenge the reader to apply the concepts learned in the previous sub-chapter to solve practical problems. For example, one exercise could be to create a simple game using classes and objects. The game could involve a player character moving around a grid, collecting items, and avoiding obstacles. The reader would need to use encapsulation, inheritance, and polymorphism to create the necessary classes and methods to make the game work.
+
+Overall, the examples and exercises presented in this sub-chapter are clear and concise, and they help the reader solidify their knowledge of object-oriented programming concepts in Python. By completing the exercises, the reader will be able to apply these concepts to their own projects and continue to build their skills in OOP.

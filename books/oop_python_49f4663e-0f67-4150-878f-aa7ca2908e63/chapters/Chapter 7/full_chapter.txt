@@ -1,0 +1,224 @@
+Chapter 7
+
+# Composition and Interfaces
+
+In Object-Oriented Programming (OOP), composition refers to the design technique where an object contains one or more instances of another class. In simpler terms, when an object is composed of other objects, it creates a relationship known as a 'has-a' relationship. This allows the object to delegate some responsibilities to the composing object, reducing the complexity of the code.
+
+One common example of composition is the relationship between a car and its engine. The car 'has-a' engine, and the engine is composed of smaller parts such as pistons and cylinders. Similarly, when creating an application, one class may compose or 'have' other classes as its members, allowing for a more modular and scalable code architecture.
+
+In Python, we implement composition using class composition, where the composing class is instantiated as a member of the class. Let's use the car example to illustrate class composition in Python:
+
+```python
+class Engine:
+    def __init__(self, model, num_cylinders):
+        self.model = model
+        self.num_cylinders = num_cylinders
+
+    def start(self):
+        print('Engine started.')
+
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.engine = Engine(model='V6', num_cylinders=6)
+
+    def start(self):
+        self.engine.start()
+        print(f'{self.make} {self.model} started.')
+```
+
+In the above code, we have two classes - `Engine` and `Car`. The `Car` class is composed of an instance of the `Engine` class, creating a has-a relationship between the two classes. The `__init__` method of the `Car` class initializes an instance of the `Engine` class and stores it as an attribute of the `Car` class. We can also see that the `start` method of the `Car` class calls the `start` method of the `Engine` class, delegating the responsibility of starting the engine to the composing class.
+
+Interfaces, on the other hand, define the behavior of an object in terms of the messages it can receive. An interface specifies the methods that a class must implement without specifying the implementation details. In essence, it defines what an object should do, but not how it should do it.
+
+In Python, we implement interfaces using the Abstract Base Classes (ABCs) module. An ABC defines an interface by specifying a method or group of methods that must be implemented by any class that uses that interface. Here is an example of an interface in Python:
+
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+```
+
+In the above code, we define an abstract class `Shape` that defines the two abstract methods `area` and `perimeter`. Any class that uses `Shape` as its base class must implement these methods. If a class does not implement these methods, an error will occur when it is instantiated.
+
+Let's add an implementation of the `Shape` interface to better understand its use:
+
+```python
+class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+    def perimeter(self):
+        return 2 * (self.length + self.width)
+```
+
+In the above code, we define a `Rectangle` class that implements the `Shape` interface. The `Rectangle` class implements the `area` and `perimeter` methods declared in the `Shape` interface. By implementing these methods, the `Rectangle` class guarantees that it satisfies the requirements of the `Shape` interface.
+
+In conclusion, composition and interfaces are essential concepts in OOP that help to create more modular, scalable, and maintainable code. Using these concepts can improve the code structure, making it easier to read, understand, and modify.  By understanding the principles of composition and interfaces, developers can create more flexible and robust applications.
+
+# Abstract Classes
+
+In Python, an abstract class is a class that contains at least one abstract method. An abstract method is a method that is declared but has no implementation. The implementation of the method is left to its subclass. Abstract classes cannot be instantiated and are only used as base classes for other classes.
+
+## Differences Between Abstract Classes and Interfaces
+
+In Python, there are no interfaces. However, an abstract class can be considered as a similar concept. The main difference between an abstract class and an interface is that an abstract class can have both abstract and non-abstract methods, while an interface can only have abstract methods. Another difference is that a class can implement multiple interfaces, but it can only inherit from one abstract class.
+
+## Examples of Abstract Classes
+
+One common example of an abstract class is the  `Shape` class. This class can have different shapes as its subclasses, such as `Rectangle`, `Triangle`, and `Circle`. Each shape has its own implementation of the `area()` method, but the `Shape` class should not have an implementation of the `area()` method as its implementation is specific to each subclass.
+
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+    
+    def area(self):
+        return 3.14159 * self.radius**2
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    
+    def area(self):
+        return self.width * self.height
+```
+
+As we can see, the `Shape` class is an abstract class since it contains an abstract method `area()`. The `Circle` and `Rectangle` classes implement the `area()` method based on their specific attributes.
+
+Another example of an abstract class is the `Animal` class, with subclasses such as `Dog`, `Cat`, and `Bird`. The `Animal` class contains abstract methods such as `move()` and `speak()`, which have different implementations in each subclass.
+
+```python
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    @abstractmethod
+    def move(self):
+        pass
+    
+    @abstractmethod
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def move(self):
+        return "walks"
+    
+    def speak(self):
+        return "barks"
+    
+class Cat(Animal):
+    def move(self):
+        return "walks"
+    
+    def speak(self):
+        return "meows"
+```
+
+In this example, the `Animal` class is an abstract class with two abstract methods `move()` and `speak()`. The `Dog` and `Cat` classes implement both methods with their specific behaviors.
+
+## Conclusion
+
+Abstract classes are used to define a common interface for its subclasses, but its implementation is left to the subclasses. It is an essential concept in object-oriented programming as it promotes code reusability, modularity, and flexibility. In Python, abstract classes are created using the `abc` module, which allows the creation of abstract methods and classes. By understanding abstract classes, we can design more scalable and robust systems, resulting in better quality software.
+
+# Decorators
+
+In Python, a **decorator** is a function that can modify another function's behavior without changing its source code. A decorator takes another function as input, adds some functionality to it, and then returns it as the output. 
+
+Decorators are used when you want to extend the behaviour of an existing function, without compromising the original code. It is also used for code reuse, where functionality can be extracted from a method and merged into another method, as well as for implementing reusable code layers or adding functionality to an existing method. 
+
+Decorators are a powerful tool in Python's arsenal, and they are used extensively in many libraries and frameworks. For example, the `@classmethod` decorator modifies a method so that it can be called directly from the class, rather than from an instance of the class. The `@staticmethod` decorator converts a method into a static method that can be called without an instance of the class. 
+
+## Using Decorators in Python 
+
+In Python, a decorator is created by defining a new function and wrapping the original function with that new function. This is done using the `@` symbol before the decorator function's name. Consider the following example:
+
+``` python
+def logger(func):
+    def wrapper(*args, **kwargs):
+        print(f"Log: {func.__name__} was called with args={args} and kwargs={kwargs}")
+        return func(*args, **kwargs)
+    return wrapper
+
+@logger
+def add(x, y):
+    return x + y
+
+add(2, 3)
+# Output: Log: add was called with args=(2, 3) and kwargs={} 
+#         5
+```
+
+In the code above, we have defined a decorator `logger()`. This decorator takes a function as an input and returns a new function called `wrapper()` that wraps the original function. The wrapper function has the same signature as the original function, which means it takes any number of arguments and keyword arguments. The `wrapper()` function logs the name of the function being called along with its arguments and keyword arguments, then calls the original function with these arguments and returns the result. The `add` function is then decorated with the logger decorator, by prepending the function with `@logger`. When you run `add(2, 3)`, it prints the log message before calculating the sum.
+
+## Real-World Examples
+
+An example of using decorators in the real world might be to implement input validation to functions that accept user input. 
+
+``` python
+def validate_input(func):
+    def wrapper(*args, **kwargs):
+        for arg in args:
+            if not isinstance(arg, (int, float)):
+                raise TypeError(f"Expected {arg} to be a number")
+        return func(*args, **kwargs)
+    return wrapper
+
+@validate_input
+def add(x, y):
+    return x + y
+
+add(2, 3)  # 5
+add(2, "3")  # raises TypeError("Expected '3' to be a number")
+```
+
+In the above example, we define a `validate_input()` decorator. This decorator checks whether the inputs to the function `add()` are numbers, and if not it raises an error. The decorator intercepts the arguments before the function is called, validates them and then calls the function if everything is valid. This ensures that the function is called with the parameters in the right format.
+
+Another example is timing a function's execution using a decorator:
+
+``` python
+import time
+
+def timing(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.perf_counter()
+        result = func(*args, **kwargs)
+        end_time = time.perf_counter()
+        print(f"Function {func.__name__} took {end_time - start_time:.6f} seconds to execute")
+        return result
+    return wrapper
+
+@timing
+def some_function():
+    for _ in range(1000000):
+        pass
+
+some_function()  # prints: Function some_function took 0.057318 seconds to execute
+```
+
+Here, the `timing()` decorator is defined. It calculates the start and end times, as well as the duration of the function's execution. It then prints the duration of the function's execution using the `print()` function. The decorator is then applied to the function `some_function()`. When called, it outputs the time required to execute the function.
+
+## Conclusion 
+
+Decorators are a powerful tool in Python that allows you to modify the behavior of functions without changing their source code. This makes them incredibly useful for extending the functionality of a function without compromising the original code. In this sub-chapter, we've reviewed decorators in OOP, their usefulness, how they work, and appropriate use cases. These examples should help you understand the different scenarios where decorators can be used, making you more proficient at using this handy tool in your own Python code.

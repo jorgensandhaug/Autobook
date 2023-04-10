@@ -1,0 +1,111 @@
+# Sub-chapter 5: Design Patterns
+
+Design patterns are a set of recurring solutions to common software development problems that have been tested and found effective. They provide a way of structuring code that helps to promote reusability, modularity, and maintainability. In this sub-chapter, we'll discuss the benefits of design patterns and explore some practical examples of using design patterns in Python.
+
+## Benefits of Design Patterns
+
+Design patterns offer several advantages over ad-hoc coding. They:
+
+- Provide a common vocabulary for developers to communicate about code structures.
+- Encapsulate expertise and provide a way to reuse that expertise across projects.
+- Improve code structure, making it easier to modify and maintain.
+- Are well-documented and tested to be effective in solving specific problems.
+
+## Types of Design Patterns 
+
+There are three main types of design patterns: creational, structural, and behavioral patterns. 
+
+- **Creational patterns** focus on object creation mechanisms and their best practices to ensure object initialization is performed efficiently and safely.
+- **Structural patterns** involve object composition, relationships between objects, and class organization. These patterns help in assembling objects and classes into larger groups and structures.
+- **Behavioral patterns** focus on communication and coordination between objects, facilitating the building of highly maintainable systems with easily interchanged parts.
+
+## Practical Examples of Design Patterns in Python
+
+### Factory Method
+
+The factory method pattern is a creational design pattern that is used when creating objects that are costlier to create. In cases where instantiating an object is expensive or involves a lot of time and resources, the factory method helps in decoupling object creation by using a separate class factory for object creation.
+
+Here's an example of the factory method pattern in Python:
+
+```python
+class Dog:
+    def __init__(self, name):
+        self.name = name
+    
+    def speak(self):
+        return "Woof!"
+    
+class DogFactory:
+    def create_dog(self, name):
+        return Dog(name)
+```
+
+We create a separate `DogFactory` class that is responsible for creating the `Dog` objects. The factory method `create_dog` is used for creating `Dog` objects without directly instantiating them.
+
+### Decorator
+
+The decorator pattern is a structural design pattern that is used when adding responsibilities to an object dynamically. It is designed to extend the functionality of an object without modifying its original implementation.
+
+Here's an example of the decorator pattern in Python:
+
+```python
+class TextTag:
+    def __init__(self, text):
+        self.text = text
+        
+    def render(self):
+        return self.text
+    
+class BoldTag:
+    def __init__(self, wrapped):
+        self.wrapped = wrapped
+    
+    def render(self):
+        return f"<b>{self.wrapped.render()}</b>"
+```
+
+In this example, we have two classes, `TextTag` and `BoldTag`. `BoldTag` is a decorator, which adds bold formatting to the text from `TextTag` without changing the original implementation of `TextTag`.
+
+### Observer
+
+The observer pattern is a behavioral pattern that allows for objects to be notified and updated when another object changes. It is used in many user-interface design frameworks to update the view when the data model changes.
+
+Here's an example of the observer pattern in Python:
+
+```python
+class Subject:
+    def __init__(self):
+        self.observers = []
+        self._state = None
+    
+    def attach(self, observer):
+        self.observers.append(observer)
+    
+    def detach(self, observer):
+        self.observers.remove(observer)
+    
+    def notify(self):
+        for observer in self.observers:
+            observer.update()
+            
+    def set_state(self, state):
+        self._state = state
+        self.notify()
+    
+    def get_state(self):
+        return self._state
+    
+class Observer:
+    def __init__(self, subject):
+        self.subject = subject
+        self.subject.attach(self)
+    
+    def update(self):
+        print(f"Observer {id(self)} has received the state: {self.subject.get_state()}")
+```
+
+In this example, we have two classes, `Subject` and `Observer`. `Subject` maintains a list of its observers and notifies them whenever its state changes. `Observer` registers itself with the `Subject` and receives the state changes.
+
+## Conclusion
+
+Design patterns are an essential tool in software development that can help improve code structure and maintainability. By providing reusable solutions to common problems, design patterns can save time and effort in developing software systems. In this sub-chapter, we've covered the three main types of design patterns and provided practical real-world examples of design pattern implementations in Python.

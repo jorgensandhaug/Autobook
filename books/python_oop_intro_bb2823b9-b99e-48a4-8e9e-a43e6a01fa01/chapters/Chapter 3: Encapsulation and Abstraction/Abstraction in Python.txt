@@ -1,0 +1,56 @@
+# Abstraction in Python
+
+Abstraction is a fundamental concept in object-oriented programming (OOP) that allows programmers to separate the implementation details of an object from its behavior. It involves defining an interface to an object that hides the complexity of its inner workings from the user.
+
+In Python, abstraction can be achieved through the use of abstract classes and interfaces. An abstract class is a class that cannot be instantiated and functions as a template for a set of related classes. An interface, on the other hand, specifies a set of methods that a class must implement to adhere to the protocol.
+
+## Encapsulation through Abstraction
+
+Abstraction is closely related to encapsulation, another key concept in OOP. Encapsulation involves the packaging of data and behavior into a single unit, such as a class or object. By hiding the complexity of an object's implementation through abstraction, encapsulation can be achieved.
+
+In Python, encapsulation is enforced through the use of protected and private attributes and methods. Protected attributes and methods are denoted by a single leading underscore, while private attributes and methods are denoted by two leading underscores. This works as a convention to communicate how attributes and methods should be used.
+
+## Using Abstraction in Python
+
+An abstract class in Python is defined using the `abc` module. To create an abstract class, the `ABCMeta` and `abstractmethod` classes must be used. Here's an example:
+
+```python
+from abc import ABCMeta, abstractmethod
+
+class Vehicle(metaclass=ABCMeta):
+    @abstractmethod
+    def start(self):
+        pass
+    
+    @abstractmethod
+    def stop(self):
+        pass
+    
+class Car(Vehicle):
+    def start(self):
+        print('Starting the engine.')
+    
+    def stop(self):
+        print('Stopping the engine.')
+```
+
+In this example, `Vehicle` is an abstract class that defines two abstract methods, `start` and `stop`. This means that any class that inherits from `Vehicle` must implement these two methods. The `Car` class is a subclass of `Vehicle` that implements both the `start` and `stop` methods.
+
+Similarly, an interface in Python is defined as a class with abstract methods. Here's an example:
+
+```python
+from abc import ABC, abstractmethod
+
+class IAnimal(ABC):
+    @abstractmethod
+    def move(self):
+        pass
+    
+class Dog(IAnimal):
+    def move(self):
+        print('Walking on four legs.')
+```
+
+In this example, `IAnimal` is an interface that contains one abstract method, `move`. The `Dog` class is a class that implements the `move` method from the `IAnimal` interface.
+
+Overall, abstraction is a powerful tool in OOP that enables programmers to write more flexible and reusable code. By separating an object's implementation from its behavior, code can be more easily maintained and extended.

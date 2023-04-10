@@ -1,0 +1,54 @@
+# Creating Classes
+
+In Python, classes can be created using the "class" keyword, followed by the name of the class. Class names in python should always start with an uppercase letter. A class can have any number of attributes (also known as variables) and methods (functions defined in a class). Every method in a class should take at least one parameter, which is often called "self" by convention.
+
+Here's a simple example of a class in Python:
+
+```python
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def get_make(self):
+        return self.make
+
+    def get_model(self):
+        return self.model
+
+    def get_year(self):
+        return self.year
+```
+
+In this example, we created a class called "Car". It has three attributes - "make", "model", and "year" - which are initialized using a constructor (the `__init__` method). The constructor takes three parameters ("make", "model", and "year") and assigns them to the corresponding attributes.
+
+The class also has three methods - "get_make", "get_model", and "get_year" - which return the values of the "make", "model", and "year" attributes, respectively.
+
+Note that every method in a class takes "self" as its first parameter. This is a reference to the instance of the class that the method is being called on. It allows methods to access the attributes of an instance and perform operations on those attributes.
+
+To create an instance of a class, we use the class name followed by parentheses:
+
+```python
+my_car = Car("Toyota", "Corolla", 2021)
+```
+
+In this example, we created an instance of the "Car" class called "my_car". We passed three arguments to the constructor to initialize the "make", "model", and "year" attributes of the instance.
+
+We can access the attributes of the instance using the dot notation:
+
+```python
+print(my_car.make)    # "Toyota"
+print(my_car.model)   # "Corolla"
+print(my_car.year)    # 2021
+```
+
+We can also call the methods of the instance using the same dot notation:
+
+```python
+print(my_car.get_make())     # "Toyota"
+print(my_car.get_model())    # "Corolla"
+print(my_car.get_year())     # 2021
+```
+
+And that's it! We have created a class with attributes and methods, and created an instance of the class to access those attributes and methods. In the next sub-chapter, we will delve into methods in more detail.

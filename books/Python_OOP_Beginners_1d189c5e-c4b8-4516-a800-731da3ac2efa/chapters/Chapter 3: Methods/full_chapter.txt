@@ -1,0 +1,274 @@
+Chapter 3: Methods
+
+# Overview of Methods
+
+Methods are functions that are defined within a Python class. They are an important part of object-oriented programming as they provide a mechanism for objects to interact with one another. One of the main characteristics of methods is that they are always associated with a specific object. Therefore, they are frequently used to represent the behavior of an object.
+
+To define a method, you use the `def` keyword, just like you would when defining a regular function. However, when defining a method, you must include a special argument called `self`, which represents the object that the method is associated with. This argument is automatically passed to the method when it is called, although you don't need to explicitly pass it as an argument.
+
+```python
+class MyClass:
+    def my_method(self, arg1, arg2):
+        # method definition
+```
+
+In the above example, we have defined a class called `MyClass` with a method called `my_method`. The `self` parameter appears as the first argument of `my_method`. Next, we pass two regular arguments `arg1` and `arg2` to the method.
+
+The `self` parameter is a reference to the object that the method is called on. This means that within the method, we can access the object's attributes and other methods.
+
+Methods can also be called from outside the object. To call an object's method, you use the object instance followed by the method name and any arguments, like this:
+
+```python
+my_object = MyClass()
+my_object.my_method(arg1, arg2)
+```
+
+One important point to note is that when you call a method, you don't explicitly pass the `self` argument - Python does this automatically.
+
+In summary, methods are an essential part of Python classes and allow objects to interact with each other. Unlike regular functions, methods are always associated with a specific object and are defined using the `def` keyword, including the `self` parameter which represents the object.
+
+# Types of Methods
+
+In Python classes, there are various types of methods such as instance, class, and static methods. Each of these methods has its own characteristics, which can be useful in different scenarios.
+
+## Instance Methods
+
+Instance methods are the most common type of method in Python classes, and they are bound to the object created from the class. They take the `self` parameter, which represents the instance of the object, as their first parameter. The `self` parameter is used to access the object's data attributes and other instance methods.
+
+Instance methods are useful in scenarios where different instances of the class could have different values for their data attributes. For example, consider a `Person` class that has a `name` and an `age` data attribute. Each instance of the `Person` class could have different values for their `name` and `age` attributes. An instance method in this scenario, say `get_age()`, will access `self.age` to return the age of the person represented by the instance.
+
+## Class Methods
+
+A class method is a method that is bound to the class rather than the instance of the class. They take the `cls` parameter, which represents the class itself, as their first parameter. Class methods are defined using the `@classmethod` decorator.
+
+Class methods are useful when the method only needs to access the class data attributes and not any instance attributes. For example, consider a `Shape` class with a `count` class variable that keeps track of the number of shapes created. A class method in this scenario, say `get_count()`, could access `cls.count` to return the number of shapes created.
+
+## Static Methods
+
+Static methods in Python classes are defined using the `@staticmethod` decorator. They do not take any special parameter such as `self` or `cls`, and they cannot access any attributes or methods of the class or instance.
+
+Static methods are useful when a method does not need to access the class or instance attributes. For example, consider a `Calculator` class that has a `add()` method to add two numbers. A static method, say `is_valid_number()` could be used to check whether the input is a valid number, without needing to access any class or instance attributes.
+
+In summary, knowing the type of method to use in a situation is important for efficient and effective object-oriented programming, and each type of method presents its own usefulness.
+
+# Instance Methods
+
+Instance methods are functions that are defined within a class and operate on an instance of that class. They can access and manipulate the instance's attributes and perform actions on the instance itself. 
+
+To create an instance method, it must first be defined in the class definition, and it should include a self parameter as its first parameter. The self parameter is a reference to the instance object and is automatically passed in when an instance method is called on an object. 
+
+An instance method can be called on an instance of the class by using dot notation and passing in any additional parameters required. The self parameter is not explicitly passed in, as it is already bound to the instance on which the method is being called. 
+
+Let's look at an example of how to create and use an instance method.
+
+```python
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer = 0
+    
+    def drive(self, miles):
+        self.odometer += miles
+        print(f"You drove {miles} miles.")
+    
+my_car = Car("Toyota", "Corolla", 2021)
+print(my_car.odometer) # Output: 0
+
+my_car.drive(100)
+print(my_car.odometer) # Output: 100
+```
+
+In this example, we have a Car class with an instance method called `drive`. The `__init__` method initializes the Car object's attributes such as make, model, year, and odometer, which is set to 0 by default. The `drive` method takes in a parameter `miles`, which represents the number of miles driven by the car, and adds it to the `odometer` attribute. Finally, it prints a message saying how many miles have been driven.
+
+We create an instance of the Car class named `my_car` and print its default `odometer` value. Then we call the `drive` method on `my_car`, passing in the number of miles driven, and print the updated odometer value. 
+
+It's important to note that instance methods use the `self` parameter to access and manipulate the instance's attributes. If the `self` parameter is not included in the instance method, the method will not have access to the instance's attributes, and an error will occur. Therefore, the `self` parameter is an essential part of instance methods in Python classes.
+
+# Class Methods
+
+In Python classes, class methods are methods that belong to the class and not to the instance of the class. They are bound to the class and cannot be called on the instance. They can be used to modify the class state and work with the class object itself. 
+
+## Characteristics of Class Methods
+- They are created using a decorator `@classmethod`.
+- The first parameter of a class method is always the `cls` parameter. This parameter is used to refer to the class itself within the method and is automatically passed by Python when the method is called. 
+- They can modify the class state but not the instance state.
+- They can be called on the class and not on the instance.
+
+## Creating and Using Class Methods 
+
+To create and use a class method, the `@classmethod` decorator is used. Below is an example:
+
+```python
+class MyClass:
+    counter = 0
+
+    def __init__(self):
+        MyClass.counter += 1
+
+    @classmethod
+    def get_counter(cls):
+        return cls.counter
+
+# Creating instances of the class
+obj1 = MyClass()
+obj2 = MyClass()
+
+# calling the class method
+print(MyClass.get_counter()) # Output: 2
+```
+
+In the example above, `get_counter` is a class method because it's decorated with `@classmethod` and has `cls` as the first parameter. The method returns the `counter` attribute of the class. The `counter` attribute is incremented by 1 in the constructor of the class (`__init__`) each time a new instance is created.
+
+When `get_counter` is called on the class `MyClass` in the last line of the example, the `cls` parameter is automatically passed by Python to the class method. The method can then access the `counter` attribute of the class and return it.
+
+## Manipulating the Class Object using cls
+
+Class methods can also be used to manipulate the class object directly using the `cls` parameter. Below is an example:
+
+```python
+ class MyClass:
+    my_list = []
+
+    @classmethod
+    def add_element(cls, elem):
+        cls.my_list.append(elem)
+
+# using the class method with cls parameter
+MyClass.add_element(5)
+MyClass.add_element(10)
+
+print(MyClass.my_list) # Output: [5, 10]
+```
+
+In the example above, the `add_element` method adds a new element to the `my_list` attribute of the class. The attribute is accessed and modified using the `cls` parameter.
+
+In summary, class methods are a way to define methods that operate on the class itself rather than on instances of the class. They are useful for creating utility methods or for modifying the class itself. They can be created using the `@classmethod` decorator, have `cls` as the first parameter and can only modify the class state.
+
+# Static Methods
+
+In Python, a **static method** is a method that can be called on a class itself instead of an instance of the class. In other words, it is not bound to the state of the object and doesn't require instantiation of the class to be used. It's often used for utility functions or to create alternative constructors.
+
+To create a static method in Python, you need to use the `@staticmethod` decorator. This decorator tells Python that the method should be a static method. Here's an example:
+
+```python
+class MyClass:
+    @staticmethod
+    def my_static_method(x, y):
+        return x + y
+```
+
+In this example, `my_static_method` is a static method that takes two arguments `x` and `y`, and returns their sum.
+
+Static methods have a few distinct characteristics:
+
+- They don't have access to the object state.
+- They don't require an instance of the class to be created.
+- They can be called on the class directly.
+
+Note that when you use a static method, you don't need to provide an instance of the class like you would for an instance or a class method. Instead, you call the method directly on the class itself:
+
+```python
+result = MyClass.my_static_method(5, 10)
+```
+
+In this example, we call `my_static_method` on the `MyClass` class rather than an instance of it.
+
+Static methods are useful when you want to create a function that relates to the class but does not depend on any instance-specific data. For instance, imagine that you have a `Person` class that contains information about people. You could write a static method that takes a list of `Person` objects and returns the total number of people in the list, regardless of any other attributes of the `Person` objects.
+
+Here's an example:
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        
+    @staticmethod
+    def count_people(people_list):
+        return len(people_list)
+```
+
+Here, `count_people` is a static method that takes a list of `Person` objects and returns the length of the list.
+
+To call the static method:
+
+```python
+people = [Person("John", 30), Person("Jane", 25), Person("Joe", 40)]
+total_people = Person.count_people(people)
+```
+
+In this example, `count_people` is called directly on `Person`, passing in the `people` list as an argument. The result is the total number of people in the list, which is 3.
+
+Static methods can be a useful tool in your Python programming toolkit. They allow you to create utility functions that relate to a class without requiring instantiation, which can make your code more efficient and easier to read.
+
+# Method Resolution Order
+
+In Python, the method resolution order (MRO) is the order in which Python looks for methods and attributes in a hierarchy of classes. When a method is called on an object, Python first searches for the method in the object's class, and then in its parent class, and so on, until it finds the method or determines that the method does not exist.
+
+The MRO is determined using the C3 linearization algorithm, which takes into account the order in which the base classes were defined, and ensures that the same method is not searched for twice in the same class hierarchy.
+
+Understanding the MRO is important for code design and troubleshooting. It allows you to predict which method will be called in an inheritance hierarchy, and to understand why certain methods are called instead of others. This can be particularly important when dealing with multiple inheritance, where a class inherits from several parent classes, and the MRO determines the order in which the parent classes are searched for methods.
+
+To view the MRO for a class, you can use the built-in `mro()` method:
+
+```python
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(A):
+    pass
+
+class D(B, C):
+    pass
+
+print(D.mro())  # [<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <class 'object'>]
+```
+
+In this example, the class `D` inherits from classes `B` and `C`, which both inherit from class `A`. The `mro()` method shows that if a method is called on an object of class `D`, Python will first look for the method in `D`, then in `B`, then in `C`, then in `A`, and finally in the built-in `object` class.
+
+In summary, the MRO is the order in which Python searches for methods and attributes in an inheritance hierarchy. It is determined using the C3 linearization algorithm, and understanding it is important for effective code design and troubleshooting.
+
+# Use Cases for Different Types of Methods
+
+In Python classes, there are three types of methods that are commonly used: instance methods, class methods, and static methods. Each of these methods has its unique use cases and advantages. Understanding when to use each method type will help you write cleaner, more efficient, and more effective code.
+
+## Instance Methods
+
+Instance methods are the most common type of method in Python classes. They are associated with an instance of a class and can access and modify the attributes of that instance. They are defined with the `self` parameter in the method definition which refers to the instance being operated on.
+
+Use instance methods when you need to work with the attributes of an instance. They are frequently used to modify the internal state of an object or access its properties. A common scenario where instance methods are useful is in model objects that represent physical entities, like a car or a bank account. In this case, instance methods can perform operations such as deposits, withdrawals, and balance inquiries.
+
+## Class Methods
+
+Class methods are methods that are bound to a class rather than an instance. They are defined with the `@classmethod` decorator and the `cls` parameter in the method definition. 
+
+Use class methods when you need to operate on the class itself or create objects of that class. They are commonly used for factory methods, which create objects of a class with specific properties. Another use case for class methods is when you need to access or modify class-level variables. For instance, you could use class methods to keep track of the number of objects created from a class.
+
+## Static Methods
+
+Static methods are methods that are not bound either to the class or to the instance. They are defined with the `@staticmethod` decorator and have no parameters that refer to either a class or an instance.
+
+Use static methods when you need to perform some operation from within the class, which does not depend on either an instance or a class. For instance, you can use a static method to perform a calculation or some other operation that does not involve an instance's state, such as printing a message or logging some information.
+
+## Conclusion
+
+Understanding different types of methods and their use cases is essential to write effective and efficient code in Python. Depending on the context of your program, you can use instance, class, or static methods to make your code more readable and functional. Remember to keep in mind the design principles when choosing the type of method to use. With these techniques, you can write better code, design better classes, and solve more complex programming problems.
+
+# Exercises
+
+To ensure that you have understood the material presented in this chapter, try out the following exercises. These exercises are designed to challenge your understanding of classes, objects, and methods in Python.
+
+1. **Class methods**: Create a Python class named `Rectangle` with two properties `length` and `width`. Add a method named `area` that returns the area of the rectangle. Next, add a class method named `from_diagonal` that creates a `Rectangle` object given its diagonal length (Hint: pythagoras theorem). Test your class by creating a `Rectangle` object and verifying that it computes the area correctly.
+
+2. **Static methods**: Create a static method named `days_in_year` that returns the number of days in a year. Call this static method without instantiating the class.
+
+3. **Inheritance**: Create a class named `Person` with properties `name` and `age`. Add a method named `greet` that returns a greeting message. Next, create a class named `Student` that inherits from `Person` with an additional property `school`. Override the `greet` method to include the name of the school in the greeting message.
+
+4. **Polymorphism**: Create a Python program that accepts a list of different objects (e.g., integers, strings, objects of your custom classes) and iterates over the list to perform a unique action on each object. For instance, the action could be printing or counting some attribute of the object, or calling a specific method only applicable to that object.
+
+These exercises are designed to test your understanding of the material presented in this chapter. Don't worry if you find them challenging; practice and experimentation are key to mastering the concepts of classes, objects, and methods in Python.

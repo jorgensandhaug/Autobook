@@ -1,0 +1,26 @@
+# Overview of Methods
+
+Methods are functions that are defined within a Python class. They are an important part of object-oriented programming as they provide a mechanism for objects to interact with one another. One of the main characteristics of methods is that they are always associated with a specific object. Therefore, they are frequently used to represent the behavior of an object.
+
+To define a method, you use the `def` keyword, just like you would when defining a regular function. However, when defining a method, you must include a special argument called `self`, which represents the object that the method is associated with. This argument is automatically passed to the method when it is called, although you don't need to explicitly pass it as an argument.
+
+```python
+class MyClass:
+    def my_method(self, arg1, arg2):
+        # method definition
+```
+
+In the above example, we have defined a class called `MyClass` with a method called `my_method`. The `self` parameter appears as the first argument of `my_method`. Next, we pass two regular arguments `arg1` and `arg2` to the method.
+
+The `self` parameter is a reference to the object that the method is called on. This means that within the method, we can access the object's attributes and other methods.
+
+Methods can also be called from outside the object. To call an object's method, you use the object instance followed by the method name and any arguments, like this:
+
+```python
+my_object = MyClass()
+my_object.my_method(arg1, arg2)
+```
+
+One important point to note is that when you call a method, you don't explicitly pass the `self` argument - Python does this automatically.
+
+In summary, methods are an essential part of Python classes and allow objects to interact with each other. Unlike regular functions, methods are always associated with a specific object and are defined using the `def` keyword, including the `self` parameter which represents the object.

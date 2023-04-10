@@ -1,0 +1,80 @@
+# Decorators
+
+In Python, a **decorator** is a function that can modify another function's behavior without changing its source code. A decorator takes another function as input, adds some functionality to it, and then returns it as the output. 
+
+Decorators are used when you want to extend the behaviour of an existing function, without compromising the original code. It is also used for code reuse, where functionality can be extracted from a method and merged into another method, as well as for implementing reusable code layers or adding functionality to an existing method. 
+
+Decorators are a powerful tool in Python's arsenal, and they are used extensively in many libraries and frameworks. For example, the `@classmethod` decorator modifies a method so that it can be called directly from the class, rather than from an instance of the class. The `@staticmethod` decorator converts a method into a static method that can be called without an instance of the class. 
+
+## Using Decorators in Python 
+
+In Python, a decorator is created by defining a new function and wrapping the original function with that new function. This is done using the `@` symbol before the decorator function's name. Consider the following example:
+
+``` python
+def logger(func):
+    def wrapper(*args, **kwargs):
+        print(f"Log: {func.__name__} was called with args={args} and kwargs={kwargs}")
+        return func(*args, **kwargs)
+    return wrapper
+
+@logger
+def add(x, y):
+    return x + y
+
+add(2, 3)
+# Output: Log: add was called with args=(2, 3) and kwargs={} 
+#         5
+```
+
+In the code above, we have defined a decorator `logger()`. This decorator takes a function as an input and returns a new function called `wrapper()` that wraps the original function. The wrapper function has the same signature as the original function, which means it takes any number of arguments and keyword arguments. The `wrapper()` function logs the name of the function being called along with its arguments and keyword arguments, then calls the original function with these arguments and returns the result. The `add` function is then decorated with the logger decorator, by prepending the function with `@logger`. When you run `add(2, 3)`, it prints the log message before calculating the sum.
+
+## Real-World Examples
+
+An example of using decorators in the real world might be to implement input validation to functions that accept user input. 
+
+``` python
+def validate_input(func):
+    def wrapper(*args, **kwargs):
+        for arg in args:
+            if not isinstance(arg, (int, float)):
+                raise TypeError(f"Expected {arg} to be a number")
+        return func(*args, **kwargs)
+    return wrapper
+
+@validate_input
+def add(x, y):
+    return x + y
+
+add(2, 3)  # 5
+add(2, "3")  # raises TypeError("Expected '3' to be a number")
+```
+
+In the above example, we define a `validate_input()` decorator. This decorator checks whether the inputs to the function `add()` are numbers, and if not it raises an error. The decorator intercepts the arguments before the function is called, validates them and then calls the function if everything is valid. This ensures that the function is called with the parameters in the right format.
+
+Another example is timing a function's execution using a decorator:
+
+``` python
+import time
+
+def timing(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.perf_counter()
+        result = func(*args, **kwargs)
+        end_time = time.perf_counter()
+        print(f"Function {func.__name__} took {end_time - start_time:.6f} seconds to execute")
+        return result
+    return wrapper
+
+@timing
+def some_function():
+    for _ in range(1000000):
+        pass
+
+some_function()  # prints: Function some_function took 0.057318 seconds to execute
+```
+
+Here, the `timing()` decorator is defined. It calculates the start and end times, as well as the duration of the function's execution. It then prints the duration of the function's execution using the `print()` function. The decorator is then applied to the function `some_function()`. When called, it outputs the time required to execute the function.
+
+## Conclusion 
+
+Decorators are a powerful tool in Python that allows you to modify the behavior of functions without changing their source code. This makes them incredibly useful for extending the functionality of a function without compromising the original code. In this sub-chapter, we've reviewed decorators in OOP, their usefulness, how they work, and appropriate use cases. These examples should help you understand the different scenarios where decorators can be used, making you more proficient at using this handy tool in your own Python code.

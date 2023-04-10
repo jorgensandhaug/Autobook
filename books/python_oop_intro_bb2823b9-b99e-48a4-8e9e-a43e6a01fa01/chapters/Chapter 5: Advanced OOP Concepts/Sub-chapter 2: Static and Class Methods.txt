@@ -1,0 +1,126 @@
+# Sub-chapter 2: Static and Class Methods
+
+Static and class methods are essential for creating more readable and maintainable code in Python. They allow for abstraction, encapsulation, and polymorphism, which are all necessary components of object-oriented programming (OOP). In this sub-chapter, we will cover the usage of static and class methods in Python, including their distinction and how to use them to improve the code structure.
+
+## Understanding Static and Class Methods
+
+Static methods are methods that belong to a class rather than an instance of that class. They do not require an instance to be created and can be called directly on the class itself. In contrast, class methods are methods that belong to a class, but they are aware of the class itself and operate on it instead of individual instances of the class.
+
+### Static Methods
+
+Static methods are denoted with the `@staticmethod` decorator and take no parameters referencing `self`. They are commonly used to define utility functions that are related to the class but do not depend on an instance of that class. For example, a static method might be used to calculate the distance between two points on a Cartesian plane, where the points are represented by an (x, y) tuple.
+
+```python
+class MyClass:
+    @staticmethod
+    def cartesian_to_polar(x, y):
+        """Convert cartesian coordinates to polar coordinates."""
+        return (math.sqrt(x ** 2 + y ** 2), math.atan2(y, x))
+```
+
+To call this static method, we do not need to create an instance of the class:
+
+```python
+>>> MyClass.cartesian_to_polar(3, 4)
+(5.0, 0.93)
+```
+
+### Class Methods
+
+Class methods are denoted with the `@classmethod` decorator and take a first parameter that references the class itself, conventionally named `cls`. They are commonly used to define alternative constructors or to manipulate the class in some way. For example, a class method might be used to count the number of instances of the class that have been created.
+
+```python
+class MyClass:
+    count = 0
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        MyClass.count += 1
+
+    @classmethod
+    def from_cartesian(cls, x, y):
+        """Create a new instance from cartesian coordinates."""
+        return cls(x, y)
+
+    @classmethod
+    def get_count(cls):
+        """Get the number of instances that have been created."""
+        return cls.count
+```
+
+To call this class method, we use the class name rather than the instance name:
+
+```python
+>>> p = MyClass.from_cartesian(3, 4)
+>>> MyClass.get_count()
+1
+```
+
+## Practical Examples
+
+### Example 1: Formatting Dates
+
+We can use static methods to format dates in different ways. A common use case is to format a date string into a more readable format, such as "DD-MM-YYYY" or "YYYY-MM-DD".
+
+```python
+class Date:
+    months = {'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 
+              'jun': 6, 'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 
+              'nov': 11, 'dec': 12}
+
+    def __init__(self, day, month, year):
+        self.day = day
+        self.month = month
+        self.year = year
+
+    @staticmethod
+    def format_date(date_string, format):
+        day, month_name, year = date_string.split('-')
+        month = Date.months[month_name.lower()]
+        if format == 'DD-MM-YYYY':
+            return f"{day}-{month:02d}-{year}"
+        elif format == 'YYYY-MM-DD':
+            return f"{year}-{month:02d}-{day}"
+```
+
+We can then call this static method on the `Date` class to format a date string:
+
+```python
+>>> Date.format_date('16-Jul-2022', 'DD-MM-YYYY')
+'16-07-2022'
+>>> Date.format_date('16-Jul-2022', 'YYYY-MM-DD')
+'2022-07-16'
+```
+
+### Example 2: Counting Instances
+
+We can use class methods to count the number of instances of a class that have been created. This is a useful way to keep track of the usage of our classes.
+
+```python
+class Person:
+    count = 0
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Person.count += 1
+
+    @classmethod
+    def get_count(cls):
+        return cls.count
+```
+
+We can then create multiple instances of this class and call the class method to get the count:
+
+```python
+>>> alice = Person('Alice', 25)
+>>> bob = Person('Bob', 30)
+>>> charlie = Person('Charlie', 35)
+>>> Person.get_count()
+3
+```
+
+## Conclusion
+
+In this sub-chapter, we have covered the distinction between static and class methods in Python and how to use them to improve the code structure. Static methods do not require an instance of the class and are commonly used to define utility functions. Class methods are aware of the class itself and are commonly used to define alternative constructors or manipulate the class in some way. Through practical examples, we have seen how these methods can be used to format dates and count instances of a class. It is important to use these methods appropriately to create more readable and maintainable code.

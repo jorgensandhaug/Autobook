@@ -1,0 +1,35 @@
+{
+  "chapter_title": "Chapter 5: Polymorphism",
+  "sub_chapters": [
+    {
+      "title": "Introduction to Polymorphism",
+      "outline": "This sub-chapter will define the concept of polymorphism in Python. It will explain what polymorphism is, how it works, and what benefits can be derived from using it in Python. Depending on the type of polymorphism view being depicted, examples will be provided throughout the sub-chapter to illustrate the significance of polymorphism in Python. This sub-chapter should be around 3-4 pages long.",
+      "instructions": "Ensure that the concept of polymorphism is thoroughly explained in this sub-chapter. Based on the type of polymorphism, give examples throughout the sub-chapter to ensure that the reader fully understands the significance of the concept in Python. Don't provide any full code examples in this sub-chapter; save them for the sub-chapter that covers examples of polymorphism in Python. The length of this sub-chapter should be around 3-4 pages.",
+      "index": 1
+    },
+    {
+      "title": "Static Polymorphism",
+      "outline": "This sub-chapter will introduce the concept of static polymorphism. It will begin with a definition of static polymorphism and then explain, by providing testimonials and examples, how function overloading and method overloading are different forms of static polymorphism in Python. Finally, the sub-chapter will explain operator overloading as another essential feature offered by static polymorphism. This sub-chapter should be around 5-6 pages long.",
+      "instructions": "In this sub-chapter, ensure function overloading, and method overloading are thoroughly explained, stating the differences between both of them, and giving examples of how they work in Python. When defining operator overloading, use examples to illustrate the concept to the reader to ensure that they know how to implement operator overloading in Python with static polymorphism. Avoid providing similar information twice in this chapter. The length of this sub-chapter should be around 5-6 pages.",
+      "index": 2
+    },
+    {
+      "title": "Dynamic Polymorphism",
+      "outline": "This sub-chapter will introduce the concept of dynamic polymorphism. It will begin with a definition of dynamic polymorphism and then proceeds to explain what method overriding is and how it works in Python. It will also cover abstract classes and interfaces as another essential feature of dynamic polymorphism, and then explain the use of duck typing in Python. This sub-chapter should be around 5-6 pages long.",
+      "instructions": "Ensure the reader understands what dynamic polymorphism is and how it differs from static polymorphism. In this sub-chapter, provide instructions on implementing method overriding in Python, using examples to illustrate the concepts. Explain how abstract classes and interfaces are an essential feature of dynamic polymorphism, and the benefits they bring while programming. Finally, provide examples of how Duck Typing is being used in Python. Do not include information that is similar to the one provided in the static polymorphism sub-chapter. The length of this sub-chapter should be around 5-6 pages.",
+      "index": 3
+    },
+    {
+      "title": "Implementing Polymorphism in Python",
+      "outline": "This sub-chapter will provide instructions on how to achieve polymorphism in Python. It will cover how to carry out polymorphism using methods, classes, and objects in Python. Examples will be provided throughout the sub-chapter, to ensure that the reader fully understands the concept. This sub-chapter should be around 6-7 pages long.",
+      "instructions": "Start the sub-chapter by providing the importance of implementing polymorphism in Python. Then provide instructions on how to implement polymorphism using methods, classes, and objects in Python with code examples thoroughly. Emphasize the importance of code examples to ensure that the reader understands the concept. Do not include any redundant information as it was previously covered in the earlier sub-chapters. The length of this sub-chapter should be around 6-7 pages.",
+      "index": 4
+    },
+    {
+      "title": "Examples of Polymorphism in Python",
+      "outline": "This sub-chapter will provide several examples of how Python uses polymorphism, covering both built-in functions and user-defined functions. Examples of polymorphism of classes will also be covered. The purpose of this sub-chapter is to provide as much practical exposure to the reader as possible. This sub-chapter should be around 6-7 pages long.",
+      "instructions": "Use relevant examples to demonstrate polymorphism in built-in functions and user-defined functions in Python. Make sure to also provide examples of polymorphism of classes. Ensure all the code is well-commented and sufficient details are provided to understand the essence of the code. Be careful not to repeat information found throughout other sub-chapters. The length of this sub-chapter should be around 6-7 pages.",
+      "index": 5
+    }
+  ]
+}

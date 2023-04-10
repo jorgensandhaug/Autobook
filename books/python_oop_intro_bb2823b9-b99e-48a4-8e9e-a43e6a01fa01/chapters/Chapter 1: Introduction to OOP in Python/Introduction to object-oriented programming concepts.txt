@@ -1,0 +1,107 @@
+# Introduction to Object-Oriented Programming Concepts
+
+Object-oriented programming (OOP) is a programming paradigm that emphasizes objects rather than functions or procedures. In this sub-chapter, we will introduce the basic concepts of OOP and explain how they can be applied in Python. 
+
+We will cover the following topics:
+
+- Encapsulation
+- Inheritance
+- Polymorphism
+
+## Encapsulation
+
+Encapsulation is the process of bundling data and functions that work on that data within one unit, called a class. The data is stored inside the class and is protected from outside interference. The functions, also known as methods, are used to manipulate the data.
+
+Encapsulation allows for an object's internal state to be changed without affecting other parts of the program that use the object. This is achieved by making certain class members private, so they can only be accessed from within the class. Other members can be made protected or public, depending on the intended usage.
+
+```python
+class Car:
+    def __init__(self, make, model, year):
+        self._make = make
+        self._model = model
+        self._year = year
+    
+    def get_make(self):
+        return self._make
+    
+    def set_make(self, make):
+        self._make = make
+```
+
+In this example, we have a Car class with make, model, and year attributes. The `get_make()` method retrieves the value of the `make` attribute, while the `set_make()` method changes it. The `make` attribute is marked as protected using a single underscore before the variable name, indicating it should not be accessed outside the class. 
+
+## Inheritance
+
+Inheritance is the process of creating a new class that is a modified version of an existing class, called the base class or parent class. The new class is called the derived class or child class. The child class inherits all the attributes and methods of the parent class, and can add its own attributes and methods or override existing ones.
+
+```python
+class Vehicle:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+    
+    def start(self):
+        print('Starting the engine')
+
+class Car(Vehicle):
+    def __init__(self, make, model, year, num_doors):
+        super().__init__(make, model, year)
+        self.num_doors = num_doors
+    
+    def start(self):
+        print('Insert key and turn ignition to start engine')
+
+class Bicycle(Vehicle):
+    def __init__(self, make, model, year, num_gears):
+        super().__init__(make, model, year)
+        self.num_gears = num_gears
+
+car = Car('Toyota', 'Corolla', 2022, 4)
+bike = Bicycle('Trek', 'Mountain Bike', 2021, 21)
+
+car.start()  # Output: Insert key and turn ignition to start engine
+bike.start()  # Output: Starting the engine
+```
+
+In this example, we have a Vehicle class with make, model, and year attributes and a `start()` method. The Car and Bicycle classes are derived from the Vehicle class and inherit its attributes and methods. The Car class has an additional attribute `num_doors` and overrides the `start()` method to provide customized behavior. The Bicycle class has an additional attribute `num_gears`.
+
+## Polymorphism
+
+Polymorphism is the ability of objects to take on different forms or behaviors depending on the context in which they are used. This is achieved through the use of inheritance and overriding methods.
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    
+    def make_sound(self):
+        pass
+
+class Cat(Animal):
+    def make_sound(self):
+        print('Meow')
+
+class Dog(Animal):
+    def make_sound(self):
+        print('Woof')
+
+def animal_sound(animal):
+    animal.make_sound()
+
+cat = Cat('Whiskers')
+dog = Dog('Fido')
+
+animal_sound(cat)  # Output: Meow
+animal_sound(dog)  # Output: Woof
+```
+
+In this example, we have Animal, Cat, and Dog classes. The Animal class is a base class for the Cat and Dog classes, and has a `make_sound()` method that does nothing. The Cat and Dog classes override the `make_sound()` method to provide their own implementation. The `animal_sound()` function takes an Animal object as a parameter and calls its `make_sound()` method. When this function is called with a Cat object or Dog object, their respective `make_sound()` methods are called instead. This is an example of polymorphism.
+
+## Exercises
+
+1. Create a class representing a bank account with a balance, an account number, and interest rate. Add methods to deposit, withdraw, and calculate interest. 
+2. Create a class representing a book with a title, author, and publication year. Add a method to display the book's information. 
+3. Create a derived class from the book class representing an e-book, with an additional attribute for the file size. Override the display method to include the file size.
+
+In the next chapter, we will cover the creation and use of classes and objects in Python.

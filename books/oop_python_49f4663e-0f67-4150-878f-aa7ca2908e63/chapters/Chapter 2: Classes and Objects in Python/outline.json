@@ -1,0 +1,41 @@
+{
+  "chapter_title": "Chapter 2: Classes and Objects in Python",
+  "sub_chapters": [
+    {
+      "title": "2.1 Introduction to Classes and Objects",
+      "outline": "This sub-chapter will begin with an overview of classes and objects in Python. It will explain what classes and objects are and their importance in Python. Additionally, the sub-chapter will touch on the difference between objects and classes and how to create objects using classes.",
+      "instructions": "This sub-chapter should introduce the key concepts of objects and classes, and highlight their importance. Make sure to use straightforward explanations that the beginners can easily comprehend. Additionally, keep in mind that this is an introductory guide, avoid going into too much detail on any one concept.",
+      "index": 1
+    },
+    {
+      "title": "2.2 Instance Variables and Methods",
+      "outline": "This sub-chapter will cover instance variables and methods. It will explain what instance variables are and how to define them in Python. The sub-chapter will also explain what methods are and how they can be used in conjunction with instance variables.",
+      "instructions": "This sub-chapter should cover instance variables and methods in detail, with real-world examples that can help the reader understand how to use instance variables and methods in conjunction with classes in Python. However, please refrain from going into detail on any one concept. ",
+      "index": 2
+    },
+    {
+      "title": "2.3 Constructors",
+      "outline": "This sub-chapter will define constructors in Python, explain how they work, and illustrate the importance of constructors in classes. The sub-chapter will use real-world examples to demonstrate how constructors can be used to implement instances of classes dynamically.",
+      "instructions": "This sub-chapter should go into detail on the use of constructors in classes, with real-world examples that can help readers understand how to use them in Python. Additionally, make sure to explain how constructors work and their importance in classes, but avoid going into too much detail on any one concept.",
+      "index": 3
+    },
+    {
+      "title": "2.4 Class-level Attributes and Class Methods",
+      "outline": "This sub-chapter will define class-level attributes and class methods. Additionally, the sub-chapter will explain how to define them in Python and how they differ from instance variables and methods. Real-world examples will be used to demonstrate how to use class-level attributes and methods.",
+      "instructions": "This sub-chapter should explain class-level attributes and methods in detail with straightforward examples. Examples should be concise and use cases that the reader can easily relate to. The sub-chapter should demonstrate class-level methods in practice, emphasizing how they differ from instance-level methods. It's essential to avoid going into too much detail on any one concept.",
+      "index": 4
+    },
+    {
+      "title": "2.5 The __init__ Method",
+      "outline": "This sub-chapter will define __init__ method, explain its significance, and show how it works. The sub-chapter will also cover the difference between __init__ and constructors in Python. The sub-chapter will use real-world examples to illustrate how to use the __init__ method.",
+      "instructions": "This sub-chapter should explain the __init__ method in detail, including its importance and how it works. It should include real-world examples to demonstrate how the __init__ method is used in practice. Additionally, the sub-chapter should explain the difference between a constructor and __init__ method, but avoid going into too much detail on each concept.",
+      "index": 5
+    },
+    {
+      "title": "2.6 Conclusion and Exercises",
+      "outline": "This sub-chapter will summarize the key concepts covered in the chapter and highlight their importance. It will also include exercises that will strengthen the concepts learned.",
+      "instructions": "This sub-chapter should summarize the critical points throughout the chapter that the readers need to remember. Additionally, please include exercises that can help reinforce the concepts learned throughout the chapter. The sub-chapter should round up the chapter while also serving as a link to the subsequent chapter.",
+      "index": 6
+    }
+  ]
+}

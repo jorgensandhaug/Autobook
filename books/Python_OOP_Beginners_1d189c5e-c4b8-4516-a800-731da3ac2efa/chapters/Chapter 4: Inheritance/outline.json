@@ -1,0 +1,35 @@
+{
+  "chapter_title": "Chapter 4: Inheritance",
+  "sub_chapters": [
+    {
+      "title": "Introduction to inheritance in OOP",
+      "outline": "Defining inheritance, relationship between parent and child classes, subclasses, and superclasses, inheritance for code reusability",
+      "instructions": "This sub-chapter should provide a clear definition of inheritance and explain the relationship between parent and child classes. It should also include helpful examples and make an argument for inheritance's usefulness in promoting code reusability. The length should be around 4-5 pages.",
+      "index": 1
+    },
+    {
+      "title": "Inheriting attributes and methods",
+      "outline": "Attributes and methods inheritances, inheritance keyword, avoiding duplicate with parent and child classes",
+      "instructions": "This sub-chapter should provide explanations for how child classes inherit attributes and methods from their parent classes. It should explain how to use inheritance keywords to inherit from the parent class and avoid duplicate code. Please include examples of these concepts in action. The length should be around 5-6 pages.",
+      "index": 2
+    },
+    {
+      "title": "Overriding inherited methods",
+      "outline": "Overriding inheritance, changed behavior inherited methods",
+      "instructions": "This sub-chapter should clearly explain what it means to override an inherited method and how to change its behavior in the child class. Please include examples of when to override methods and when it is not a good idea to do so. The length should be around 4-5 pages.",
+      "index": 3
+    },
+    {
+      "title": "Using super() to access the parent class",
+      "outline": "Understanding super() usage, calling methods in the parent class",
+      "instructions": "This sub-chapter should thoroughly explain what the super() function is and how it works. Please include examples of how to call methods from the parent class using super(). The length should be around 5 pages.",
+      "index": 4
+    },
+    {
+      "title": "Benefits and drawbacks of inheritance",
+      "outline": "Benefits and disadvantages of using inheritance, alternatives to inheritance",
+      "instructions": "This sub-chapter should conclude the chapter by discussing the pros and cons of inheritance, comparing it with alternatives such as composition and aggregation. Please provide helpful examples throughout. The length should be around 5 pages.",
+      "index": 5
+    }
+  ]
+}

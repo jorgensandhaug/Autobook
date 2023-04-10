@@ -1,0 +1,33 @@
+## Encapsulation in Python
+
+Encapsulation is one of the fundamental principles of object-oriented programming, which aims to restrict access to certain components (attributes and methods) of a class, while exposing a public interface for interacting with the object. Encapsulation helps protect the integrity of the object and ensures that its behavior is consistent and predictable.
+
+Python allows encapsulation through the use of public, protected, and private attributes and methods. A public attribute or method can be accessed by any other class or function. A protected attribute or method can only be accessed by the class itself or its subclass. A private attribute or method can only be accessed by the class itself, providing the highest level of encapsulation.
+
+In Python, to define a private attribute or method, you can prefix its name with two underscores "__", for example, "__attribute", or "__method()". To define a protected attribute or method, you can prefix its name with one underscore "_", for example, "_attribute" or "_method()". Public attributes and methods do not require any prefix.
+
+Encapsulation allows for the separation of interface and implementation, which makes the code more modular and easier to maintain. It also protects the object from unauthorized modifications and ensures that its internal state is consistent.
+
+Here is an example of encapsulation in Python:
+
+```
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def withdraw(self, amount):
+        if self.__balance < amount:
+            print("Insufficient funds.")
+        else:
+            self.__balance -= amount
+
+    def get_balance(self):
+        return self.__balance
+```
+
+In this example, the balance attribute is made private by prefixing its name with two underscores. The deposit() and withdraw() methods are public and can be accessed by any other class or function. However, they can only modify the balance attribute through the public methods, which ensures the integrity of the object's state.
+
+Encapsulation is an essential aspect of object-oriented programming, as it allows for the creation of modular and reusable code, and helps protect the object from unauthorized access and modification. In Python, encapsulation can be achieved through the use of public, protected, and private attributes and methods, which provide different levels of access to the object's components.

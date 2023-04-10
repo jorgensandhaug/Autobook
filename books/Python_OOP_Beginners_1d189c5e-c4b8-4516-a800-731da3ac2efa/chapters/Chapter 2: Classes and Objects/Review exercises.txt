@@ -1,0 +1,15 @@
+## Review exercises
+
+This sub-chapter presents a set of exercises to test the reader's understanding of the material covered in Chapter 2.
+
+1. Write a Python class named Circle that takes the radius as an input and computes the area and circumference of the circle using the following formulae: `area = pi * radius^2` and `circumference = 2 * pi * radius`. The value of pi should be stored as a constant in the class.
+
+2. Create a Python class called Rectangle that takes the length and width as input and computes the area and perimeter of the rectangle using the following formulae: `area = length * width` and `perimeter = 2 * (length + width)`.
+
+3. Add a method to the Circle class called `is_point_inside(x, y)` that takes the x and y coordinates of a point as input and returns True if the point is inside the circle and False otherwise.
+
+4. Create a subclass of the Rectangle class called Square that takes a single input, the length of one side, and overrides the methods to compute the area and perimeter of a square.
+
+5. Write a Python program that creates an instance of the Circle class and an instance of the Square class. Compute and print the area and perimeter of both shapes. Test the `is_point_inside` method of the Circle class with various x, y coordinates to see if it properly detects whether points are inside or outside the circle.
+
+By completing these exercises, you will have demonstrated an understanding of how to create classes and objects using Python, as well as how to create and use different methods with them. Additionally, you will have learned how to work with inheritance, subclassing, and overriding methods. Congratulations on finishing Chapter 2!

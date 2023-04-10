@@ -1,0 +1,209 @@
+Chapter 1
+
+# What is OOP?
+
+Object-Oriented Programming (OOP) is a programming paradigm that uses objects to represent real-world objects. In OOP, everything is treated as objects that contain data and functions. OOP provides a way to organize code and make it reusable, modular, and easy to maintain.
+
+There are four key concepts of OOP:
+
+1. Inheritance: Inheritance allows a class to inherit properties and methods from another class. The inherited class is called the parent or super class, and the class that inherits is called the child or subclass. This feature helps to reuse code and eliminate redundancies.
+
+2. Encapsulation: Encapsulation is a mechanism to hide complex details and keep only relevant information visible. It allows data to be hidden and accessed only through methods, which ensures data safety and security.
+
+3. Polymorphism: Polymorphism is the ability of an object to take on many forms. It allows objects of different types to be treated as if they are of the same type. Polymorphism allows for flexible and adaptable code.
+
+4. Abstraction: Abstraction is the process of reducing complexity and hiding unnecessary details. It allows us to work with high-level concepts instead of low-level details. In OOP, abstraction is achieved through abstract classes and interfaces.
+
+Let's try to understand these concepts using real-world examples. Consider the example of a car. A car is an object that has certain properties such as color, make, and model. It also has certain behaviors such as starting, stopping, and accelerating. In OOP, we can define a class called Car that represents the properties and behavior of the real-world car. Other classes can inherit from this Car class, such as Truck, SUV, or Sedan, which will have their own unique properties and behaviors as well.
+
+Encapsulation can be illustrated with the example of a bank account. A bank account has sensitive information that should not be exposed to outsiders. So, we can use encapsulation to protect the account data by defining getters and setters to access the account information.
+
+Polymorphism can be demonstrated with the example of a shape. A shape can take on many different forms such as a circle, square, or rectangle. All these shapes share common characteristics such as area and perimeter, which we can define through a common interface.
+
+In summary, OOP provides a powerful and flexible way to organize and structure code. It allows developers to create reusable and modular code that is easy to maintain and expand. The four key concepts of OOP, inheritance, encapsulation, polymorphism, and abstraction provide a way to create complex systems that are easy to understand and maintain.
+
+## Inheritance
+
+In object-oriented programming (OOP), Inheritance is the mechanism of creating new classes from an existing class, where the existing class serves as a blueprint or template for the new class. The new class, called the child class or derived class, inherits all the attributes and behaviors of the parent class or base class. In other words, the child class has access to all the methods and properties defined in the parent class.
+
+### Types of Inheritance
+
+#### Single Inheritance
+
+The single inheritance is the simplest form of inheritance where a class inherits properties and methods directly from a single parent class. 
+
+For instance, we define a parent class `Person` that has attributes such as `name` and `age`, and a method `greetings()` that returns a greeting message. We can then create a child class `Student` that inherits from the `Person` class, and add more attributes like `id_num`, and methods that are specific to the student.
+
+``` python
+#Single inheritance
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def greetings(self):
+        return f"Hello, my name is {self.name} and I'm {self.age} years old"
+
+#Child class Student inherits from Person
+class Student(Person):
+    def __init__(self, name, age, id_num):
+        self.id_num = id_num
+        #calling the constructor of the parent class Person
+        Person.__init__(self, name, age)
+
+    def get_id(self):
+        return f"My ID number is {self.id_num}"
+
+```
+
+#### Multiple Inheritance
+
+Multiple inheritance allows a class to inherit attributes and methods from more than one parent class. 
+
+``` python
+#Multiple inheritance
+
+class ClassA:
+    pass
+
+class ClassB:
+    pass
+
+class ClassC(ClassA, ClassB):
+    pass
+```
+
+#### Multilevel Inheritance
+
+Multilevel inheritance involves creating a child class from another child class. Here, the derived class becomes the parent class for the subsequent child class.
+
+``` python
+#Multilevel Inheritance
+
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(B):
+    pass
+```
+
+### Conclusion
+
+Inheritance is an essential concept in OOP that enables developers to create new classes with all the attributes and behaviors of existing classes. The three types of inheritance discussed in this chapter are single, multiple, and multilevel inheritances. Inheritance helps create a cleaner and more organized code, consistently reduces the amount of repeated code, and clearly defines the relationships between classes.
+
+# Encapsulation
+
+Encapsulation is one of the fundamental concepts of Object-oriented programming (OOP) that promotes the idea of data hiding. It refers to the practice of hiding the implementation details of an object and exposing only the necessary functionality to the end-user or other parts of the program. Encapsulation bundles data and the methods that have access to that data into a single unit, called a class, helping to manage the complexity of code.
+
+In Python, encapsulation is implemented using access modifiers, which are special keywords that define the scope and accessibility of a class member (variable, function, or method). Python has three access modifiers: private, public, and protected. A private member is marked with a double underscore (__) prefix, and it can only be accessed within the class. A public member doesn't have any prefix and can be accessed by any part of the program. A protected member is marked with a single underscore (_) prefix, and it can be accessed within the class and its subclasses.
+
+The following example demonstrates how access modifiers can be used to implement encapsulation in Python.
+
+```python
+class BankAccount:
+    def __init__(self, account_number, balance=0):
+        self.__account_number = account_number  # private attribute
+        self._balance = balance  # protected attribute
+
+    def deposit(self, amount):
+        self._balance += amount
+
+    def withdraw(self, amount):
+        if amount > self._balance:
+            return "Insufficient balance"
+        self._balance -= amount
+        return "Transaction successful"
+
+    def get_account_number(self):
+        return self.__account_number
+
+    def get_balance(self):
+        return self._balance
+```
+
+In the above code, `__account_number` is a private attribute and cannot be accessed outside the class. The `_balance` attribute is marked as protected, which means that it shouldn't be accessed from outside the class, but it can be accessed from its subclasses.
+
+Encapsulation has several benefits. It improves the maintainability of code by hiding the details of how an object works, making it easier to modify and update the code without affecting other parts of the program. It also enhances the security of data by providing controlled access to its members. 
+
+A real-world example of encapsulation can be seen in a bank's system, where bank account details are hidden from being manipulated by others. A BankAccount object in the system has its attributes encapsulated inside the class, providing a secure and controlled way for customers to access their account information.
+
+In conclusion, encapsulation is a crucial concept in OOP, and Python implements it using access modifiers. Encapsulation can help manage the complexity of code, improve maintainability and security, and provide controlled access to data. Real-world examples, such as a bank system, can be used to illustrate how encapsulation works in practice.
+
+# Polymorphism
+
+Polymorphism is one of the fundamental principles of Object-Oriented Programming (OOP). It allows objects of different classes to be treated as if they were of the same class, thereby providing a consistent interface to different types of objects. 
+
+In Python, polymorphism can be achieved through method overloading and overriding. Method overloading occurs when a class has multiple methods with the same name, but different parameters. When a method is called, the interpreter decides which method to use based on the inputs provided. In contrast, method overriding involves creating a method in a subclass with the same name as a method in the parent class. The method in the subclass is used instead of the method in the parent class when called.
+
+When implementing polymorphism in Python, it's essential to ensure that the input and output types are consistent across all methods. This helps to avoid errors and maintain code readability.
+
+Real-world examples of polymorphism include a shape class with multiple subclasses such as polygons, circles, and squares. These subclasses can have different methods like area() and perimeter(), but they can still be treated as if they were the same class using a consistent interface. Another example is a file object that can be read, written, or closed, but the methods are performed in different ways depending on the type of file.
+
+By applying polymorphism, we can reduce code redundancy and maintainability while providing flexibility in program design. Polymorphism is especially useful in large-scale applications where multiple developers are working on the same codebase. With a consistent interface, different developers can write code independently without affecting other parts of the program. 
+
+In Python, polymorphism is straightforward to implement and is a core concept in the language. By mastering polymorphism, developers can write more efficient and flexible code, leading to more maintainable and scalable programs.
+
+# Abstraction
+
+Abstraction is a fundamental concept in Object-Oriented Programming (OOP) that refers to the ability to focus on essential features while ignoring non-essential ones. It is a process of hiding implementation details and showing only the necessary features to the user. Abstraction provides a high-level view of the system, which is easier to maintain and modify.
+
+## Implementing Abstraction in Python
+
+In Python, abstraction is implemented using abstract classes or interfaces. An abstract class is a class that cannot be instantiated and contains one or more abstract methods. An abstract method is a method that has no implementation and must be overridden by a subclass. An interface is a blueprint of abstract methods that must be implemented by the implementing class.
+
+```python
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    @abstractmethod
+    def make_sound(self):
+        pass
+
+class Dog(Animal):
+    def make_sound(self):
+        print("Bark")
+
+class Cat(Animal):
+    def make_sound(self):
+        print("Meow")
+```
+
+In the above code, `Animal` is an abstract class that contains an abstract method `make_sound`. The `Dog` and `Cat` classes inherit from the `Animal` class and implement the `make_sound` method.
+
+```python
+dog = Dog()
+dog.make_sound()
+
+cat = Cat()
+cat.make_sound()
+```
+
+When we create an instance of `Dog` or `Cat` and call the `make_sound` method, we get the respective animal's sound as output. The user does not need to know how the sound is made; the user only needs to interact with the abstract method.
+
+## Real-World Examples
+
+A commonly used example of abstraction is a TV remote. The TV remote has buttons for power, volume, channel, and other functions, but the user does not need to know how the remote communicates with the TV or how the TV processes the remote's signals. All the user has to do is press the buttons on the remote, and the TV will respond accordingly.
+
+Another example is a car's dashboard. The dashboard displays vital information such as speed, fuel level, and engine temperature, but the user does not need to know how the car's engine works or how the speedometer calculates the speed. All the user needs to do is look at the dashboard and interpret the data.
+
+In both examples, the implementation details are abstracted from the user, and only the necessary features are presented. This abstraction makes the system easier to use and maintain.
+
+## Conclusion
+
+Abstraction is a powerful concept in OOP that allows us to focus on essential features while ignoring non-essential ones. In Python, abstraction is implemented using abstract classes or interfaces. Real-world examples such as a TV remote and a car's dashboard help illustrate how abstraction works in practice. By using abstraction, we can create systems that are easier to use, maintain, and modify.
+
+## Conclusion
+
+In this chapter, we have covered the basic concepts of Object Oriented Programming (OOP) in Python, including inheritance, encapsulation, polymorphism, and abstraction. We have seen how these concepts can be used to write better organized and more efficient code that is easier to maintain and modify.
+
+It is important to note that this chapter only provided a brief overview of these concepts, and they will be covered in more detail in later chapters. If you are new to OOP, it is recommended that you continue learning about these concepts to fully understand their potential and how they can be applied in your programming projects.
+
+As with any new skill, practice is essential to reinforce the concepts learned. It is encouraged to continue practicing OOP principles to gain a better understanding of how they work and their practical applications. The real-world examples provided in this chapter should help you come up with your own ideas on how to apply OOP in your projects.
+
+Remember that OOP is a powerful tool for writing better and more efficient code, but it does require a different way of thinking about programming. Don't get discouraged if it takes time to fully grasp these concepts; with practice and patience, you will become a proficient OOP programmer.
+
+In the next chapter, we will dive deeper into classes and objects in Python, discussing their attributes, methods, and constructors.

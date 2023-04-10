@@ -1,0 +1,53 @@
+{
+  "chapter_title": "Chapter 3: Methods",
+  "sub_chapters": [
+    {
+      "title": "Overview of Methods",
+      "outline": "This sub-chapter provides an overview of what methods are, their difference from regular functions, and the basic syntax for creating methods",
+      "instructions": "Define what methods are, their main characteristics and how they differ from regular functions. Provide the basic syntax for creating methods under class objects.",
+      "index": 1
+    },
+    {
+      "title": "Types of Methods",
+      "outline": "This sub-chapter explains the different types of methods, such as instance, class, and static methods.",
+      "instructions": "Provide a detailed explanation of the types of methods in Python classes, covering their characteristics, when to use them and why they are useful.",
+      "index": 2
+    },
+    {
+      "title": "Instance Methods",
+      "outline": "This sub-chapter explains what instance methods are, how to create them and use them, and the importance of the self parameter",
+      "instructions": "Define instance methods and their characteristics in Python classes. How to create them, use them, and manipulate the instance object using the self parameter. Provide an example for the creation and use of an instance method.",
+      "index": 3
+    },
+    {
+      "title": "Class Methods",
+      "outline": "This sub-chapter explains what class methods are, their characteristics, how to create them and use them, and the importance of the cls parameter",
+      "instructions": "Define class methods and their characteristics in Python classes. How to create them, use them, and manipulate the class object using the cls parameter. Provide an example for the creation and use of a class method.",
+      "index": 4
+    },
+    {
+      "title": "Static Methods",
+      "outline": "This sub-chapter explains what static methods are, their characteristics, how to create them and use them",
+      "instructions": "Define static methods and their characteristics in Python classes. How to create them and use them. Provide an example for the creation and use of a static method.",
+      "index": 5
+    },
+    {
+      "title": "Method Resolution Order",
+      "outline": "This sub-chapter explains what method resolution order (MRO) is, how Python determines the MRO, and why understanding the MRO is important",
+      "instructions": "Define what method resolution order is, and how Python determines the MRO. Explain why understanding the MRO is important for code design and troubleshooting.",
+      "index": 6
+    },
+    {
+      "title": "Use Cases for Different Types of Methods",
+      "outline": "This sub-chapter provides use cases for different types of methods, and when to use each one",
+      "instructions": "Provide the reader with several use cases for instance, class, and static methods, explaining in each case when to use each type of method and why.",
+      "index": 7
+    },
+    {
+      "title": "Exercises",
+      "outline": "This sub-chapter provides a set of exercises to test the reader's understanding of the material",
+      "instructions": "Provide a set of exercises to the reader to test their understanding of the concepts covered in the chapter. The exercises should be designed to challenge the reader's understanding.",
+      "index": 8
+    }
+  ]
+}

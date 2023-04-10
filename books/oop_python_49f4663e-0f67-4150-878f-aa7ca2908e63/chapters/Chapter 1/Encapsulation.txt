@@ -1,0 +1,37 @@
+# Encapsulation
+
+Encapsulation is one of the fundamental concepts of Object-oriented programming (OOP) that promotes the idea of data hiding. It refers to the practice of hiding the implementation details of an object and exposing only the necessary functionality to the end-user or other parts of the program. Encapsulation bundles data and the methods that have access to that data into a single unit, called a class, helping to manage the complexity of code.
+
+In Python, encapsulation is implemented using access modifiers, which are special keywords that define the scope and accessibility of a class member (variable, function, or method). Python has three access modifiers: private, public, and protected. A private member is marked with a double underscore (__) prefix, and it can only be accessed within the class. A public member doesn't have any prefix and can be accessed by any part of the program. A protected member is marked with a single underscore (_) prefix, and it can be accessed within the class and its subclasses.
+
+The following example demonstrates how access modifiers can be used to implement encapsulation in Python.
+
+```python
+class BankAccount:
+    def __init__(self, account_number, balance=0):
+        self.__account_number = account_number  # private attribute
+        self._balance = balance  # protected attribute
+
+    def deposit(self, amount):
+        self._balance += amount
+
+    def withdraw(self, amount):
+        if amount > self._balance:
+            return "Insufficient balance"
+        self._balance -= amount
+        return "Transaction successful"
+
+    def get_account_number(self):
+        return self.__account_number
+
+    def get_balance(self):
+        return self._balance
+```
+
+In the above code, `__account_number` is a private attribute and cannot be accessed outside the class. The `_balance` attribute is marked as protected, which means that it shouldn't be accessed from outside the class, but it can be accessed from its subclasses.
+
+Encapsulation has several benefits. It improves the maintainability of code by hiding the details of how an object works, making it easier to modify and update the code without affecting other parts of the program. It also enhances the security of data by providing controlled access to its members. 
+
+A real-world example of encapsulation can be seen in a bank's system, where bank account details are hidden from being manipulated by others. A BankAccount object in the system has its attributes encapsulated inside the class, providing a secure and controlled way for customers to access their account information.
+
+In conclusion, encapsulation is a crucial concept in OOP, and Python implements it using access modifiers. Encapsulation can help manage the complexity of code, improve maintainability and security, and provide controlled access to data. Real-world examples, such as a bank system, can be used to illustrate how encapsulation works in practice.

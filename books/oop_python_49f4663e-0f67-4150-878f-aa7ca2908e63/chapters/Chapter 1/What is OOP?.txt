@@ -1,0 +1,21 @@
+# What is OOP?
+
+Object-Oriented Programming (OOP) is a programming paradigm that uses objects to represent real-world objects. In OOP, everything is treated as objects that contain data and functions. OOP provides a way to organize code and make it reusable, modular, and easy to maintain.
+
+There are four key concepts of OOP:
+
+1. Inheritance: Inheritance allows a class to inherit properties and methods from another class. The inherited class is called the parent or super class, and the class that inherits is called the child or subclass. This feature helps to reuse code and eliminate redundancies.
+
+2. Encapsulation: Encapsulation is a mechanism to hide complex details and keep only relevant information visible. It allows data to be hidden and accessed only through methods, which ensures data safety and security.
+
+3. Polymorphism: Polymorphism is the ability of an object to take on many forms. It allows objects of different types to be treated as if they are of the same type. Polymorphism allows for flexible and adaptable code.
+
+4. Abstraction: Abstraction is the process of reducing complexity and hiding unnecessary details. It allows us to work with high-level concepts instead of low-level details. In OOP, abstraction is achieved through abstract classes and interfaces.
+
+Let's try to understand these concepts using real-world examples. Consider the example of a car. A car is an object that has certain properties such as color, make, and model. It also has certain behaviors such as starting, stopping, and accelerating. In OOP, we can define a class called Car that represents the properties and behavior of the real-world car. Other classes can inherit from this Car class, such as Truck, SUV, or Sedan, which will have their own unique properties and behaviors as well.
+
+Encapsulation can be illustrated with the example of a bank account. A bank account has sensitive information that should not be exposed to outsiders. So, we can use encapsulation to protect the account data by defining getters and setters to access the account information.
+
+Polymorphism can be demonstrated with the example of a shape. A shape can take on many different forms such as a circle, square, or rectangle. All these shapes share common characteristics such as area and perimeter, which we can define through a common interface.
+
+In summary, OOP provides a powerful and flexible way to organize and structure code. It allows developers to create reusable and modular code that is easy to maintain and expand. The four key concepts of OOP, inheritance, encapsulation, polymorphism, and abstraction provide a way to create complex systems that are easy to understand and maintain.

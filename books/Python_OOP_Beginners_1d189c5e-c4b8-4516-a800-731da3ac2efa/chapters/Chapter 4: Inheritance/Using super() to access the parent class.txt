@@ -1,0 +1,65 @@
+# Using super() to access the parent class
+
+Inheritance is a powerful tool in Object-Oriented Programming (OOP) that allows developers to create new classes by inheriting properties and methods from existing ones. However, sometimes you may want to override or extend a method from the parent class while still keeping the original implementation. This is where the `super()` function comes in.
+
+## Understanding super() usage
+
+The `super()` function returns a temporary object of the superclass, which allows you to call its methods even if they have been overridden in the subclass. The syntax for using `super()` is straightforward. Suppose you have a class `Subclass` which subclasses `Parentclass`, and you want to call a method from the parent class.
+
+```python
+class Parentclass:
+    def some_method(self):
+        # implementation
+
+class Subclass(Parentclass):
+    def some_method(self):
+        super().some_method() # calls the parent method
+        # extended implementation
+```
+
+In this example, the `super().some_method()` line calls the `some_method()` function from the parent class, and the `extended implementation` is added afterward. This way, the parent method can be called and extended or overridden as necessary.
+
+## Calling methods in the parent class
+
+You can also pass arguments to the parent method via `super()`, just like this:
+
+```python
+class Parentclass:
+    def some_method(arg1, arg2):
+        # implementation
+
+class Subclass(Parentclass):
+    def some_method(arg1, arg2):
+        super().some_method(arg1, arg2) # calls the parent method
+        # extended implementation
+```
+
+In this case, the `some_method()` function takes two arguments, `arg1` and `arg2`. By using `super().some_method(arg1, arg2)`, you can call the `some_method()` function of the parent class with the same arguments. 
+
+Note that you do not have to pass the `self` argument to `super()` manually - this is done automatically for you. 
+
+## Limitations of super()
+
+While `super()` is a useful tool in OOP, it does have some limitations. One of the main limitations is that it only works for single inheritance. If a class has multiple parents or inherits from multiple classes, `super()` will work with the first parent listed in the inheritance hierarchy. 
+
+For example, consider a class that inherits from both `ParentA` and `ParentB`, each with its own `some_method()` function.
+
+```python
+class ParentA:
+    def some_method(self):
+        # implementation A
+
+class ParentB:
+    def some_method(self):
+        # implementation B
+
+class Subclass(ParentA, ParentB):
+    def some_method(self):
+        super().some_method() # calls ParentA's implementation
+```
+
+In this example, the `some_method()` implementation from `ParentA` is called even though the subclass also inherits from `ParentB`. This is because `ParentA` is listed first in the inheritance hierarchy.
+
+## Conclusion
+
+The `super()` function is a powerful tool in OOP that allows you to call overridden or inherited methods from the parent class. Its simple syntax and ease of use make it a valuable tool in Python development. It is important to keep in mind, however, the limitations of the function, such as its single inheritance constraint. With this knowledge, you can use `super()` effectively in your Python projects to create cleaner, more efficient code.

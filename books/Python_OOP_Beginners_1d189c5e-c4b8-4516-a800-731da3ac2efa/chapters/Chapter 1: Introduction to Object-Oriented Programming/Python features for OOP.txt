@@ -1,0 +1,74 @@
+# Python Features for OOP
+
+Python is a versatile language that supports OOP in several ways. In fact, Python was designed to have features that support OOP concepts better than other programming languages. In this sub-chapter, we will discuss how to implement OOP concepts in Python and the syntax for classes and objects.
+
+## Classes in Python
+
+In Python, classes can be defined using the keyword `class`. The class can be defined with or without attributes. Attributes are properties of our class that can be accessed via class objects. Here's how a class can be defined in Python:
+
+```python
+class MyClass:
+    my_attribute = "This is my attribute"
+```
+
+In the above code, we define a class called `MyClass` with one attribute called `my_attribute`. To create an object of this class, we can simply call the class name and assign it to a variable as follows:
+
+```python
+obj = MyClass()
+```
+
+Now we can access the attribute `my_attribute` of `obj` like this:
+
+```python
+print(obj.my_attribute)
+```
+
+This will output the following string: "This is my attribute".
+
+## Methods in Python Classes
+
+Methods are functions defined in a class that can be executed on class objects. Methods in Python are defined using the `def` keyword. Here's how to add methods to our `MyClass`:
+
+```python
+class MyClass:
+    my_attribute = "This is my attribute"
+    
+    def my_method(self):
+        print("Hello world")
+```
+
+In the above code, we have defined a method `my_method()` in our `MyClass`. The method just prints "Hello world". To execute this method on an object `obj` of `MyClass`, we use the following code:
+
+```python
+obj = MyClass()
+obj.my_method()
+```
+
+This will output the following string "Hello world".
+
+## Inheritance in Python Classes
+
+Inheritance is a key concept in OOP. It allows us to define a new class with some of the properties of an existing class. In Python, inheritance can be implemented by defining classes using the parent-child relationship between classes. Here's an example:
+
+```python
+class ParentClass:
+    parent_attribute = "This is parent's attribute."
+
+class ChildClass(ParentClass):
+    pass
+```
+
+In the above code, we define a parent class `ParentClass` that has an attribute `parent_attribute`. We then define a child class `ChildClass` that inherits from `ParentClass` using the syntax `(ParentClass)`.
+
+We can then access the attribute `parent_attribute` of `ParentClass` through a `ChildClass` object. Here's how:
+
+```python
+obj = ChildClass()
+print(obj.parent_attribute)
+```
+
+This will output the following string: "This is parent's attribute.".
+
+## Conclusion
+
+Python provides excellent support for OOP concepts, making it a favorite language among developers. In this sub-chapter, we have seen how to implement classes, methods, and inheritance in Python. Understanding these concepts is essential for writing efficient and reusable code, and mastering them is key to becoming a proficient Python developer.

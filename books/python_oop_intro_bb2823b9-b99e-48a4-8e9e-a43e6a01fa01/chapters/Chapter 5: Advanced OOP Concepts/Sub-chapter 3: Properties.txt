@@ -1,0 +1,102 @@
+# Sub-chapter 3: Properties
+
+In this sub-chapter, we'll introduce the use of properties in Python. Properties are a way to define attributes of a class that can be accessed and manipulated like regular attributes, but with additional benefits. Properties can be used to improve the API interface of classes, making them more user-friendly.
+
+## Introduction to Properties
+
+In Python, properties are a way of adding attribute accessors to a class, which are called getters and setters. These are methods that allow you to read and write the values of an attribute of an instance of the class. You can use properties to define a getter or a setter for an attribute, or both. This is done using the `@property` decorator for the getter and the `@<attribute>.setter` decorator for the setter.
+
+### Properties as Getter and Setter Methods
+
+Let's look at an example of how this works. Say we have a class called `Person` that has two attributes, `first_name` and `last_name`:
+
+```python
+class Person:
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+```
+
+With this implementation, we can create an instance of the `Person` class, set the `first_name` and `last_name` attributes, and access them like this:
+
+```python
+person = Person('John', 'Doe')
+print(person.first_name)  # Output: John
+print(person.last_name)  # Output: Doe
+```
+
+This works fine, but what if we want to validate the values of these attributes? For example, we might want to make sure that the `first_name` attribute is always a string with a length of at least two characters. We could add validation to the `__init__` method, but that would only happen when the object is created. What if we want to change the values of these attributes later on? 
+
+This is where properties come in handy. We can use properties to add a layer of validation to the `first_name` and `last_name` attributes that gets called every time we try to read or write them. Here's the updated implementation:
+
+```python
+class Person:
+    def __init__(self, first_name, last_name):
+        self._first_name = first_name
+        self._last_name = last_name
+
+    @property
+    def first_name(self):
+        return self._first_name
+
+    @first_name.setter
+    def first_name(self, value):
+        if not isinstance(value, str) or len(value) < 2:
+            raise ValueError("First name must be a string with at least two characters")
+        self._first_name = value
+
+    @property
+    def last_name(self):
+        return self._last_name
+
+    @last_name.setter
+    def last_name(self, value):
+        if not isinstance(value, str) or len(value) < 2:
+            raise ValueError("Last name must be a string with at least two characters")
+        self._last_name = value
+```
+
+With this implementation, we've added two properties, `first_name` and `last_name`, that have getters and setters that validate the input. Now, if we try to create an instance of `Person` with a `first_name` that is not a string, or is a string with less than two characters, we'll get a `ValueError`.
+
+```python
+person = Person('J', 'Doe')  # Raises ValueError
+```
+
+## Improving API interface with Properties
+
+One of the main benefits of using properties is that they help us make our classes more user-friendly by hiding implementation details behind a simple API interface. This makes it easier for other developers to use our classes without having to know how they work under the hood.
+
+For example, let's say we have a class called `Temperature` that represents a temperature in Celsius:
+
+```python
+class Temperature:
+    def __init__(self, celsius):
+        self.celsius = celsius
+```
+
+The problem with this implementation is that it exposes the underlying implementation detail (that the temperature is stored in Celsius) to the user of the class. If we later decide to change the implementation to store the temperature in Fahrenheit, we would have to change every place that uses the `celsius` attribute.
+
+We can use a property to fix this issue by creating a read-only attribute that converts the temperature to Fahrenheit on-the-fly when it is accessed:
+
+```python
+class Temperature:
+    def __init__(self, celsius):
+        self._celsius = celsius
+
+    @property
+    def fahrenheit(self):
+        return self._celsius * 9 / 5 + 32
+```
+
+Now, if we create an instance of `Temperature` with a Celsius value of 20, we can access the Fahrenheit value like this:
+
+```python
+temp = Temperature(20)
+print(temp.fahrenheit)  # Output: 68.0
+```
+
+This implementation is much more user-friendly because it hides the implementation detail of the temperature being stored in Celsius.
+
+## Conclusion
+
+In this sub-chapter, we introduced the use of properties in Python to improve the usability of classes. We showed how properties can be used to create attribute accessors that validate input and hide implementation details from the user of the class. We also provided practical examples of how properties can be used to make our classes more user-friendly. Properties are a powerful tool in Python that can help us write better, more maintainable code.

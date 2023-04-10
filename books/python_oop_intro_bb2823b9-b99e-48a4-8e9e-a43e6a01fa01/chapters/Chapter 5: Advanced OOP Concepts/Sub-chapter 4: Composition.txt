@@ -1,0 +1,136 @@
+# Sub-chapter 4: Composition
+
+In Python, composition is an OOP concept that is used as an alternative to inheritance. Composition is a way of creating complex objects by combining simpler ones. It is achieved by including an instance of a class as a member of another class to reuse code.
+
+## What is Composition?
+
+Composition is used to create an object that is made up of other objects. In essence, it is a way of creating a new class by taking functionality from already defined classes. By doing so, we avoid the disadvantages of inheritance and improve code structure. 
+
+To use composition, we can define a new class that takes instances of other classes as arguments in its constructor. Once we have access to these instances, we can reuse methods and attributes from those classes to create more complex functionality.
+
+For instance, let's say we have two classes `Engine` and `Wheels`. Instead of creating a `Car` class by inheriting `Engine` and `Wheels`, we can use composition to create a `Car` class that takes instances of `Engine` and `Wheels`.
+
+```python
+class Engine:
+    def start(self):
+        pass
+
+class Wheels:
+    def rotate(self):
+        pass
+
+class Car:
+    def __init__(self, engine, wheels):
+        self.engine = engine
+        self.wheels = wheels
+    def start(self):
+        self.engine.start()
+    def drive(self):
+        self.wheels.rotate()
+```
+The `Car` class uses instances of the `Engine` and `Wheels` class to implement its own methods `start()` and `drive()`. 
+
+## How and When to Use Composition?
+
+Composition is a powerful technique that allows us to reuse code and make our classes more flexible. It is especially useful when we need to create complex objects that require a combination of existing classes. 
+
+When designing classes, we should always consider composition as an alternative to inheritance. Inheritance can lead to a complex class hierarchy that is difficult to manage, especially as programs become larger and more complex. Composition, on the other hand, allows us to create simple, loosely coupled classes that are easier to extend and modify.
+
+We should also use composition when we need to add new functionality to an existing class. This way, we can avoid modifying the original class and instead create a new class that includes the old one. 
+
+## Advantages of Composition 
+
+Composition has several advantages over inheritance. 
+
+Firstly, composition allows for greater code reuse. Instead of inheriting from a class and all of its methods, we can pick and choose only those methods we need, making our code more modular and readable.
+
+Secondly, composition allows for better flexibility. We can add or remove functionality by modifying the objects that make up our classes, rather than the classes themselves. This makes our code less brittle and less prone to errors.
+
+Finally, composition is less prone to the problems associated with multiple inheritance. Multiple inheritance can lead to complex hierarchies and conflicts between inherited methods. Composition is a simpler and more flexible alternative.
+
+## Examples
+
+To illustrate the concept of composition, let's look at some examples.
+
+### Example 1: HTML Generator
+
+Suppose we want to create an HTML generator that can create HTML code for different elements, such as headings, paragraphs, and images. Instead of creating a separate class for each of these elements, we can use composition to create them dynamically.
+
+```python
+class Element:
+    def __init__(self, tag, content = "", **kwargs):
+        self.tag = tag
+        self.content = content
+        self.attributes = kwargs
+    
+    def __str__(self):
+        attributes = ''.join(f'{attr}="{value}" ' for attr, value in self.attributes.items())
+        return f'<{self.tag} {attributes}>{self.content}</{self.tag}>'
+    
+class Heading:
+    def __init__(self, level, content):
+        self.level = level
+        self.content = content
+        
+    def __str__(self):
+        return f'<h{self.level}>{self.content}</h{self.level}>'
+    
+class Paragraph:
+    def __init__(self, content):
+        self.content = content
+        
+    def __str__(self):
+        return f'<p>{self.content}</p>'
+
+class Image:
+    def __init__(self, source, alt="", width=None, height=None):
+        self.source = source
+        self.alt = alt
+        self.width = width
+        self.height = height
+        
+    def __str__(self):
+        attributes = {'src': self.source, 'alt': self.alt}
+        if self.width:
+            attributes['width'] = str(self.width)
+        if self.height:
+            attributes['height'] = str(self.height)
+        return str(Element('img', '', **attributes))
+```
+
+In this example, we have a generic `Element` class that takes a tag name and attributes as arguments, as well as a `content` argument that defines the content enclosed by the tag. 
+
+Using composition, we can create more specialized classes such as `Heading`, `Paragraph`, and `Image`, that use instances of `Element` to generate HTML code. In this way, we can create complex HTML structures by combining simpler ones.
+
+### Example 2: Game Development
+
+In game development, composition can be used to create complex characters by combining different traits. 
+
+```python
+class Trait:
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
+        
+class Player:
+    def __init__(self, name):
+        self.name = name
+        self.traits = []
+        
+    def add_trait(self, trait):
+        self.traits.append(trait)
+        
+    def remove_trait(self, trait):
+        self.traits.remove(trait)
+        
+    def get_traits(self):
+        return [trait.name for trait in self.traits]
+```
+
+In this example, we have a `Trait` class that defines specific traits that can be added to a `Player`. Using composition, we can create more specialized characters by combining different traits.
+
+The `Player` class allows us to add and remove traits dynamically, as well as get a list of all the traits that a player has. This makes it possible to create complex and varied characters by combining different traits. 
+
+## Conclusion
+
+Composition is a powerful and flexible technique that allows us to create complex objects by combining simpler ones. By using composition, we can improve code structure, avoid the problems associated with inheritance, and create more flexible and reusable classes. It is a technique that should be considered alongside inheritance when designing classes, and can be especially useful when creating complex objects or adding new functionality to existing classes.

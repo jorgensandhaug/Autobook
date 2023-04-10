@@ -1,0 +1,29 @@
+# Method Resolution Order
+
+In Python, the method resolution order (MRO) is the order in which Python looks for methods and attributes in a hierarchy of classes. When a method is called on an object, Python first searches for the method in the object's class, and then in its parent class, and so on, until it finds the method or determines that the method does not exist.
+
+The MRO is determined using the C3 linearization algorithm, which takes into account the order in which the base classes were defined, and ensures that the same method is not searched for twice in the same class hierarchy.
+
+Understanding the MRO is important for code design and troubleshooting. It allows you to predict which method will be called in an inheritance hierarchy, and to understand why certain methods are called instead of others. This can be particularly important when dealing with multiple inheritance, where a class inherits from several parent classes, and the MRO determines the order in which the parent classes are searched for methods.
+
+To view the MRO for a class, you can use the built-in `mro()` method:
+
+```python
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(A):
+    pass
+
+class D(B, C):
+    pass
+
+print(D.mro())  # [<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <class 'object'>]
+```
+
+In this example, the class `D` inherits from classes `B` and `C`, which both inherit from class `A`. The `mro()` method shows that if a method is called on an object of class `D`, Python will first look for the method in `D`, then in `B`, then in `C`, then in `A`, and finally in the built-in `object` class.
+
+In summary, the MRO is the order in which Python searches for methods and attributes in an inheritance hierarchy. It is determined using the C3 linearization algorithm, and understanding it is important for effective code design and troubleshooting.

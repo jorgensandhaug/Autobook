@@ -1,0 +1,87 @@
+# Inheriting attributes and methods
+
+Inheritance is one of the core principles of OOP, and it allows us to create new classes that are built on existing classes. Inheritance enables us to reuse code by inheriting attributes and methods from a parent class. This reuse of code helps to reduce code duplication and simplifies code maintenance.
+
+## Inheritance in Python
+
+In Python, a new class can inherit the attributes and methods of an existing class using the **inheritance keyword 'class'**. We can create a new class that inherits from an existing class by including the name of the parent class in parentheses after the name of the new class.
+
+For example, let's consider a class `Person` that has the attributes `name` and `age`. We can create another class, `Employee`, that inherits from the `Person` class, and also has its own attributes, such as `salary`. 
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+class Employee(Person):
+    def __init__(self, name, age, salary):
+        super().__init__(name, age)
+        self.salary = salary
+```
+
+In the above example, the `Employee` class inherits from the `Person` class. The `Employee` class has its constructor and adds the `salary` attribute to the class. Furthermore, we use the `super()` built-in method to call the parent constructor and to inherit its attributes `name` and `age`.
+
+## Accessing parent class attributes and methods
+
+Once a child class has inherited attributes and methods from its parent, it can use them as though they were defined within the child class itself. A child class can also add new attributes and methods or override existing ones. 
+
+Let's modify the parent class `Person` to include a method `print_info()` that prints a person's name and age. This will allow the child class `Employee` to inherit and use the method.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        
+    def print_info(self):
+        print(f"{self.name} is {self.age} years old.")
+
+class Employee(Person):
+    def __init__(self, name, age, salary):
+        super().__init__(name, age)
+        self.salary = salary
+```
+
+We can then create an instance of the `Employee` class and call the `print_info()` method that belongs to the parent class.
+
+```python
+jane = Employee("Jane", 25, 50000)
+jane.print_info()
+```
+
+Output:
+```
+Jane is 25 years old.
+```
+
+## Avoiding duplicate code
+
+In OOP, one of the main aims is code reuse, and inheritance serves that purpose. However, we should be careful not to duplicate code when we define both parent and child classes. If we do, it can become challenging to maintain and modify the code. 
+
+To prevent code duplication, we can use **refactoring**. Refactoring is the process of reorganizing and optimizing our code without changing its functionality. A useful way to refactor our code is by defining common attributes and methods in a **parent class**.
+
+In the example above, we defined the `Employee` class to inherit the `name` and `age` attributes and the `print_info()` method. However, these attributes and methods are variables and functions that are common to all people, regardless of their professions.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        
+    def print_info(self):
+        print(f"{self.name} is {self.age} years old.")
+
+class Employee(Person):
+    def __init__(self, salary, *args, **kwargs):
+        super().__init__(*args, **kwargs) # reuse parent constructor
+        self.salary = salary
+```
+
+We created an `Employee` class now that takes advantage of the Person class utilizing the `*args` and `**kwargs` syntax to receive any arguments passed to Person. By reusing the parent `__init__` method, we needn't define the `name` and `age` attributes again.
+
+Through inheritance and refactoring, we reduced duplicate code and improved the code's organization and flexibility, making it easier to maintain and modify code.
+
+## Conclusion
+
+In this sub-chapter, we covered inheritance, one of the fundamental concepts of OOP. We explained how to use inheritance keywords, how child classes can inherit parent attributes and methods, how to override attributes and methods, and the concept of refactoring to avoid code duplication. Lastly, we used examples to illustrate these concepts in Python. By implementing inheritance, we can build complex and unique classes, all the while maintaining the benefits of reusability and simpler code maintenance.

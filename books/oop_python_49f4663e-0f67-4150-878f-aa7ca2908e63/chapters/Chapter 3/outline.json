@@ -1,0 +1,29 @@
+{
+  "chapter_title": "Chapter 3",
+  "sub_chapters": [
+    {
+      "title": "Introduction to Inheritance",
+      "outline": "This section will begin by introducing the concept of inheritance in object-oriented programming. It will explain why inheritance exists and its importance. Additionally, it will describe how it is used in Python programming. The subchapter will explain the relation of the parent and child classes",
+      "instructions": "The section should briefly discuss inheritance in OOP and then go into more depth with Python programming usage. It should not go into too much detail, as this is covered in the following section about types of inheritances. Use simple language and provide real life examples of inheritance to demonstrate the significance of this section. Length of this section should be approximately 4-5 pages.",
+      "index": 1
+    },
+    {
+      "title": "Types of inheritance",
+      "outline": "This section will define the types of inheritance in Python, mainly covering single, multiple, and multilevel inheritance. A brief explanation of each should be given, including their similarities and differences. Advantages and disadvantages of each type of inheritance should also be mentioned. Additionally, real world examples should be used to illustrate each type of inheritance. The subchapter should demonstrate the significance of inheritance in Python programming.",
+      "instructions": "This section should not cover the details of implementation, but rather help the reader understand the differences between the types of inheritance. It should use real life examples to explain the concepts in practice. This section should be detailed and go into depth on each type of Inheritance. Length of this section should be 8-10 pages.",
+      "index": 2
+    },
+    {
+      "title": "Working with inheritance in practice",
+      "outline": "This section will demonstrate how to work with inheritance in Python, diving deeper into implementation. It will cover how parent and child classes work together in more detail, showing how to use parent class methods and attributes in child classes. Additionally, it will show how child classes can override parent class methods. This should be demonstrated using real life examples.",
+      "instructions": "The subchapter should contain coding examples and a lot of details to explain how to work with inheritance in Python. Code examples should be simple and easy to understand. This section should encourage the reader to practice and experiment with the code themselves. Length of this section should be 7-8 pages.",
+      "index": 3
+    },
+    {
+      "title": "Conclusion",
+      "outline": "This section will summarize the key concepts covered in the sub-chapter on inheritance. It should reinforce the importance of inheritance and remind the reader of the benefits of inheritance.",
+      "instructions": "This subchapter should be brief, summarizing the main points and reminding the reader how inheritance is applied in Python programming. Length of this section should be 1-2 pages.",
+      "index": 4
+    }
+  ]
+}

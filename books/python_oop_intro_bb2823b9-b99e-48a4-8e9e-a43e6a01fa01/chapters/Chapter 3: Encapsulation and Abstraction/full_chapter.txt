@@ -1,0 +1,218 @@
+Chapter 3: Encapsulation and Abstraction
+
+## Encapsulation in Python
+
+Encapsulation is one of the fundamental principles of object-oriented programming, which aims to restrict access to certain components (attributes and methods) of a class, while exposing a public interface for interacting with the object. Encapsulation helps protect the integrity of the object and ensures that its behavior is consistent and predictable.
+
+Python allows encapsulation through the use of public, protected, and private attributes and methods. A public attribute or method can be accessed by any other class or function. A protected attribute or method can only be accessed by the class itself or its subclass. A private attribute or method can only be accessed by the class itself, providing the highest level of encapsulation.
+
+In Python, to define a private attribute or method, you can prefix its name with two underscores "__", for example, "__attribute", or "__method()". To define a protected attribute or method, you can prefix its name with one underscore "_", for example, "_attribute" or "_method()". Public attributes and methods do not require any prefix.
+
+Encapsulation allows for the separation of interface and implementation, which makes the code more modular and easier to maintain. It also protects the object from unauthorized modifications and ensures that its internal state is consistent.
+
+Here is an example of encapsulation in Python:
+
+```
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def withdraw(self, amount):
+        if self.__balance < amount:
+            print("Insufficient funds.")
+        else:
+            self.__balance -= amount
+
+    def get_balance(self):
+        return self.__balance
+```
+
+In this example, the balance attribute is made private by prefixing its name with two underscores. The deposit() and withdraw() methods are public and can be accessed by any other class or function. However, they can only modify the balance attribute through the public methods, which ensures the integrity of the object's state.
+
+Encapsulation is an essential aspect of object-oriented programming, as it allows for the creation of modular and reusable code, and helps protect the object from unauthorized access and modification. In Python, encapsulation can be achieved through the use of public, protected, and private attributes and methods, which provide different levels of access to the object's components.
+
+## Private and Protected Attributes and Methods in Python
+
+In Python, there are concepts of private and protected modifiers that define the scope of the class attributes and methods. The `_` underscore symbol is used to define a protected attribute or method, and the `__` double-underscore symbol is used to define a private attribute or method.
+
+### Protected Attributes and Methods in Python
+
+A protected attribute or method in Python is created using the single underscore symbol before the attribute or method name. Protected attributes can be accessed only within the class and child classes. The leading underscore is a convention that programmers use to indicate that the variable or method is not intended for public use.
+
+```python
+class Person:
+    def __init__(self, name):
+        self._name = name
+
+    def _introduction(self):
+        print(f"Hello, my name is {self._name}.")
+
+class Employee(Person):
+    def __init__(self, name, employee_id):
+        super().__init__(name)
+        self._employee_id = employee_id
+
+    def introduce(self):
+        self._introduction()
+        print(f"I am an employee with ID {self._employee_id}")
+```
+
+In the above example, the `_name` attribute of the `Person` class is declared as a protected variable. The `_introduction` method is also declared as protected. By doing this, we indicate that the primary purpose of this attribute and method is to be used within the class or subclass. The `Employee` class inherits from the `Person` class and uses the `_introduction` method from `Person` as a protected method.
+
+### Private Attributes and Methods in Python
+
+Private attributes or methods are created using the double underscore symbol before the attribute or method name. Private attributes cannot be accessed outside of the class definition. If the class is inherited by another class, the subclass cannot access the private attributes or methods.
+
+```python
+class BankAccount:
+    def __init__(self, account_id, balance):
+        self.__account_id = account_id
+        self.__balance = balance
+
+    def __withdraw(self, amount):
+        self.__balance -= amount
+
+    def __deposit(self, amount):
+        self.__balance += amount
+
+    def get_balance(self):
+        return self.__balance
+
+class SavingsAccount(BankAccount):
+    def __init__(self, account_id, balance, interest_rate):
+        super().__init__(account_id, balance)
+        self.__interest_rate = interest_rate
+
+    def add_interest(self):
+        interest = self.get_balance() * self.__interest_rate
+        self.__deposit(interest) # 'AttributeError: 'SavingsAccount' object has no attribute '_SavingsAccount__deposit''
+```
+
+In the above example, the `BankAccount` class has two private attributes `_account_id` and `_balance`. The methods `__withdraw` and `__deposit` are also private methods. The `SavingsAccount` subclass inherits the `BankAccount` class, but it cannot access the private attributes or methods.
+
+### Encapsulation in Python
+
+Encapsulation is an essential aspect of OOP, and Python supports it through private and protected attributes and methods. Encapsulation helps protect the data inside a class and prevents it from being modified accidentally. Private methods and attributes are entirely hidden from the user, and even child classes cannot modify them. Protected methods and attributes are hidden, so the user does not accidentally modify them, but child classes can still access them.
+
+Encapsulation allows us to hide the implementation details of the class and only expose the necessary details to the user. This abstraction makes the code more maintainable and easier to understand, as users do not need to know how methods are implemented, only how to use them. 
+
+## Conclusion
+
+Python provides the ability to use private and protected modifiers to define the scope and accessibility of attributes and methods. Private attributes and methods can be used to enforce encapsulation and hide implementation details, while protected attributes and methods are used to allow child classes to inherit functionality while restricting its use outside of the parent and child classes. These concepts are essential for building maintainable, scalable, and secure applications.
+
+# Abstraction in Python
+
+Abstraction is a fundamental concept in object-oriented programming (OOP) that allows programmers to separate the implementation details of an object from its behavior. It involves defining an interface to an object that hides the complexity of its inner workings from the user.
+
+In Python, abstraction can be achieved through the use of abstract classes and interfaces. An abstract class is a class that cannot be instantiated and functions as a template for a set of related classes. An interface, on the other hand, specifies a set of methods that a class must implement to adhere to the protocol.
+
+## Encapsulation through Abstraction
+
+Abstraction is closely related to encapsulation, another key concept in OOP. Encapsulation involves the packaging of data and behavior into a single unit, such as a class or object. By hiding the complexity of an object's implementation through abstraction, encapsulation can be achieved.
+
+In Python, encapsulation is enforced through the use of protected and private attributes and methods. Protected attributes and methods are denoted by a single leading underscore, while private attributes and methods are denoted by two leading underscores. This works as a convention to communicate how attributes and methods should be used.
+
+## Using Abstraction in Python
+
+An abstract class in Python is defined using the `abc` module. To create an abstract class, the `ABCMeta` and `abstractmethod` classes must be used. Here's an example:
+
+```python
+from abc import ABCMeta, abstractmethod
+
+class Vehicle(metaclass=ABCMeta):
+    @abstractmethod
+    def start(self):
+        pass
+    
+    @abstractmethod
+    def stop(self):
+        pass
+    
+class Car(Vehicle):
+    def start(self):
+        print('Starting the engine.')
+    
+    def stop(self):
+        print('Stopping the engine.')
+```
+
+In this example, `Vehicle` is an abstract class that defines two abstract methods, `start` and `stop`. This means that any class that inherits from `Vehicle` must implement these two methods. The `Car` class is a subclass of `Vehicle` that implements both the `start` and `stop` methods.
+
+Similarly, an interface in Python is defined as a class with abstract methods. Here's an example:
+
+```python
+from abc import ABC, abstractmethod
+
+class IAnimal(ABC):
+    @abstractmethod
+    def move(self):
+        pass
+    
+class Dog(IAnimal):
+    def move(self):
+        print('Walking on four legs.')
+```
+
+In this example, `IAnimal` is an interface that contains one abstract method, `move`. The `Dog` class is a class that implements the `move` method from the `IAnimal` interface.
+
+Overall, abstraction is a powerful tool in OOP that enables programmers to write more flexible and reusable code. By separating an object's implementation from its behavior, code can be more easily maintained and extended.
+
+# Abstract Classes and Interfaces in Python
+
+In addition to encapsulation and inheritance, Python also supports abstraction. Abstraction is a crucial OOP concept that allows hiding the implementation details of a class from the outside world, making the class simpler to use and understand. Abstract classes and interfaces are two examples of abstractions in Python. 
+
+## Abstract Classes
+
+An abstract class is a class that cannot be instantiated on its own and has one or more abstract methods. An abstract method is a method declared without a body, but with the `@abstractmethod` decorator. Abstract methods are meant to be overridden in a subclass. 
+
+A common use of abstract classes is to define a blueprint for a group of related classes. Subclasses that inherit from an abstract class must implement all of its abstract methods to be considered complete. By enforcing the implementation of all abstract methods, abstract classes provide a way to enforce abstraction in Python. 
+
+Here's an example of an abstract class:
+
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+```
+
+In this example, the `Shape` class is an abstract class that defines two abstract methods, `area()` and `perimeter()`. Any subclass of `Shape` must implement these two methods before it can be instantiated. 
+
+## Interfaces
+
+An interface is similar to an abstract class in that it defines a blueprint for a group of related classes. However, interfaces are more rigid than abstract classes. In an interface, all methods are abstract, and there is no implementation code. In other words, an interface only provides method signatures, and a class that implements an interface must implement all of its methods. 
+
+Python doesn't have built-in support for interfaces, but they can be implemented using abstract classes. Here's an example:
+
+```python
+from abc import ABC, abstractmethod
+
+class Printable(ABC):
+    @abstractmethod
+    def print(self):
+        pass
+
+class Document(Printable):
+    def print(self):
+        # implementation details
+        pass
+```
+
+In this example, the `Printable` class is an abstract class that defines one abstract method, `print()`. The `Document` class implements the `Printable` interface by implementing the `print()` method. 
+
+## Differences between Abstract Classes and Interfaces
+
+The main difference between abstract classes and interfaces is that abstract classes can have both abstract and non-abstract methods, while interfaces can only have abstract methods. Additionally, a class can implement multiple interfaces, but it can only inherit from one abstract class. 
+
+## Conclusion 
+
+Abstract classes and interfaces are powerful tools for enforcing abstraction in Python. They allow you to define a blueprint for a group of related classes, and they provide a way to ensure that all subclasses implement the necessary methods. By using abstract classes and interfaces, you can create more modular and reusable code.

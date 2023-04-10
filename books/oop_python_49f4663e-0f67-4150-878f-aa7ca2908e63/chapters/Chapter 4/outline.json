@@ -1,0 +1,41 @@
+{
+  "chapter_title": "Chapter 4",
+  "sub_chapters": [
+    {
+      "title": "Introduction to Encapsulation",
+      "outline": "This sub-chapter will introduce encapsulation in OOP, its definition, and importance. It should cover its relevance in Python programming and how it strengthens code. It should also provide the readers with the knowledge of access modifiers used in Python like public, private, and protected.",
+      "instructions": "This sub-chapter should be brief and cover only the main outline mentioned above. Explain encapsulation, but avoid going into too much detail about specific access modifiers. Make sure to provide a strong opening to the chapter on encapsulation.",
+      "index": 1
+    },
+    {
+      "title": "Public Access Modifier",
+      "outline": "This sub-chapter will cover the public access modifier, its definition, and how it is used in Python. Provide clear examples to show how public access can be used to control the way objects interact with each other.",
+      "instructions": "This sub-chapter should focus solely on the public access modifier. It should not go into too much detail about other access modifiers. Make sure to use clear examples to help illustrate the concept to readers who may not have a strong technical background.",
+      "index": 2
+    },
+    {
+      "title": "Private Access Modifier",
+      "outline": "This sub-chapter will cover the private access modifier, its definition, and how it is used in Python. Provide real-world examples to demonstrate how private access ensures that data is not accessible outside of a class.",
+      "instructions": "This sub-chapter should focus solely on the private access modifier. It should not go into too much detail about other access modifiers. Make sure to use real-world examples and keep the language concise to help beginners connect with the concept.",
+      "index": 3
+    },
+    {
+      "title": "Protected Access Modifier",
+      "outline": "This sub-chapter will cover the protected access modifier, its definition, and how it is used in Python. Provide examples to demonstrate how protected access allows subclasses to interact with variables in parent classes.",
+      "instructions": "This sub-chapter should focus solely on the protected access modifier. It should not go into too much detail about other access modifiers. Make sure to use examples to help the reader understand the concept.",
+      "index": 4
+    },
+    {
+      "title": "Real-World Examples of Encapsulation",
+      "outline": "This sub-chapter will provide real-world examples of encapsulation and show readers how it works in practice. This sub-chapter should show how encapsulation improves code quality and security. Make sure to touch on each access modifier mentioned earlier also.",
+      "instructions": "This sub-chapter should tie everything together and show the power of encapsulation. Choose real-world examples that are easy to understand and interesting to the reader.",
+      "index": 5
+    },
+    {
+      "title": "Exercises",
+      "outline": "This sub-chapter will include exercises that allow the reader to practice the concepts learned in the previous sections. The exercises should cover all the access modifiers of encapsulation such as public, private, and protected so that they reinforce the concepts learned.",
+      "instructions": "Make sure the exercises are clear and easy to understand. They should challenge the reader to implement encapsulation in their own code. Provide explanatory comments in the exercises so that the readers can understand various good/bad practices while applying different access modifiers of encapsulation.",
+      "index": 6
+    }
+  ]
+}

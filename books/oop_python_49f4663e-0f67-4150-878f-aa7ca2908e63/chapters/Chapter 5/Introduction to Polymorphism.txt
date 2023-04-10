@@ -1,0 +1,13 @@
+# Introduction to Polymorphism
+
+In object-oriented programming (OOP), polymorphism is the ability of objects to behave in different ways depending on their data type or class. It allows objects with different classes to be treated as if they were of the same class, reducing the complexity of coding and increasing the reusability of code. 
+
+At its core, polymorphism makes it possible for objects to be processed in different ways based on their class, enabling developers to design and write more flexible and dynamic code. It allows the same message or function to have different meanings or behaviors for different objects, as long as they belong to the same class or have compatible interfaces. 
+
+To understand polymorphism, let us use a real-world example. A car is a good example of polymorphism. If we think in terms of cars, we can have different types of cars, such as sedans, sports cars, and SUVs, each with its own specific attributes and behaviors. However, regardless of their types, they all share some common attributes like having four wheels, an engine, and a steering wheel. From a high-level perspective, each car is a vehicle that can be driven, stopped, or parked. These methods have different implementations based on the type of car, but the message they convey is the same.
+
+In the same way, in OOP, all objects share some common methods that are present in the base class. These methods are known as virtual functions or methods, which are designed to be overridden by the subclass. Overriding is a key concept in polymorphism, as it allows the subclass to define its implementation of an inherited method. 
+
+In practice, polymorphism is implemented in Python through method overloading and method overriding. Method overloading allows the programmer to define two or more methods with the same name in a single class, but each method accepts different parameters. Method overriding happens when a subclass provides a specific implementation of a method that is already defined in its parent class.
+
+In conclusion, polymorphism is a powerful concept in OOP that enables the creation of flexible and reusable code. It makes complex coding more manageable, reduces redundancy, and increases code legibility. The ability to design objects that behave differently based on their class or data type is an important aspect of object-oriented programming.

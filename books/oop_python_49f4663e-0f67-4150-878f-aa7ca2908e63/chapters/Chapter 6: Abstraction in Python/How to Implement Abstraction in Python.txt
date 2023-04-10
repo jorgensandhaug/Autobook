@@ -1,0 +1,74 @@
+# How to Implement Abstraction in Python
+
+Abstraction is an important concept in OOP that enables you to hide implementation details of a class and expose only the necessary information to the user. In this section, you will learn how to implement abstraction in Python using abstract classes and abstract methods. Additionally, we will explore how to use inheritance to achieve abstraction.
+
+## Implementing Abstraction in Python
+
+Abstract classes provide an excellent way to implement abstraction in Python. Abstract classes cannot be instantiated, and their methods have no implementation. Rather, abstract classes are meant to be inherited from, and their abstract methods must be implemented by the subclass.
+
+Here's an example of an abstract class in Python:
+
+```python
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    
+    @abstractmethod
+    def make_sound(self):
+        pass
+```
+In this example, we have an abstract `Animal` class with one abstract method `make_sound()`. The `abstractmethod` decorator is used to indicate that the method has no implementation and must be overridden in the subclass. 
+
+Now let's create a subclass `Dog` that inherits from `Animal` and implements the `make_sound()` method:
+
+```python
+class Dog(Animal):
+    
+    def make_sound(self):
+        return "Woof!"
+```
+
+In the above example, we have implemented the `make_sound()` method in the `Dog` class and provided it with a specific implementation. The `Dog` class can now be instantiated and used.
+
+```python
+dog = Dog()
+print(dog.make_sound())  # Outputs "Woof!"
+```
+
+## Using Inheritance to Achieve Abstraction
+
+Inheritance is a powerful tool that enables you to achieve abstraction in Python. By using inheritance, you can create a hierarchy of classes where each higher-level class is more abstract than the lower-level classes. Each subclass inherits properties and methods from its superclass, and can override or extend them as needed.
+
+Here's an example of how we can use inheritance to achieve abstraction:
+
+```python
+class Vehicle:
+    
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+    
+    def get_description(self):
+        return f"{self.year} {self.make} {self.model}"
+    
+    
+class Car(Vehicle):
+    
+    def __init__(self, make, model, year, num_doors):
+        super().__init__(make, model, year)
+        self.num_doors = num_doors
+        
+    def get_description(self):
+        return f"{super().get_description()}, {self.num_doors} doors"
+```
+In this example, we have a `Vehicle` class with a `get_description()` method that returns a string describing the vehicle. A `Car` class inherits from the `Vehicle` class and extends it by adding a `num_doors` property and overriding the `get_description()` method to include the number of doors.
+
+```python
+car = Car("Toyota", "Camry", 2021, 4)
+print(car.get_description())  # Outputs "2021 Toyota Camry, 4 doors"
+```
+
+## Conclusion
+
+In this section, we explored how to implement abstraction in Python using abstract classes and abstract methods. We also learned how to use inheritance to achieve abstraction. Abstraction is a powerful tool that enables you to create clean and maintainable code by hiding implementation details of a class, and exposing only what is necessary to the user. With abstraction, you can create a hierarchy of classes where each higher-level class is more abstract than the lower-level classes, and can provide a cleaner, more intuitive API to the user.

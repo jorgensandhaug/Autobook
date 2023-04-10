@@ -1,0 +1,59 @@
+# Class Methods
+
+In Python classes, class methods are methods that belong to the class and not to the instance of the class. They are bound to the class and cannot be called on the instance. They can be used to modify the class state and work with the class object itself. 
+
+## Characteristics of Class Methods
+- They are created using a decorator `@classmethod`.
+- The first parameter of a class method is always the `cls` parameter. This parameter is used to refer to the class itself within the method and is automatically passed by Python when the method is called. 
+- They can modify the class state but not the instance state.
+- They can be called on the class and not on the instance.
+
+## Creating and Using Class Methods 
+
+To create and use a class method, the `@classmethod` decorator is used. Below is an example:
+
+```python
+class MyClass:
+    counter = 0
+
+    def __init__(self):
+        MyClass.counter += 1
+
+    @classmethod
+    def get_counter(cls):
+        return cls.counter
+
+# Creating instances of the class
+obj1 = MyClass()
+obj2 = MyClass()
+
+# calling the class method
+print(MyClass.get_counter()) # Output: 2
+```
+
+In the example above, `get_counter` is a class method because it's decorated with `@classmethod` and has `cls` as the first parameter. The method returns the `counter` attribute of the class. The `counter` attribute is incremented by 1 in the constructor of the class (`__init__`) each time a new instance is created.
+
+When `get_counter` is called on the class `MyClass` in the last line of the example, the `cls` parameter is automatically passed by Python to the class method. The method can then access the `counter` attribute of the class and return it.
+
+## Manipulating the Class Object using cls
+
+Class methods can also be used to manipulate the class object directly using the `cls` parameter. Below is an example:
+
+```python
+ class MyClass:
+    my_list = []
+
+    @classmethod
+    def add_element(cls, elem):
+        cls.my_list.append(elem)
+
+# using the class method with cls parameter
+MyClass.add_element(5)
+MyClass.add_element(10)
+
+print(MyClass.my_list) # Output: [5, 10]
+```
+
+In the example above, the `add_element` method adds a new element to the `my_list` attribute of the class. The attribute is accessed and modified using the `cls` parameter.
+
+In summary, class methods are a way to define methods that operate on the class itself rather than on instances of the class. They are useful for creating utility methods or for modifying the class itself. They can be created using the `@classmethod` decorator, have `cls` as the first parameter and can only modify the class state.

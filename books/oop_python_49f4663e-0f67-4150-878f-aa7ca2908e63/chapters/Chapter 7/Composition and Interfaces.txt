@@ -1,0 +1,68 @@
+# Composition and Interfaces
+
+In Object-Oriented Programming (OOP), composition refers to the design technique where an object contains one or more instances of another class. In simpler terms, when an object is composed of other objects, it creates a relationship known as a 'has-a' relationship. This allows the object to delegate some responsibilities to the composing object, reducing the complexity of the code.
+
+One common example of composition is the relationship between a car and its engine. The car 'has-a' engine, and the engine is composed of smaller parts such as pistons and cylinders. Similarly, when creating an application, one class may compose or 'have' other classes as its members, allowing for a more modular and scalable code architecture.
+
+In Python, we implement composition using class composition, where the composing class is instantiated as a member of the class. Let's use the car example to illustrate class composition in Python:
+
+```python
+class Engine:
+    def __init__(self, model, num_cylinders):
+        self.model = model
+        self.num_cylinders = num_cylinders
+
+    def start(self):
+        print('Engine started.')
+
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.engine = Engine(model='V6', num_cylinders=6)
+
+    def start(self):
+        self.engine.start()
+        print(f'{self.make} {self.model} started.')
+```
+
+In the above code, we have two classes - `Engine` and `Car`. The `Car` class is composed of an instance of the `Engine` class, creating a has-a relationship between the two classes. The `__init__` method of the `Car` class initializes an instance of the `Engine` class and stores it as an attribute of the `Car` class. We can also see that the `start` method of the `Car` class calls the `start` method of the `Engine` class, delegating the responsibility of starting the engine to the composing class.
+
+Interfaces, on the other hand, define the behavior of an object in terms of the messages it can receive. An interface specifies the methods that a class must implement without specifying the implementation details. In essence, it defines what an object should do, but not how it should do it.
+
+In Python, we implement interfaces using the Abstract Base Classes (ABCs) module. An ABC defines an interface by specifying a method or group of methods that must be implemented by any class that uses that interface. Here is an example of an interface in Python:
+
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+```
+
+In the above code, we define an abstract class `Shape` that defines the two abstract methods `area` and `perimeter`. Any class that uses `Shape` as its base class must implement these methods. If a class does not implement these methods, an error will occur when it is instantiated.
+
+Let's add an implementation of the `Shape` interface to better understand its use:
+
+```python
+class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+    def perimeter(self):
+        return 2 * (self.length + self.width)
+```
+
+In the above code, we define a `Rectangle` class that implements the `Shape` interface. The `Rectangle` class implements the `area` and `perimeter` methods declared in the `Shape` interface. By implementing these methods, the `Rectangle` class guarantees that it satisfies the requirements of the `Shape` interface.
+
+In conclusion, composition and interfaces are essential concepts in OOP that help to create more modular, scalable, and maintainable code. Using these concepts can improve the code structure, making it easier to read, understand, and modify.  By understanding the principles of composition and interfaces, developers can create more flexible and robust applications.

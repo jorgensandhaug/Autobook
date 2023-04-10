@@ -1,0 +1,34 @@
+{
+  "chapters": [
+    {
+      "title": "Chapter 1: Introduction to Object-Oriented Programming",
+      "main_content_outline": "This chapter will introduce Object-Oriented Programming (OOP) and its importance. It will explain the basic concepts such as classes, objects, and methods, using simple language and plenty of code examples. The chapter will also provide a brief description of Python and its features, and how these features can be used in OOP. Finally, the chapter will end with a discussion on the benefits of OOP.",
+      "instructions": "This chapter serves as an introduction to Object-Oriented Programming for beginners, and should explain the basics without assuming any prior knowledge. There should be no redundant information in this chapter, and the focus should remain on why OOP is important and how it can be used in Python. The length of this chapter should be around 15 pages."
+    },
+    {
+      "title": "Chapter 2: Classes and Objects",
+      "main_content_outline": "This chapter will delve into the basics of classes and objects in Python. It will define what classes are and how objects are created from classes. The chapter will provide code examples of creating classes in Python and the use of constructors to initialize objects. It will also cover the different types of variables that can be used in classes.",
+      "instructions": "This chapter aims to provide a thorough understanding of classes and objects, and should not include information that will be covered in later chapters. The focus should be on the basics of classes and objects, including the different types of variables that can be used in classes, and how objects are initialized. The length of this chapter should be around 20 pages."
+    },
+    {
+      "title": "Chapter 3: Methods",
+      "main_content_outline": "This chapter will explain what methods are in Python classes, how they are created and used, and how they differ from regular functions. It will also cover the different types of methods, such as instance, class, and static methods, along with their use cases.",
+      "instructions": "This chapter should build on the previous chapter and focus on the concept of methods in Python classes. The chapter should explain the different types of methods, their use cases, and how they differ from regular functions. The focus should be on providing a thorough understanding of methods, without repeating information from previous chapters. The length of this chapter should be around 20 pages."
+    },
+    {
+      "title": "Chapter 4: Inheritance",
+      "main_content_outline": "This chapter will focus on the concept of inheritance in OOP. It will explain what inheritance is and how it can be used to create new classes from existing ones. The chapter will also cover how to override inherited methods, and how to use super() to access the parent class. Finally, it will discuss the benefits and drawbacks of using inheritance.",
+      "instructions": "This chapter should provide a clear and concise explanation of inheritance in OOP, and how it can be used to create new classes from existing ones. The chapter should explain how to override inherited methods, and how to use super() to access the parent class. The benefits and drawbacks of inheritance should also be discussed. The chapter should not include information that will be covered in later chapters. The length of this chapter should be around 25 pages."
+    },
+    {
+      "title": "Chapter 5: Polymorphism",
+      "main_content_outline": "This chapter will provide an in-depth explanation of polymorphism in Python. It will cover what polymorphism is, how it works and how to implement it using methods, classes and objects. The chapter will also cover the difference between static and dynamic polymorphism and provide examples to illustrate the concept.",
+      "instructions": "In this chapter, the concept of polymorphism in Python should be explained thoroughly, along with the difference between static and dynamic polymorphism. The chapter should provide code examples to illustrate how to implement polymorphism using methods, classes and objects. There should be no redundant information in this chapter, and the focus should remain on explaining polymorphism thoroughly. The length of this chapter should be around 25 pages."
+    },
+    {
+      "title": "Chapter 6: Advanced OOP topics",
+      "main_content_outline": "This final chapter will delve into more advanced topics in OOP such as composition, aggregation, and encapsulation. It will explain each concept in detail and provide examples of how each can be used in Python. The chapter will also provide tips on how to design effective class hierarchies and when to use each of these concepts. Finally, the chapter will end with a review of OOP in Python and a discussion on how to continue learning OOP beyond the book. ",
+      "instructions": "This chapter is intended to provide a deeper understanding of OOP for those who have mastered the basics. Topics such as composition, aggregation and encapsulation should be explained thoroughly, along with practical examples of how each can be used in Python. The chapter should also provide tips on how to design effective class hierarchies and when to use each of these concepts. Finally, the chapter should end with a review of OOP in Python and a discussion on how to continue learning OOP beyond the book. The length of this chapter should be around 30 pages."
+    }
+  ]
+}

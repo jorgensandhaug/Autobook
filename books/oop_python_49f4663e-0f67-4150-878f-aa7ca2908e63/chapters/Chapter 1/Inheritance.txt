@@ -1,0 +1,72 @@
+## Inheritance
+
+In object-oriented programming (OOP), Inheritance is the mechanism of creating new classes from an existing class, where the existing class serves as a blueprint or template for the new class. The new class, called the child class or derived class, inherits all the attributes and behaviors of the parent class or base class. In other words, the child class has access to all the methods and properties defined in the parent class.
+
+### Types of Inheritance
+
+#### Single Inheritance
+
+The single inheritance is the simplest form of inheritance where a class inherits properties and methods directly from a single parent class. 
+
+For instance, we define a parent class `Person` that has attributes such as `name` and `age`, and a method `greetings()` that returns a greeting message. We can then create a child class `Student` that inherits from the `Person` class, and add more attributes like `id_num`, and methods that are specific to the student.
+
+``` python
+#Single inheritance
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def greetings(self):
+        return f"Hello, my name is {self.name} and I'm {self.age} years old"
+
+#Child class Student inherits from Person
+class Student(Person):
+    def __init__(self, name, age, id_num):
+        self.id_num = id_num
+        #calling the constructor of the parent class Person
+        Person.__init__(self, name, age)
+
+    def get_id(self):
+        return f"My ID number is {self.id_num}"
+
+```
+
+#### Multiple Inheritance
+
+Multiple inheritance allows a class to inherit attributes and methods from more than one parent class. 
+
+``` python
+#Multiple inheritance
+
+class ClassA:
+    pass
+
+class ClassB:
+    pass
+
+class ClassC(ClassA, ClassB):
+    pass
+```
+
+#### Multilevel Inheritance
+
+Multilevel inheritance involves creating a child class from another child class. Here, the derived class becomes the parent class for the subsequent child class.
+
+``` python
+#Multilevel Inheritance
+
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(B):
+    pass
+```
+
+### Conclusion
+
+Inheritance is an essential concept in OOP that enables developers to create new classes with all the attributes and behaviors of existing classes. The three types of inheritance discussed in this chapter are single, multiple, and multilevel inheritances. Inheritance helps create a cleaner and more organized code, consistently reduces the amount of repeated code, and clearly defines the relationships between classes.

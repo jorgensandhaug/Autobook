@@ -1,0 +1,69 @@
+# Sample Coding Exercises
+
+In this sub-chapter, we will provide simple coding exercises that reinforce each individual concept learned throughout the book. The exercises will be straightforward, to the point, and easy to follow so that readers can gain experience in using the concepts learned. Two exercises for each key concept learned throughout the book are provided.
+
+
+## Classes and Objects
+
+### Exercise 1
+
+Create a class called `Person` with two methods `__init__` and `say_hello`. The `__init__` method should take two arguments: `self` and `name`. The `say_hello` method should print "Hello, my name is " and the name of the person.
+
+### Exercise 2
+
+Create a class called `Dog` with two methods `__init__` and `bark`. The `__init__` method should take two arguments: `self` and `breed`. The `bark` method should print "Woof! I am a " and the breed of the dog.
+
+
+## Inheritance
+
+### Exercise 1
+
+Create a class called `Vehicle` with one method `drive`. The `drive` method should print "Driving a vehicle".
+
+Create another class called `Car` that inherits from the `Vehicle` class. The `Car` class should have one additional method called `park`, which prints "Parking the car".
+
+### Exercise 2
+
+Create a class called `Animal` with two methods `__init__` and `speak`. The `speak` method should print "The animal speaks".
+
+Create a class called `Cat` that inherits from the `Animal` class. The `Cat` class should override the `speak` method to print "Meow".
+
+
+## Encapsulation
+
+### Exercise 1
+
+Create a class called `BankAccount` with two methods `__init__` and `withdraw`. The `__init__` method should take two arguments: `self` and `balance`. The `withdraw` method should deduct the specified amount from the balance.
+
+### Exercise 2
+
+Create a class called `Person` with two methods `__init__` and `set_age`. The `__init__` method should take two arguments: `self` and `age`. The `set_age` method should check if the age provided is greater than or equal to 18. If it is, set the age of the person.
+
+## Polymorphism
+
+### Exercise 1
+
+Create a class called `Shape` with two methods `__init__` and `draw`. The `draw` method should print "Drawing a shape".
+
+Create another class called `Circle` that inherits from the `Shape` class. The `Circle` class should override the `draw` method to print "Drawing a circle".
+
+### Exercise 2
+
+Create a class called `Animal` with one method `speak`. The `speak` method should print "The animal speaks".
+
+Create another class called `Dog` that inherits from the `Animal` class. The `Dog` class should override the `speak` method to print "Woof!".
+
+
+## Abstraction
+
+### Exercise 1
+
+Create a class called `Shape` with two methods `__init__` and `area`. The `area` method should raise a `NotImplementedError`.
+
+Create another class called `Circle` that inherits from the `Shape` class. The `Circle` class should implement the `area` method to calculate and return the area of the circle.
+
+### Exercise 2
+
+Create a class called `Animal` with one method `speak`. The `speak` method should raise a `NotImplementedError`.
+
+Create another class called `Dog` that inherits from the `Animal` class. The `Dog` class should implement the `speak` method to print "Woof!".

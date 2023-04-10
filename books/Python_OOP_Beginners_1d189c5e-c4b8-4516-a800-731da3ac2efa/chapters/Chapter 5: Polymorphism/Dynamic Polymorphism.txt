@@ -1,0 +1,75 @@
+## Dynamic Polymorphism
+
+Dynamic Polymorphism, also known as run-time Polymorphism, is the capability of an object to take on various forms during run time. It is a feature that allows objects of different classes to be treated as objects of the same class. Unlike static Polymorphism, where the output of a method is determined at compile time, dynamic Polymorphism ensures that the output of a method is determined at runtime.
+
+### Method Overriding
+
+Method Overriding is a feature of dynamic polymorphism that allows a subclass to provide a specific implementation of a method that is already defined and implemented in its parent class. In Python, it is achieved through the use of inheritance. When a method is called from a subclass object, the method in the subclass replaces the method in the parent class. 
+
+To override a method in Python, use the following syntax:
+
+```python
+class Parent:
+    def method(self):
+        print("This is the Parent method.")
+
+class Child(Parent):
+    def method(self):
+        print("This is the Child method.")
+```
+
+The above code creates a parent class and a child class that inherits from its parent. The method in the child class overrides the method in the parent class.
+
+### Abstract Classes and Interfaces
+
+Abstract Classes are classes that cannot be instantiated on their own. They are designed to serve as base classes to facilitate code reuse through inheritance. An abstract class contains an abstract method or methods, which do not have any implementation. 
+
+On the other hand, an Interface is a blueprint of a class without any implementation details. It contains only the method signatures or declarations, but not the methods' implementations. 
+
+In Python, Abstract Classes can be implemented using the built-in module, abc (Abstract Base Class). The following code shows how to use the abc module to define an abstract class:
+
+```python
+from abc import ABC, abstractmethod
+
+class AbstractClass(ABC):
+    @abstractmethod
+    def method(self):
+        pass
+```
+
+Here, the AbstractClass example has an abstract method, method(), which must be implemented in a subclass. If a subclass does not implement this method, it will raise an error.
+
+### Duck Typing
+
+Duck typing is a programming concept that allows the interpreter to determine an object's type based on its behavior or attributes, rather than its definition. It is a feature in Python that defines an object's type by the methods and attributes it possesses.
+
+For example:
+
+```python
+class Duck:
+    def fly(self):
+        print("A duck can fly.")
+
+class Airplane:
+    def fly(self):
+        print("An airplane can fly.")
+```
+
+Both the Duck and Airplane classes share the same method name, fly(). Even though these classes don't inherit from a common ancestor, both can be used together in a polymorphic manner if an object requires the use of the fly() method.
+
+```python
+def let_it_fly(obj):
+    obj.fly()
+    
+d = Duck()
+a = Airplane()
+
+let_it_fly(d)
+let_it_fly(a)
+```
+
+In the above example, the let_it_fly() function expects an object that has a fly() method. The function takes a duck object and an airplane object and passes each of them to the let_it_fly() function where the fly() method gets executed.
+
+### Conclusion
+
+Dynamic Polymorphism is a necessary feature in OOP that allows objects to take on various forms during runtime. Python provides various ways to implement dynamic Polymorphism, such as method overriding, abstract classes and interfaces, and duck typing. Understanding these concepts can help a programmer create more flexible and maintainable code.

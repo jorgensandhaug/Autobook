@@ -1,0 +1,35 @@
+## Protected Access Modifier
+
+In Python, the protected access modifier is used to denote variables or methods that should not be accessed from outside the class directly. The protected variables and methods in a class have a single underscore preceding their name, for example, `_variable_name`. The single underscore indicates that the variable or method is protected and should not be accessed from outside the class except by subclasses.
+
+The protected access modifier provides a way for subclasses to interact with variables in parent classes. By using protected variables, subclasses can access and modify these variables while still maintaining encapsulation. The subclasses can access the protected variable using the following syntax:
+
+```
+class Parent:
+    def __init__(self):
+        self._protected_variable = 10
+
+class Child(Parent):
+    def __init__(self):
+        super().__init__()
+        print(self._protected_variable)
+
+test = Child()
+```
+
+In the above code, we have a `Parent` class with a protected variable `_protected_variable.` The `Child` class is a subclass of `Parent` and can access the protected variable `_protected_variable` using `self._protected_variable`. In this example, the `Child` class can print the value of the `_protected_variable` from the `Parent` class.
+
+When using the protected access modifier, it is essential to remember that it is a convention, not a rule like private access modifiers. Therefore, you can still access the protected attribute directly from an object in Python. 
+
+```
+class Parent:
+    def __init__(self):
+        self._protected_variable = 10
+
+parent_obj = Parent()
+print(parent_obj._protected_variable)
+```
+
+The output of the above code will be `10`, which is the value of the `_protected_variable`. However, accessing protected attributes directly from the object is not a good practice since it violates the purpose of this convention.
+
+In conclusion, protected access modifiers in Python provide a way to define class attributes and methods that can be accessed only by the class and its subclasses. By using protected attributes, we can ensure that the attributes remain protected from direct access by other methods outside the class while still enabling the subclass methods to access and modify the attributes.

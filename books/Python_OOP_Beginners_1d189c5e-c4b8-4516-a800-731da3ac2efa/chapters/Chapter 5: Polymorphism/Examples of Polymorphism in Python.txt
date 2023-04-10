@@ -1,0 +1,122 @@
+# Examples of Polymorphism in Python
+
+Polymorphism refers to the ability of objects and functions to take on multiple forms or behaviors. It allows for the creation of flexible and reusable code, making programming in Python more efficient and effective.
+
+Python provides several examples of polymorphism in built-in functions and user-defined functions. In this sub-chapter, we will cover some of these examples, including polymorphism of classes. All code examples will be well-commented to provide a clear understanding of the essence of the code.
+
+## Polymorphism with Built-in Functions
+
+One of the most straightforward examples of polymorphism with built-in functions in Python is the `len()` function. The `len()` function can be used with multiple types of objects, such as strings, lists, and dictionaries, returning the number of elements in each object. For instance:
+
+```python
+string = "Hello, World!"
+lst = [1, 2, 3, 4, 5]
+dictionary = {'a': 1, 'b': 2, 'c': 3}
+
+print(len(string)) # Output: 13
+print(len(lst)) # Output: 5
+print(len(dictionary)) # Output: 3
+```
+
+Another built-in function that displays polymorphic behavior in Python is the `print()` function. It can be used to display different types of data types, such as strings, integers, and decimal values. For instance:
+
+```python
+print("Hello world!") # Output: Hello world!
+print(25) # Output: 25
+print(3.14) # Output: 3.14
+```
+
+The built-in functions `max()` and `min()` are more examples of polymorphism in Python. They are used to return the maximum and minimum values of an object or list, regardless of the object's data type. For instance:
+
+```python
+numbers = [1, 2, 3, 4, 5]
+alpha = ['a', 'b', 'c', 'd', 'e']
+
+print(max(numbers)) # Output: 5
+print(min(alpha)) # Output: a
+```
+
+## Polymorphism with User-Defined Functions
+
+User-defined functions in Python can also exhibit polymorphic behavior. Polymorphism in user-defined functions is achieved by writing functions that can take multiple types of arguments, and customize their behavior based on the argument types. 
+
+Here's an example of a user-defined function that takes arguments of type string or list and returns the number of words or elements in the object.
+
+```python
+def object_length(object):
+    if isinstance(object, str):
+        return len(object.split())
+    elif isinstance(object, list):
+        return len(object)
+    else:
+        return "Not a supported object type."
+
+print(object_length('Object Oriented Programming')) # Output: 3
+print(object_length([1,2,3,4,5])) # Output: 5
+```
+
+Here, the user-defined function `object_length()` takes an object as an argument and determines whether it is a string or a list using the `isinstance()` method. It then returns the length of the object if it is a string or a list. If it is neither, the function returns an error message.
+
+Another example of polymorphism achieved through user-defined functions is method overloading. Method overloading involves creating two or more functions with the same name that differ in their input parameters. The appropriate function is then called depending on the type of parameters passed to it. 
+
+```python
+class Shape:
+    def area(self):
+        pass
+
+class Square(Shape):
+    def __init__(self, length):
+        self.length = length
+
+    def area(self):
+        return self.length * self.length
+
+class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+square = Square(5)
+rectangle = Rectangle(5, 3)
+
+print(square.area()) # Output: 25
+print(rectangle.area()) # Output: 15
+```
+
+Here, we create two different classes, `Square` and `Rectangle`, that inherit from the parent class `Shape`. Each class has its own implementation of the `area()` method, which calculates the area of the object. Depending on the object type, the appropriate `area()` method is called when invoked, demonstrating polymorphism achieved through method overloading.
+
+## Polymorphism with Classes
+
+Polymorphism can also be achieved through classes in Python. Here is an example of polymorphism with classes:
+
+```python
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def sound(self):
+        return "Woof!"
+
+class Cat:
+    def __init__(self,name):
+        self.name = name
+
+    def sound(self):
+        return "Meow!"
+
+def animal_sound(animal):
+    print(animal.sound())
+
+dog = Dog("Rover")
+cat = Cat("Fluffy")
+
+animal_sound(dog) # Output: Woof!
+animal_sound(cat) # Output: Meow!
+```
+
+Here, we define two different classes, `Dog` and `Cat`, both having different implementations of the `sound()` method. We then define a function `animal_sound(animal)` that takes an animal object as an argument and calls its `sound()` method. When invoked, it returns the appropriate sound based on the animal type, demonstrating polymorphism achieved through classes.
+
+In conclusion, polymorphism is a powerful feature of Python that simplifies programming by enabling objects and functions to take multiple forms or behaviors. It enables code to be written in a flexible and reusable way, resulting in more efficient and effective programming. Polymorphism in Python can be achieved through built-in functions, user-defined functions, and classes, all of which provide different and useful ways of implementing polymorphic behavior.

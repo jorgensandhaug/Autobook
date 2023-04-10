@@ -1,0 +1,35 @@
+{
+  "chapter_title": "Chapter 5",
+  "sub_chapters": [
+    {
+      "title": "Introduction to Polymorphism",
+      "outline": "Explanation of the concept of polymorphism in OOP.",
+      "instructions": "Explain the concept of polymorphism in OOP in a simple and concise manner. Use examples that establish the relationship between polymorphic objects in the real world.",
+      "index": 1
+    },
+    {
+      "title": "Method Overloading",
+      "outline": "Define method overloading and provide examples.",
+      "instructions": "Define the concept of method overloading and its implementation in Python. Discuss the difference between overloaded methods and default methods. Provide a clear example of how to create an overloaded method with Python code.",
+      "index": 2
+    },
+    {
+      "title": "Method Overriding",
+      "outline": "Define method overriding and provide examples.",
+      "instructions": "Define the concept of method overriding and its implementation in Python. Discuss the difference between overridden methods and default methods. Provide a clear example of how to override a method with Python code.",
+      "index": 3
+    },
+    {
+      "title": "Real-world examples",
+      "outline": "Demonstrating the use of polymorphism in Python with real-world examples.",
+      "instructions": "Provide real-world examples that demonstrate the use of polymorphism in Python. These examples should be carefully selected and clearly explained. Ensure that they reinforce the concepts explained in Sub-chapter 2 and 3.",
+      "index": 4
+    },
+    {
+      "title": "Conclusion and Exercises",
+      "outline": "Recap the key points learned in the chapter and provide exercises to reinforce the concepts.",
+      "instructions": "Summarize the key points learned in the chapter in a brief and concise manner. Provide exercises to reinforce the concepts learned, making sure they are relevant and easy to complete.",
+      "index": 5
+    }
+  ]
+}

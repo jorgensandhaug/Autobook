@@ -1,0 +1,56 @@
+# Static Methods
+
+In Python, a **static method** is a method that can be called on a class itself instead of an instance of the class. In other words, it is not bound to the state of the object and doesn't require instantiation of the class to be used. It's often used for utility functions or to create alternative constructors.
+
+To create a static method in Python, you need to use the `@staticmethod` decorator. This decorator tells Python that the method should be a static method. Here's an example:
+
+```python
+class MyClass:
+    @staticmethod
+    def my_static_method(x, y):
+        return x + y
+```
+
+In this example, `my_static_method` is a static method that takes two arguments `x` and `y`, and returns their sum.
+
+Static methods have a few distinct characteristics:
+
+- They don't have access to the object state.
+- They don't require an instance of the class to be created.
+- They can be called on the class directly.
+
+Note that when you use a static method, you don't need to provide an instance of the class like you would for an instance or a class method. Instead, you call the method directly on the class itself:
+
+```python
+result = MyClass.my_static_method(5, 10)
+```
+
+In this example, we call `my_static_method` on the `MyClass` class rather than an instance of it.
+
+Static methods are useful when you want to create a function that relates to the class but does not depend on any instance-specific data. For instance, imagine that you have a `Person` class that contains information about people. You could write a static method that takes a list of `Person` objects and returns the total number of people in the list, regardless of any other attributes of the `Person` objects.
+
+Here's an example:
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        
+    @staticmethod
+    def count_people(people_list):
+        return len(people_list)
+```
+
+Here, `count_people` is a static method that takes a list of `Person` objects and returns the length of the list.
+
+To call the static method:
+
+```python
+people = [Person("John", 30), Person("Jane", 25), Person("Joe", 40)]
+total_people = Person.count_people(people)
+```
+
+In this example, `count_people` is called directly on `Person`, passing in the `people` list as an argument. The result is the total number of people in the list, which is 3.
+
+Static methods can be a useful tool in your Python programming toolkit. They allow you to create utility functions that relate to a class without requiring instantiation, which can make your code more efficient and easier to read.

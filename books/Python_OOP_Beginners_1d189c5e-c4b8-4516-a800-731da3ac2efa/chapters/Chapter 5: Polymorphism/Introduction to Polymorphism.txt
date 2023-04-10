@@ -1,0 +1,36 @@
+# Introduction to Polymorphism
+
+Polymorphism is a fundamental concept of Object-Oriented Programming (OOP) that allows objects of different types to be treated as if they were of the same type. In other words, it is the ability of an object to take on many forms. In Python, polymorphism is achieved by using methods with the same name in different classes.
+
+There are two main types of polymorphism: dynamic and static polymorphism. Dynamic polymorphism is also known as runtime polymorphism or method overriding, which occurs when different classes have methods with the same name and signature. During runtime, the correct method to be called is determined based on the type of the object. On the other hand, static polymorphism is also known as compile-time polymorphism or method overloading. In static polymorphism, methods in the same class have the same name with different parameters, and the correct method to be called is determined by the number and type of arguments during compile-time.
+
+In Python, polymorphism has several benefits. Firstly, it makes code more reusable and maintainable, as it allows the same code to be used with different types of objects. Secondly, it promotes code extensibility, as new classes with the same methods can be created and used interchangeably with existing ones. Lastly, it improves the readability and organization of code, as it groups concepts that are logically similar.
+
+To understand the significance of polymorphism in Python, let us look at some examples. Consider a simple example where we have a class named `Rectangle` and another class named `Triangle`. Both classes have a method called `area()` that returns the respective area of the shape. With polymorphism, we can create a list of shapes that includes both `Rectangle` and `Triangle` objects, and iterate through the list to obtain the area of each object without worrying about their specific types. The code snippet below shows how this can be achieved.
+
+```python
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+        
+    def area(self):
+        return self.length * self.width
+
+class Triangle:
+    def __init__(self, base, height):
+        self.base = base
+        self.height = height
+        
+    def area(self):
+        return 0.5 * self.base * self.height
+
+shapes = [Rectangle(5, 10), Triangle(8, 6)]
+
+for shape in shapes:
+    print(shape.area())
+```
+
+This code creates a list `shapes` that contains a `Rectangle` object and a `Triangle` object. The `for` loop iterates through each object in the list and calls the `area()` method. Since both `Rectangle` and `Triangle` classes have an `area()` method, Python can determine the correct method to call.
+
+In conclusion, polymorphism is a powerful feature in Python that enables objects of different classes to be treated as if they were of the same type. This simplifies code, increases code reusability, and makes code more extensible. In the next sub-chapter, we will explore examples of polymorphism in Python in more detail.

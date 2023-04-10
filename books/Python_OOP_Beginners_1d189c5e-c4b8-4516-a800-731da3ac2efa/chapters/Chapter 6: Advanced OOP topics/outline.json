@@ -1,0 +1,41 @@
+{
+  "chapter_title": "Chapter 6: Advanced OOP topics",
+  "sub_chapters": [
+    {
+      "title": "Composition",
+      "outline": "This sub-chapter should explain composition in detail and give examples of how to use it effectively in Python. Additionally, it should explain the difference between composition and inheritance and when to use each concept. This sub-chapter should not go into detail about inheritance.",
+      "instructions": "This sub-chapter should be around five to six pages long.",
+      "index": 1
+    },
+    {
+      "title": "Aggregation",
+      "outline": "This sub-chapter should explain aggregation in detail and give examples of how to use it effectively in Python. It should also explain the difference between aggregation and composition and when to use each concept. This sub-chapter should not go into detail about composition.",
+      "instructions": "This sub-chapter should be around five to six pages long.",
+      "index": 2
+    },
+    {
+      "title": "Encapsulation",
+      "outline": "This sub-chapter should explain encapsulation in detail and give examples of how to use it effectively in Python. It should explain how to create private and protected attributes and methods in Python. Additionally, it should describe the importance of encapsulation and why it is essential in good OOP design.",
+      "instructions": "This sub-chapter should be around five to six pages long.",
+      "index": 3
+    },
+    {
+      "title": "Designing effective class hierarchies",
+      "outline": "This sub-chapter should provide tips on how to design class hierarchies and why such hierarchy is important. It should provide practical examples of how to create class hierarchies that are easy to understand, maintain and extend.",
+      "instructions": "This sub-chapter should be around ten pages long.",
+      "index": 4
+    },
+    {
+      "title": "Review of OOP in Python",
+      "outline": "This sub-chapter should summarize all that has been discussed in the previous chapters, including the current one. It should also explain how everything fits together and give a general overview of the OOP concept in Python.",
+      "instructions": "This sub-chapter should be around two pages long.",
+      "index": 5
+    },
+    {
+      "title": "Continuing learning OOP beyond the book",
+      "outline": "This section should provide resources for readers who want to continue learning OOP beyond the book, such as other books and online courses.",
+      "instructions": "This sub-chapter should be around two pages long.",
+      "index": 6
+    }
+  ]
+}

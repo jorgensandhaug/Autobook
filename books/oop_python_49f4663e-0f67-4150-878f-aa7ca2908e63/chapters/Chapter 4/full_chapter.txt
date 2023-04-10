@@ -1,0 +1,256 @@
+Chapter 4
+
+# Introduction to Encapsulation
+
+Encapsulation is one of the fundamental principles of Object-Oriented Programming (OOP). It refers to the bundling of data and methods that operate on that data within a single unit or module, and restricting access to them from outside the module. Encapsulation enables the data to be hidden from the outside world and is only accessible through certain methods, while also ensuring that data integrity is maintained. 
+
+Encapsulation plays a critical role in writing high-quality code by strengthening security and reducing coupling. It helps in making the code more reliable as it reduces the possibility of bugs caused by unintentional changes by other parts of the code. Encapsulation ensures that the code is well organized and understandable, which makes it easier to maintain and extend. 
+
+In Python, access modifiers are used to implement encapsulation. Access modifiers are keywords that limit the scope of variables and methods. They are public, protected, and private. Public attributes and methods are accessible from anywhere in the code. Protected attributes and methods are only accessible from within the class and its sub-classes. Private attributes and methods are only accessible within the class in which they are defined. 
+
+In the next chapters, we will dive deeper into the different access modifiers and how to use them effectively in Python. In the meantime, it's essential to note that proper use of access modifiers can help create clean, well-designed code that is easy to maintain and extend.
+
+# Public Access Modifier
+
+In object-oriented programming, encapsulation refers to the process of hiding the implementation details of an object from the outside world while exposing only what is necessary to interact with it. The public access modifier is used to declare public attributes or methods of a class, which can be accessed from outside the class, making them visible to all other classes and objects. 
+
+In Python, the public access modifier is denoted by using a single underscore (_) before the attribute or method name. While this doesn't technically make the attribute or method private, it is a convention among Python developers to treat these attributes and methods as public. 
+
+For example, consider the following code:
+
+```python
+class Car:
+    
+    def __init__(self, make, model, year):
+        self._make = make
+        self._model = model
+        self._year = year
+    
+    def get_make(self):
+        return self._make
+    
+    def get_model(self):
+        return self._model
+    
+    def get_year(self):
+        return self._year
+```
+
+In this example, we have defined a Car class with three attributes: make, model, and year. Each one is preceded by a single underscore, indicating that they are public attributes. We have also defined three methods to get the values of these attributes.
+
+We can create objects of the Car class and access its attributes and methods using the dot operator:
+
+```python
+my_car = Car("Toyota", "Camry", 2021)
+
+print("Make:", my_car.get_make())
+print("Model:", my_car.get_model())
+print("Year:", my_car.get_year())
+```
+
+The output of the above code will be:
+
+```
+Make: Toyota
+Model: Camry
+Year: 2021
+```
+
+As we can see from this example, the public access modifier allows us to define attributes and methods that can be accessed outside the class. It is important to note that even though these attributes and methods are public, they should still be used responsibly and only exposed when necessary. 
+
+In conclusion, the public access modifier in Python is a convention used to denote attributes and methods that are visible to all other classes and objects. It is an important concept in encapsulation and allows us to create flexible and modular code.
+
+## Private Access Modifier
+
+In Object-Oriented Programming (OOP), we use access modifiers to control the visibility of class members. Python provides three access modifiers: public, protected, and private. A private access modifier is the most restrictive access modifier. It ensures that data is not accessible outside of a class. 
+
+The private access modifier is defined using double underscores (`__`). Any attribute or method with double underscores before its name is considered private and can only be accessed within the class in which it is defined. For example, consider the following code snippet:
+
+```python
+class BankAccount:
+   def __init__(self):
+      self.__balance = 0
+      
+   def deposit(self, amount):
+      self.__balance += amount
+      
+   def withdraw(self, amount):
+      if amount > self.__balance:
+         print("Insufficient balance")
+      else:
+         self.__balance -= amount
+```
+
+In the above code, `__balance` is a private attribute that can only be accessed within the `BankAccount` class. Similarly, `deposit` and `withdraw` are public methods that allow users to interact with the account balance. 
+
+The private access modifier ensures that the data stored in a class is protected from external modifications. It also prevents accidental modifications that may lead to errors. For instance, if we try to access the `__balance` attribute from outside the class, we will get an `AttributeError`.
+
+```python
+account = BankAccount()
+account.__balance = 500  # This will not change the balance
+print(account.__balance) # This will raise an AttributeError
+```
+
+This error occurs because Python internally changes the name of the private attribute by adding `_classname` before it. This is known as name mangling. So, to access the `__balance` attribute outside the `BankAccount` class, we need to use its mangled name, which is `_BankAccount__balance`.
+
+```python
+account = BankAccount()
+account._BankAccount__balance = 500  # This will change the balance
+print(account._BankAccount__balance) # This will print 500
+```
+
+In real-world scenarios, the private access modifier is used to protect sensitive data, such as passwords, banking information, and personal details. By keeping the data private, we can ensure that it is not accessed or modified by unauthorized users.
+
+To summarize, the private access modifier is used to control the visibility of class members. It ensures that data is not accessible outside of a class, and it protects sensitive data from external modifications. It helps to make the code more secure and less error-prone.
+
+## Protected Access Modifier
+
+In Python, the protected access modifier is used to denote variables or methods that should not be accessed from outside the class directly. The protected variables and methods in a class have a single underscore preceding their name, for example, `_variable_name`. The single underscore indicates that the variable or method is protected and should not be accessed from outside the class except by subclasses.
+
+The protected access modifier provides a way for subclasses to interact with variables in parent classes. By using protected variables, subclasses can access and modify these variables while still maintaining encapsulation. The subclasses can access the protected variable using the following syntax:
+
+```
+class Parent:
+    def __init__(self):
+        self._protected_variable = 10
+
+class Child(Parent):
+    def __init__(self):
+        super().__init__()
+        print(self._protected_variable)
+
+test = Child()
+```
+
+In the above code, we have a `Parent` class with a protected variable `_protected_variable.` The `Child` class is a subclass of `Parent` and can access the protected variable `_protected_variable` using `self._protected_variable`. In this example, the `Child` class can print the value of the `_protected_variable` from the `Parent` class.
+
+When using the protected access modifier, it is essential to remember that it is a convention, not a rule like private access modifiers. Therefore, you can still access the protected attribute directly from an object in Python. 
+
+```
+class Parent:
+    def __init__(self):
+        self._protected_variable = 10
+
+parent_obj = Parent()
+print(parent_obj._protected_variable)
+```
+
+The output of the above code will be `10`, which is the value of the `_protected_variable`. However, accessing protected attributes directly from the object is not a good practice since it violates the purpose of this convention.
+
+In conclusion, protected access modifiers in Python provide a way to define class attributes and methods that can be accessed only by the class and its subclasses. By using protected attributes, we can ensure that the attributes remain protected from direct access by other methods outside the class while still enabling the subclass methods to access and modify the attributes.
+
+# Real-World Examples of Encapsulation
+
+Now that we understand the concept of encapsulation and how it is implemented in Python using access modifiers, let's take a look at some real-world examples to demonstrate how encapsulation works in practice. 
+
+One example of encapsulation is a bank account class. In this class, the balance variable is private and can only be accessed through methods like deposit and withdrawal. This prevents any unauthorized access to the account balance, ensuring security. For instance, a hacker cannot access the balance of someone's bank account without knowing the authorized access methods.
+
+Another example of encapsulation is a person's class, where the private data can include sensitive information like social security numbers, credit card information, and passwords. In this scenario, these private attributes can only be accessed via authorized methods to prevent unauthorized access and maintain data integrity.
+
+Python's built-in modules and libraries also use encapsulation to ensure data security. For instance, datetime class in the datetime module has a private attribute called _year, which can only be accessed using get and set methods, respectively. This ensures that the year attribute remains within a specific range to maintain data sanity.
+
+Encapsulation improves code quality by decoupling the class from the external world. This means the internal working of a class can be hidden from external forces, with only the relevant data made available through authorized methods. Encapsulation also ensures that data integrity and security are maintained.
+
+## Public, Private and Protected access modifiers
+
+Encapsulation in Python using access modifiers ensures that the internal state of an object can only be changed through well-defined methods. In Python, we have three access modifiers; public, private, and protected.
+
+A public variable can be accessed from anywhere, while private variables can only be accessed within the class they are defined in. Protected variables are accessible from within the same class, and from within derived classes.
+
+To illustrate the above concepts, let's work with an example of a Car class. In this class, we define an engine attribute which is private, a make attribute which is public, and mileage attribute that is protected. 
+
+```python
+class Car:
+    def __init__(self, make, model, mileage, engine):
+        self.__engine = engine
+        self.make = make
+        self._mileage = mileage
+        self.model = model
+
+    def get_engine(self):
+        return self.__engine
+
+    def set_engine(self, engine):
+        self.__engine = engine
+
+    def get_mileage(self):
+        return self._mileage
+
+    def set_mileage(self, mileage):
+        self._mileage = mileage
+```
+
+In the Car class above, we used the double underscore prefix to define a private attribute called __engine. We can only access this attribute using methods such as get_engine and set_engine, which maintain data integrity.
+
+The mileage attribute, which is protected, is defined using a single underscore prefix. It can be accessed from within the Car class and derived classes without exposing it to the outside world.
+
+The make attribute is public and can be accessed from anywhere.
+
+## Conclusion
+
+Encapsulation is a powerful concept in OOP, particularly in Python. It can be used to improve code quality, security, and maintain data integrity. Access modifiers, such as public, private, and protected, ensure that internal class state can only be modified through authorized methods, thus promoting encapsulation. OOP beginners should take the time to understand this concept and practice encapsulation within their projects.
+
+# Exercises
+
+To reinforce and help readers understand the access modifiers of encapsulation, this section includes exercises that challenge them to implement encapsulation in their own code. These exercises will cover all the access modifiers of encapsulation, such as public, private, and protected.
+
+## Exercise 1
+
+Create a Python class called `School` and define the following attributes:
+- A public attribute called `name`
+- A private attribute called `students`
+- A protected attribute called `courses`
+
+Ensure that `students` and `courses` can only be accessed within the class.
+
+## Exercise 2
+
+Create a Python class called `BankAccount` with the following attributes:
+- A private attribute called `balance`
+- A public attribute called `account_number`
+- A protected attribute called `pin`
+
+Write methods in the class to deposit and withdraw money, but ensure that the `pin` attribute can only be accessed within the class itself.
+
+## Exercise 3
+
+Create a Python class called `Animal` and define the following attributes:
+- A public attribute called `name`
+- A private attribute called `age`
+- A protected attribute called `color`
+
+Ensure that `age` and `color` can only be accessed within the class.
+
+Write methods in the class to change and print the values of these attributes.
+
+## Exercise 4
+
+Create a Python class called `Car` with the following attributes:
+- A private attribute called `model`
+- A public attribute called `make`
+- A protected attribute called `year`
+
+Write methods in the class to change and print the values of these attributes, but ensure that `model` can only be accessed within the class itself.
+
+## Exercise 5
+
+Create a Python class called `Person` and define the following attributes:
+- A public attribute called `name`
+- A private attribute called `address`
+- A protected attribute called `phone`
+
+Ensure that `address` and `phone` can only be accessed within the class.
+
+Write methods in the class to change and print the values of these attributes.
+
+## Best Practices
+
+When implementing encapsulation in your code, consider the following best practices:
+- Use public attributes for values that should be accessed and changed within and outside the class.
+- Use private attributes for values that should only be accessed and changed within the class.
+- Use protected attributes for values that should only be accessed and changed within the class and its subclasses.
+- Use accessor and mutator methods to change or retrieve the values of private and protected attributes.
+- Avoid using direct access to private attributes from outside the class.
+- Use meaningful names for your attributes and methods to improve code readability.
+
+By following these best practices, you can write clean and organized code that is easy to maintain and modify.

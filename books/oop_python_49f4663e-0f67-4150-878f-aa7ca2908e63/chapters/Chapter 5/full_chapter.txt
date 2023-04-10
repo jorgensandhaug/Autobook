@@ -1,0 +1,197 @@
+Chapter 5
+
+# Introduction to Polymorphism
+
+In object-oriented programming (OOP), polymorphism is the ability of objects to behave in different ways depending on their data type or class. It allows objects with different classes to be treated as if they were of the same class, reducing the complexity of coding and increasing the reusability of code. 
+
+At its core, polymorphism makes it possible for objects to be processed in different ways based on their class, enabling developers to design and write more flexible and dynamic code. It allows the same message or function to have different meanings or behaviors for different objects, as long as they belong to the same class or have compatible interfaces. 
+
+To understand polymorphism, let us use a real-world example. A car is a good example of polymorphism. If we think in terms of cars, we can have different types of cars, such as sedans, sports cars, and SUVs, each with its own specific attributes and behaviors. However, regardless of their types, they all share some common attributes like having four wheels, an engine, and a steering wheel. From a high-level perspective, each car is a vehicle that can be driven, stopped, or parked. These methods have different implementations based on the type of car, but the message they convey is the same.
+
+In the same way, in OOP, all objects share some common methods that are present in the base class. These methods are known as virtual functions or methods, which are designed to be overridden by the subclass. Overriding is a key concept in polymorphism, as it allows the subclass to define its implementation of an inherited method. 
+
+In practice, polymorphism is implemented in Python through method overloading and method overriding. Method overloading allows the programmer to define two or more methods with the same name in a single class, but each method accepts different parameters. Method overriding happens when a subclass provides a specific implementation of a method that is already defined in its parent class.
+
+In conclusion, polymorphism is a powerful concept in OOP that enables the creation of flexible and reusable code. It makes complex coding more manageable, reduces redundancy, and increases code legibility. The ability to design objects that behave differently based on their class or data type is an important aspect of object-oriented programming.
+
+## Method Overloading
+
+In object-oriented programming, method overloading is a way of creating multiple methods with the same name in a class. These methods have different parameters, enabling them to perform different tasks. Method overloading allows developers to write more concise and clear code since they do not have to worry about coming up with unique names for different methods that perform similar tasks. 
+
+In Python, we can overload a method by defining a method with the same name as an already existing method in the class. However, to overload a method in Python, we need to consider its parameters. The parameters must either have different types or different numbers compared to the original method.
+
+When a method is overloaded, the program will identify which method to call based on the number and types of the arguments passed to it. This process is commonly referred to as “compile-time polymorphism.” Overloaded methods can also be identified as static binding, early binding, or compile-time binding.
+
+
+### Overloaded Methods versus Default Methods
+
+Overloaded methods are different from default methods in that they have the same names but different parameters. Default methods, on the other hand, have a single name and a single set of parameters. Default methods are typically used when there's only one logical way of implementing a function. However, when there are several ways to implement a function, overloading the method is the best practice.
+
+### Example
+```python
+class Calculator:
+    def add(self, a, b):
+        """
+        adds a and b
+        """
+        return a+b
+
+    def add(self, a, b, c):
+        """
+        adds a,b,c
+        """
+        return a+b+c
+
+#creating object
+obj = Calculator()
+print(obj.add(2, 3)) # this will throw an error since it expects 3 arguments
+
+print(obj.add(2, 3, 4)) #returns 9
+
+```
+In this example, we have created two methods with the same name, “add,” with different parameters in the Calculator class. The first method has two parameters, while the second method has three parameters. When we call the first method with two arguments, it returns an error message since it expects three arguments. However, when we call the second method with three arguments, it returns the sum of those arguments.
+
+Method overloading in Python is quite crucial in programming. It makes our code more flexible, readable, and concise. It's important to note that Python does not explicitly support method overloading, but it can be implemented through functions with default arguments or variable-length arguments.
+
+# Method Overriding
+
+In object-oriented programming, **method overriding** happens when a sub-class or child class provides a specific implementation of a method already defined in its parent class or super class. The child class will have a method with the same name and signature as the parent class, and it will have a different implementation. When calling the method from an object of the child class, the parent class's method is not used; rather, the child's method is invoked.
+
+Method overriding is used to adapt the behavior of the parent class methods to fit the requirements of the child class. The child class' implementation of the method must match the method signature of the parent class. The method signature includes the method name, return type, and parameter list.
+
+In Python, method overriding is implemented by defining a method with the same name in the child class as the one defined in the parent class. Then, the method is defined with a new implementation, which replaces the implementation in the parent class. 
+
+``` python
+class Parent:
+    def display(self):
+        print("This is the parent class")
+        
+class Child(Parent):
+    def display(self):
+        print("This is the child class")
+```
+
+Here, we define two classes, Parent and Child. The Child class is inheriting from the Parent class. We define a method `display` in both classes. 
+
+When we create an object of the Child class and call the method `display()` on it, the method from the Child class will be invoked. 
+
+```python
+p = Parent()
+p.display()  # Output: This is the parent class
+
+c = Child()
+c.display()  # Output: This is the child class
+```
+
+Notice, that calling the `display()` method on an object of the Parent class calls the implementation defined in the Parent class, while calling it on an object of the Child class calls the implementation defined in the Child class. This is an example of polymorphism.
+
+When a method is overridden, the child class can choose to invoke the parent class's implementation of the method using the `super()` function. 
+
+```python
+class Child(Parent):
+    def display(self):
+        super().display()
+        print("This is the child class")
+```
+
+Here, calling the `display()` method from an object of the Child class will first call the implementation of the method from the parent class using `super().display()`. It will then call the implementation of the Child class, which will print "This is the child class".
+
+In conclusion, method overriding is the process of defining a method with the same name and signature as one that is defined in the parent class, but with a different implementation. It allows the behavior of the parent class methods to be tailored to meet the requirements of the child class. Overridden methods are called on objects of the child class, and the default methods are called on objects of the parent class.
+
+# Real-world examples
+
+In this sub-chapter, we will demonstrate the use of polymorphism in Python with real-world examples. Polymorphism is a fundamental concept in Object Oriented Programming (OOP), which refers to the ability of objects to take on many forms. Polymorphism allows us to treat different objects in the same way, making code more flexible and reusable.
+
+## Example 1: Shapes
+
+Let's consider a simple example of shapes. We can define a class `Shape` that has a method `area()` to calculate the area of the shape. We can then define different shapes as subclasses of `Shape` and override the `area()` method to calculate the area of each shape.
+
+```python
+class Shape:
+    def area(self):
+        pass
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    def area(self):
+        return self.width * self.height
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+    def area(self):
+        return 3.14 * (self.radius ** 2)
+```
+
+Now we can define different shapes and calculate their areas:
+
+```python
+shapes = [Rectangle(2, 3), Circle(5)]
+for shape in shapes:
+    print(shape.area())
+```
+
+This code will output:
+
+```
+6
+78.5
+```
+
+In this example, we demonstrate polymorphism by treating different shapes as objects of the same class `Shape` and calling the `area()` method on each of them. The `area()` method is overridden in the subclasses to calculate the area of each shape.
+
+## Example 2: Animal sounds
+
+Let's consider another example of animal sounds. We can define a class `Animal` that has a method `sound()` to make the sound of the animal. We can then define different animals as subclasses of `Animal` and override the `sound()` method to make the sound of each animal.
+
+```python
+class Animal:
+    def sound(self):
+        pass
+
+class Cat(Animal):
+    def sound(self):
+        return "Meow"
+
+class Dog(Animal):
+    def sound(self):
+        return "Woof"
+```
+
+Now we can define different animals and make their sounds:
+
+```python
+animals = [Cat(), Dog()]
+for animal in animals:
+    print(animal.sound())
+```
+
+This code will output:
+
+```
+Meow
+Woof
+```
+
+In this example, we demonstrate polymorphism by treating different animals as objects of the same class `Animal` and calling the `sound()` method on each of them. The `sound()` method is overridden in the subclasses to make the sound of each animal.
+
+By using polymorphism, we can write more flexible and reusable code that can work with different objects in the same way. This makes our code more maintainable and easier to extend.
+
+# Conclusion and Exercises
+
+In this chapter, we have learned about polymorphism in Python – a key concept of Object-Oriented Programming (OOP). Polymorphism allows multiple objects to share the same interface while having different implementations. This makes the code more flexible and scalable, and results in code that is easier to modify, maintain and understand.
+
+We learned two ways to achieve polymorphism in Python: method overloading and method overriding. Method overloading is when multiple functions have the same name but different parameters, whereas method overriding is when a subclass provides a different implementation of a method that is already defined in the superclass.
+
+To summarize, polymorphism is a vital concept in OOP, and Python allows it through method overloading and method overriding. We learned that creating a good class hierarchy, understanding the difference between the two types of polymorphism, and using well-written functions are important for creating good polymorphic code.
+
+## Exercises
+
+1. Write a program that demonstrates method overloading using the same class with different parameters. 
+2. Create a subclass of a class and implement a method. Then, override the method in the subclass, and call the method using an instance of the subclass. 
+3. Write a program that demonstrates polymorphism using a class hierarchy, where the same method name is used in multiple classes with different logic. 
+4. Implement a function that can accept any object, and print its attributes and methods. 
+
+These exercises aim to reinforce the concepts learned in this chapter and help you practice your programming skills. Complete the exercises to solidify your understanding of polymorphism and Python OOP.

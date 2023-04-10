@@ -1,0 +1,38 @@
+## Method Overloading
+
+In object-oriented programming, method overloading is a way of creating multiple methods with the same name in a class. These methods have different parameters, enabling them to perform different tasks. Method overloading allows developers to write more concise and clear code since they do not have to worry about coming up with unique names for different methods that perform similar tasks. 
+
+In Python, we can overload a method by defining a method with the same name as an already existing method in the class. However, to overload a method in Python, we need to consider its parameters. The parameters must either have different types or different numbers compared to the original method.
+
+When a method is overloaded, the program will identify which method to call based on the number and types of the arguments passed to it. This process is commonly referred to as “compile-time polymorphism.” Overloaded methods can also be identified as static binding, early binding, or compile-time binding.
+
+
+### Overloaded Methods versus Default Methods
+
+Overloaded methods are different from default methods in that they have the same names but different parameters. Default methods, on the other hand, have a single name and a single set of parameters. Default methods are typically used when there's only one logical way of implementing a function. However, when there are several ways to implement a function, overloading the method is the best practice.
+
+### Example
+```python
+class Calculator:
+    def add(self, a, b):
+        """
+        adds a and b
+        """
+        return a+b
+
+    def add(self, a, b, c):
+        """
+        adds a,b,c
+        """
+        return a+b+c
+
+#creating object
+obj = Calculator()
+print(obj.add(2, 3)) # this will throw an error since it expects 3 arguments
+
+print(obj.add(2, 3, 4)) #returns 9
+
+```
+In this example, we have created two methods with the same name, “add,” with different parameters in the Calculator class. The first method has two parameters, while the second method has three parameters. When we call the first method with two arguments, it returns an error message since it expects three arguments. However, when we call the second method with three arguments, it returns the sum of those arguments.
+
+Method overloading in Python is quite crucial in programming. It makes our code more flexible, readable, and concise. It's important to note that Python does not explicitly support method overloading, but it can be implemented through functions with default arguments or variable-length arguments.

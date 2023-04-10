@@ -1,0 +1,222 @@
+Chapter 2: Classes and Objects
+
+# Introduction to classes and objects
+
+In Python, a class is a blueprint for creating objects that share similar properties and functionalities. An object is an instance of a class. In simpler terms, a class defines a set of attributes that characterize any object created from that class, and the object is an instance of that class that possesses these attributes.
+
+Python is an object-oriented programming (OOP) language, and therefore, everything in Python is an object. It means that every data type, including integers, floating-point numbers, strings, and even functions, are objects. In Python, everything is an object, which can be manipulated and used like any other object.
+
+There are several advantages of using classes and objects in Python. With classes and objects, you can encapsulate data and methods into one entity, making code more organized and easier to maintain. Classes and objects also provide the ability to create reusable code through inheritance.
+
+Variables in Python classes are called attributes or properties. There are two types of attributes: instance attributes and class attributes. An instance attribute belongs to an instance of a class and can be unique for each instance. A class attribute, on the other hand, belongs to the class and is shared by all instances of the class.
+
+In the next sub-chapters, we will see how to create classes and objects in Python and how to define attributes and methods for a class. We will also learn about constructors and how to use them to initialize objects. By the end of this chapter, you will have a basic understanding of classes and objects in Python and will be able to create a class, define attributes and methods, and create objects.
+
+# Creating Classes
+
+In Python, classes can be created using the "class" keyword, followed by the name of the class. Class names in python should always start with an uppercase letter. A class can have any number of attributes (also known as variables) and methods (functions defined in a class). Every method in a class should take at least one parameter, which is often called "self" by convention.
+
+Here's a simple example of a class in Python:
+
+```python
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def get_make(self):
+        return self.make
+
+    def get_model(self):
+        return self.model
+
+    def get_year(self):
+        return self.year
+```
+
+In this example, we created a class called "Car". It has three attributes - "make", "model", and "year" - which are initialized using a constructor (the `__init__` method). The constructor takes three parameters ("make", "model", and "year") and assigns them to the corresponding attributes.
+
+The class also has three methods - "get_make", "get_model", and "get_year" - which return the values of the "make", "model", and "year" attributes, respectively.
+
+Note that every method in a class takes "self" as its first parameter. This is a reference to the instance of the class that the method is being called on. It allows methods to access the attributes of an instance and perform operations on those attributes.
+
+To create an instance of a class, we use the class name followed by parentheses:
+
+```python
+my_car = Car("Toyota", "Corolla", 2021)
+```
+
+In this example, we created an instance of the "Car" class called "my_car". We passed three arguments to the constructor to initialize the "make", "model", and "year" attributes of the instance.
+
+We can access the attributes of the instance using the dot notation:
+
+```python
+print(my_car.make)    # "Toyota"
+print(my_car.model)   # "Corolla"
+print(my_car.year)    # 2021
+```
+
+We can also call the methods of the instance using the same dot notation:
+
+```python
+print(my_car.get_make())     # "Toyota"
+print(my_car.get_model())    # "Corolla"
+print(my_car.get_year())     # 2021
+```
+
+And that's it! We have created a class with attributes and methods, and created an instance of the class to access those attributes and methods. In the next sub-chapter, we will delve into methods in more detail.
+
+## Constructors and initializing objects
+
+In Python, a constructor is a special method that is called when an object is created from a class. It is primarily used to initialize the values of instance variables of the class. Constructors have the same name as the class and are defined using the `__init__()` method. It is important to note that the `__init__()` method is not a regular method, even though it looks similar to one.
+
+### Classes and Objects
+
+Before delving into constructors, it is necessary to revisit the concept of classes and objects. Classes are used to define a blueprint for creating objects, which are instances of the class. Class instances are created by calling the class like a function, which returns a new instance of the class. 
+
+For instance, consider the following example where we define a class named `Person`. The class has two instance variables, `name` and `age`, and a method `introduce()` that prints the name and age of the person:
+
+```
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def introduce(self):
+        print(f"My name is {self.name} and I am {self.age} years old.")
+```
+
+Then, we can create a new instance of this class like this:
+
+```
+p = Person("Alice", 25)
+```
+
+Here, the `__init__()` method is called with the parameters `"Alice"` and `25`, which initialize the instance variables `name` and `age`. We can then call the `introduce()` method on the `p` object to print the name and age of the person:
+
+```
+p.introduce()
+```
+
+This will output: `My name is Alice and I am 25 years old.`
+
+### Constructors vs Methods
+
+The `__init__()` method is not the same as a regular method in a class. While methods are called using the instance of the class, constructors are called automatically when an instance is created. Also, constructors do not explicitly return anything, unlike regular methods that may return values.
+
+### Best Practices for initializing objects
+
+When initializing objects, it is essential to follow best practices to ensure your code is maintainable and easy to read. Here are some tips to keep in mind:
+
+1. Add documentation to your constructor to clarify what it does and which parameters it expects.
+2. Initialize instance variables with default values to avoid errors when they are not set.
+3. Use descriptive variable names in the constructor to improve readability of code. 
+4. Do not perform complex or time-consuming processing in the constructor. Doing so can slow down object creation.
+
+### Conclusion
+
+Constructors are a vital aspect of object-oriented programming, allowing us to initialize object instances of a class automatically. In Python, `__init__()` method acts as a constructor method, which initializes instance variables. It is important to understand the distinction between constructors and methods, and to use best practices when utilizing them in your code.
+
+## Different Types of Variables in Classes
+
+Variables in classes are used to store data that is specific to each instance of a class. There are different types of variables in Python, and each has its own scope and can be accessed and modified in different ways. In this sub-chapter, we will explore the three types of variables that can be used in classes: instance variables, class variables, and local variables. 
+
+### Instance Variables
+
+Instance variables represent data that is specific to each instance of a class. They are defined within the class but outside any method. 
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+```
+
+In the example above, `name` and `age` are instance variables. They are created when an object of the class `Person` is instantiated, and their values are specific to that object. Accessing and modifying instance variables is done using the `self` keyword.
+
+```python
+person1 = Person("John", 25)
+person2 = Person("Jane", 30)
+
+print(person1.name)  # John
+person1.age = 26
+print(person1.age)  # 26
+
+print(person2.name)  # Jane
+print(person2.age)  # 30
+```
+
+### Class Variables
+
+Class variables are shared among all instances of a class. They are defined within the class but outside any method, and are accessed using the class name.
+
+```python
+class Person:
+    count = 0
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Person.count += 1
+```
+
+In the example above, `count` is a class variable that keeps track of the number of `Person` objects that have been created. It is incremented each time a new object is created. Accessing and modifying class variables is done using the class name.
+
+```python
+person1 = Person("John", 25)
+person2 = Person("Jane", 30)
+
+print(Person.count)  # 2
+```
+
+### Local Variables
+
+Local variables are defined within a method and are only accessible within that method. 
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def display(self):
+        message = "My name is " + self.name  # local variable
+        print(message)
+
+person = Person("John", 25)
+person.display()  # My name is John
+```
+
+In the example above, `message` is a local variable that is defined within the `display` method. It is only accessible within that method and cannot be accessed or modified from outside the method. 
+
+### Best Practices
+
+When using variables in classes, it is important to follow some best practices to ensure that code is easy to understand and maintain.
+
+1. Use instance variables for data that is specific to each object, and class variables for data that is shared among all objects.
+2. Always initialize variables in the `__init__` method, using default values if necessary.
+3. Use meaningful variable names that describe the data they store.
+4. Avoid using global variables within a class, as they can cause confusion and make code difficult to read.
+5. Comment your code to explain the purpose and use of variables.
+6. Use getter and setter methods to modify instance variables, rather than modifying them directly.
+
+By following these best practices, you can ensure that your code is easy to understand and maintain, making it more efficient in the long run. 
+
+In conclusion, understanding the different types of variables in classes is crucial when writing object-oriented code in Python. Instance variables store data specific to each object, class variables are shared among all objects, and local variables are defined within a method. By following best practices, you can write efficient, readable code using variables in your classes.
+
+## Review exercises
+
+This sub-chapter presents a set of exercises to test the reader's understanding of the material covered in Chapter 2.
+
+1. Write a Python class named Circle that takes the radius as an input and computes the area and circumference of the circle using the following formulae: `area = pi * radius^2` and `circumference = 2 * pi * radius`. The value of pi should be stored as a constant in the class.
+
+2. Create a Python class called Rectangle that takes the length and width as input and computes the area and perimeter of the rectangle using the following formulae: `area = length * width` and `perimeter = 2 * (length + width)`.
+
+3. Add a method to the Circle class called `is_point_inside(x, y)` that takes the x and y coordinates of a point as input and returns True if the point is inside the circle and False otherwise.
+
+4. Create a subclass of the Rectangle class called Square that takes a single input, the length of one side, and overrides the methods to compute the area and perimeter of a square.
+
+5. Write a Python program that creates an instance of the Circle class and an instance of the Square class. Compute and print the area and perimeter of both shapes. Test the `is_point_inside` method of the Circle class with various x, y coordinates to see if it properly detects whether points are inside or outside the circle.
+
+By completing these exercises, you will have demonstrated an understanding of how to create classes and objects using Python, as well as how to create and use different methods with them. Additionally, you will have learned how to work with inheritance, subclassing, and overriding methods. Congratulations on finishing Chapter 2!

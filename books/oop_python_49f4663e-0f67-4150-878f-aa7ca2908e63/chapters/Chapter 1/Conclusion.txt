@@ -1,0 +1,11 @@
+## Conclusion
+
+In this chapter, we have covered the basic concepts of Object Oriented Programming (OOP) in Python, including inheritance, encapsulation, polymorphism, and abstraction. We have seen how these concepts can be used to write better organized and more efficient code that is easier to maintain and modify.
+
+It is important to note that this chapter only provided a brief overview of these concepts, and they will be covered in more detail in later chapters. If you are new to OOP, it is recommended that you continue learning about these concepts to fully understand their potential and how they can be applied in your programming projects.
+
+As with any new skill, practice is essential to reinforce the concepts learned. It is encouraged to continue practicing OOP principles to gain a better understanding of how they work and their practical applications. The real-world examples provided in this chapter should help you come up with your own ideas on how to apply OOP in your projects.
+
+Remember that OOP is a powerful tool for writing better and more efficient code, but it does require a different way of thinking about programming. Don't get discouraged if it takes time to fully grasp these concepts; with practice and patience, you will become a proficient OOP programmer.
+
+In the next chapter, we will dive deeper into classes and objects in Python, discussing their attributes, methods, and constructors.

@@ -1,0 +1,88 @@
+# Introduction to inheritance in OOP
+
+In Object-Oriented Programming (OOP), inheritance is a key concept that allows programmers to create new classes from existing ones, promoting code reusability and reducing redundancy. Inheritance defines a relationship between two classes: a parent class and a child class. The child class "inherits" all the attributes and behaviors of the parent class and can add new features or override existing ones.
+
+## Defining inheritance
+
+Inheritance is a way to create new classes based on existing ones. The existing class is called the "parent" or "superclass", and the new class is called the "child" or "subclass". The child class inherits all public and protected attributes and methods (functions) of the parent class, and can add or modify its own attributes and methods.
+
+Inheritance is represented in Python by putting the name of the parent class inside parentheses when defining the child class. For example, let's say we have a parent class called Animal:
+
+```python
+class Animal:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def speak(self):
+        print("Hello, I am an animal")
+```
+
+We can create a child class called Dog that inherits from Animal:
+
+```python
+class Dog(Animal):
+    pass
+```
+
+Here, we have created a new class called Dog that inherits from the Animal class. The Dog class definition is empty because it does not add any new attributes or methods. However, it already has access to the `__init__` method and the `speak` method defined in the parent Animal class.
+
+## Relationship between parent and child classes
+
+The parent class is also known as the superclass because it is "above" the child class in the inheritance hierarchy. The child class, in turn, is also known as the subclass because it is "below" the parent class.
+
+In programming, this relationship is known as an is-a relationship. For example, a Dog is an Animal, a Bicycle is a Vehicle, and a Circle is a Shape. This means that the child class inherits all the characteristics of the parent class, and can also be treated as an instance of the parent class.
+
+In Python, we can use the `issubclass()` function to check if a class is a subclass of another class:
+
+```python
+>>> class Vehicle:
+...     pass
+...
+>>> class Bicycle(Vehicle):
+...     pass
+...
+>>> issubclass(Bicycle, Vehicle)
+True
+```
+
+Here, we have created a Bicycle class that inherits from the Vehicle class. We can use `issubclass()` to check if Bicycle is a subclass of Vehicle, which returns `True`.
+
+## Subclasses and superclasses
+
+A subclass is a class that inherits from another class. All the attributes and methods of the superclass are automatically available to the subclass. The subclass can then add new attributes and methods or override existing ones.
+
+A superclass is a class that is inherited by other classes. It provides the basic functionality and attributes that can be reused by its subclasses. Superclasses are also known as base classes or parent classes.
+
+Inheritance creates a hierarchy of classes, with the parent-children relationship forming a tree-like structure. The parent class is at the top of the tree, and the child classes are at the bottom. The classes at any level of the hierarchy are related to each other by inheritance.
+
+## Inheritance for code reusability
+
+Inheritance is a powerful tool for code reusability. It reduces the amount of code duplication by allowing classes to inherit the attributes and methods of other classes. If we have several classes with similar attributes and behavior, we can create a common superclass and let the other classes inherit from it.
+
+For example, let's say we want to create a class hierarchy for different types of vehicles. All vehicles have some common attributes such as speed, weight, and capacity. We can create a Vehicle class with these attributes and make different subclasses that inherit from it:
+
+```python
+class Vehicle:
+    def __init__(self, speed, weight, capacity):
+        self.speed = speed
+        self.weight = weight
+        self.capacity = capacity
+
+class Car(Vehicle):
+    def __init__(self, make, model, speed, weight, capacity):
+        super().__init__(speed, weight, capacity)
+        self.make = make
+        self.model = model
+
+class Bicycle(Vehicle):
+    def __init__(self, type, speed, weight, capacity):
+        super().__init__(speed, weight, capacity)
+        self.type = type
+```
+
+Here, we have created a Vehicle class with attributes for speed, weight, and capacity. We then created two subclasses called Car and Bicycle. Car adds new attributes for make and model, and Bicycle adds a new attribute for type. By using inheritance, we can reuse the attributes and methods of the Vehicle class in the Car and Bicycle classes, reducing the amount of code we need to write.
+
+Furthermore, if we need to change or add something to the Vehicle class, we only need to do it once, and all its subclasses will inherit the change automatically. This makes our code easier to maintain, as we only need to make changes in one place.
+
+In conclusion, inheritance is a fundamental concept in Object-Oriented Programming that promotes code reusability and reduces redundancy. By defining a parent-child relationship between classes, we can create new classes from existing ones, allowing us to reuse and build upon previously defined attributes and methods.

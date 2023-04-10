@@ -1,0 +1,35 @@
+{
+  "chapter_title": "Chapter 2: Classes and Objects",
+  "sub_chapters": [
+    {
+      "title": "Introduction to classes and objects",
+      "outline": "This sub-chapter will introduce the concept of classes and objects in Python. It will define what classes are and how they relate to objects. This sub-chapter will also provide an overview of the different types of variables that can be used in classes.",
+      "instructions": "This sub-chapter should briefly and clearly define what classes and objects are and how they relate to each other in Python. The focus should be on providing a basic understanding of classes and objects to the reader. This sub-chapter should not go into great detail about how classes can be created, as that will be covered in later sub-chapters. The length of this sub-chapter should be around 3 pages.",
+      "index": 1
+    },
+    {
+      "title": "Creating classes",
+      "outline": "This sub-chapter will explain how to create classes in Python. It will cover the syntax and anatomy of class creation, including how to define methods and variables within a class.",
+      "instructions": "This sub-chapter should provide clear, step-by-step instructions on how to create classes in Python. All the concepts presented should be illustrated with code examples that are easy to follow and well-commented. However, as this sub-chapter focuses on creating classes, we should not go into detail about how to use constructors to initialize objects or how different types of variables work. It should be around 5 pages long.",
+      "index": 2
+    },
+    {
+      "title": "Constructors and initializing objects",
+      "outline": "This sub-chapter will cover how to use constructors to initialize objects from classes. It will explain the difference between constructors and methods and how constructors are used in Python to initialize objects. This sub-chapter will also cover some best practices when initializing objects.",
+      "instructions": "This sub-chapter should provide a thorough explanation of how constructors are used in Python to initialize objects. It should clearly define what constructors are and how they differ from methods. This sub-chapter should be well-commented with code examples that are easy to follow. This sub-chapter should not go into detail about how to create classes, as that was covered in the previous sub-chapter. The length of this sub-chapter should be around 5 pages.",
+      "index": 3
+    },
+    {
+      "title": "Different types of variables in classes",
+      "outline": "This sub-chapter will explain the different types of variables that can be used in classes. It will cover instance variables, class variables, and local variables within a class. This sub-chapter will also provide some best practices when using different types of variables in classes.",
+      "instructions": "This sub-chapter should clearly define the different types of variables that can be used in classes and their respective scopes. All the concepts presented should be illustrated with code examples that are easy to follow and well-commented. This sub-chapter should not go into detail about how to create classes but should refer back to the previous sub-chapter. The length of this sub-chapter should be around 5 pages.",
+      "index": 4
+    },
+    {
+      "title": "Review exercises",
+      "outline": "This sub-chapter will present a set of exercises to test the reader's understanding of the material covered in this chapter.",
+      "instructions": "This sub-chapter should provide a set of exercises that test the reader's understanding of the material presented in this chapter. The exercises should be clearly stated and have concise and clean requirements. The exercises should relate directly to the content of this chapter. The length of this sub-chapter should be around 2 pages.",
+      "index": 5
+    }
+  ]
+}

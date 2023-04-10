@@ -1,0 +1,582 @@
+Chapter 5: Advanced OOP Concepts
+
+# Sub-chapter 1: Class Decorators
+
+In Python, decorators are a powerful feature that allows the modification of a function, method, or class without actually changing its source code. In this sub-chapter, we will focus on class decorators and how they can be used to improve the behavior and functionality of a class.
+
+## Introducing Class Decorators
+
+A class decorator is a function that takes a class as its argument and wraps it in another class. The resulting wrapped class is returned by the decorator function, which can then be used to instantiate objects. By modifying the class definition, it can add new attributes, modify existing ones, or even completely replace a class's behavior.
+
+Class decorators are applied to the class definition by placing them above the class definition, as shown in the code below.
+
+```
+@decorator_function
+class MyClass:
+    pass
+```
+
+## Practical Examples
+
+Let us take a look at some practical examples of using class decorators to better understand how they work.
+
+### Example 1: Adding a Property
+
+One of the most common uses of class decorators is to add new properties or attributes to a class, without having to modify the class definition. This can be useful when working with legacy code, where changing the class definition is not an option.
+
+```
+def add_property(cls):
+    cls.new_property = 123
+    return cls
+
+@add_property
+class MyClass:
+    pass
+
+obj = MyClass()
+print(obj.new_property) # Output: 123
+```
+
+### Example 2: Logging
+
+Class decorators can be used to log class method calls. This can be useful for debugging or for keeping track of how a class is being used.
+
+```
+def log_methods(cls):
+    for key, value in vars(cls).items():
+        if callable(value) and not key.startswith('__'):
+            setattr(cls, key, log(value))
+    return cls
+
+def log(func):
+    def wrapper(*args, **kwargs):
+        print(f"Calling method {func.__name__}")
+        return func(*args, **kwargs)
+    return wrapper
+
+@log_methods
+class MyClass:
+    def method1(self):
+        pass
+    def method2(self):
+        pass
+
+obj = MyClass()
+obj.method1()
+obj.method2()
+```
+
+Output:
+```
+Calling method method1
+Calling method method2
+```
+
+### Example 3: Adding a Meta Class
+
+Class decorators can also be used to add a metaclass to a class. A metaclass is the class of a class and provides additional functionality to a class. For example, a metaclass can add new methods or properties to a class.
+
+```
+def add_meta(cls):
+    class NewMeta(type):
+        def new_method(self):
+            print("Calling new method")
+    cls = NewMeta(cls.__name__, cls.__bases__, dict(cls.__dict__))
+    return cls
+
+@add_meta
+class MyClass:
+    def method1(self):
+        pass
+
+obj = MyClass()
+obj.new_method()
+```
+
+Output:
+```
+Calling new method
+```
+
+## Conclusion
+
+Class decorators are a powerful tool that can be used to modify class definitions without altering their source code. They allow for the addition of new attributes or methods, logging, and even adding a metaclass to a class. By using decorators, we can make our code more flexible and reusable.
+
+# Sub-chapter 2: Static and Class Methods
+
+Static and class methods are essential for creating more readable and maintainable code in Python. They allow for abstraction, encapsulation, and polymorphism, which are all necessary components of object-oriented programming (OOP). In this sub-chapter, we will cover the usage of static and class methods in Python, including their distinction and how to use them to improve the code structure.
+
+## Understanding Static and Class Methods
+
+Static methods are methods that belong to a class rather than an instance of that class. They do not require an instance to be created and can be called directly on the class itself. In contrast, class methods are methods that belong to a class, but they are aware of the class itself and operate on it instead of individual instances of the class.
+
+### Static Methods
+
+Static methods are denoted with the `@staticmethod` decorator and take no parameters referencing `self`. They are commonly used to define utility functions that are related to the class but do not depend on an instance of that class. For example, a static method might be used to calculate the distance between two points on a Cartesian plane, where the points are represented by an (x, y) tuple.
+
+```python
+class MyClass:
+    @staticmethod
+    def cartesian_to_polar(x, y):
+        """Convert cartesian coordinates to polar coordinates."""
+        return (math.sqrt(x ** 2 + y ** 2), math.atan2(y, x))
+```
+
+To call this static method, we do not need to create an instance of the class:
+
+```python
+>>> MyClass.cartesian_to_polar(3, 4)
+(5.0, 0.93)
+```
+
+### Class Methods
+
+Class methods are denoted with the `@classmethod` decorator and take a first parameter that references the class itself, conventionally named `cls`. They are commonly used to define alternative constructors or to manipulate the class in some way. For example, a class method might be used to count the number of instances of the class that have been created.
+
+```python
+class MyClass:
+    count = 0
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        MyClass.count += 1
+
+    @classmethod
+    def from_cartesian(cls, x, y):
+        """Create a new instance from cartesian coordinates."""
+        return cls(x, y)
+
+    @classmethod
+    def get_count(cls):
+        """Get the number of instances that have been created."""
+        return cls.count
+```
+
+To call this class method, we use the class name rather than the instance name:
+
+```python
+>>> p = MyClass.from_cartesian(3, 4)
+>>> MyClass.get_count()
+1
+```
+
+## Practical Examples
+
+### Example 1: Formatting Dates
+
+We can use static methods to format dates in different ways. A common use case is to format a date string into a more readable format, such as "DD-MM-YYYY" or "YYYY-MM-DD".
+
+```python
+class Date:
+    months = {'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 
+              'jun': 6, 'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 
+              'nov': 11, 'dec': 12}
+
+    def __init__(self, day, month, year):
+        self.day = day
+        self.month = month
+        self.year = year
+
+    @staticmethod
+    def format_date(date_string, format):
+        day, month_name, year = date_string.split('-')
+        month = Date.months[month_name.lower()]
+        if format == 'DD-MM-YYYY':
+            return f"{day}-{month:02d}-{year}"
+        elif format == 'YYYY-MM-DD':
+            return f"{year}-{month:02d}-{day}"
+```
+
+We can then call this static method on the `Date` class to format a date string:
+
+```python
+>>> Date.format_date('16-Jul-2022', 'DD-MM-YYYY')
+'16-07-2022'
+>>> Date.format_date('16-Jul-2022', 'YYYY-MM-DD')
+'2022-07-16'
+```
+
+### Example 2: Counting Instances
+
+We can use class methods to count the number of instances of a class that have been created. This is a useful way to keep track of the usage of our classes.
+
+```python
+class Person:
+    count = 0
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Person.count += 1
+
+    @classmethod
+    def get_count(cls):
+        return cls.count
+```
+
+We can then create multiple instances of this class and call the class method to get the count:
+
+```python
+>>> alice = Person('Alice', 25)
+>>> bob = Person('Bob', 30)
+>>> charlie = Person('Charlie', 35)
+>>> Person.get_count()
+3
+```
+
+## Conclusion
+
+In this sub-chapter, we have covered the distinction between static and class methods in Python and how to use them to improve the code structure. Static methods do not require an instance of the class and are commonly used to define utility functions. Class methods are aware of the class itself and are commonly used to define alternative constructors or manipulate the class in some way. Through practical examples, we have seen how these methods can be used to format dates and count instances of a class. It is important to use these methods appropriately to create more readable and maintainable code.
+
+# Sub-chapter 3: Properties
+
+In this sub-chapter, we'll introduce the use of properties in Python. Properties are a way to define attributes of a class that can be accessed and manipulated like regular attributes, but with additional benefits. Properties can be used to improve the API interface of classes, making them more user-friendly.
+
+## Introduction to Properties
+
+In Python, properties are a way of adding attribute accessors to a class, which are called getters and setters. These are methods that allow you to read and write the values of an attribute of an instance of the class. You can use properties to define a getter or a setter for an attribute, or both. This is done using the `@property` decorator for the getter and the `@<attribute>.setter` decorator for the setter.
+
+### Properties as Getter and Setter Methods
+
+Let's look at an example of how this works. Say we have a class called `Person` that has two attributes, `first_name` and `last_name`:
+
+```python
+class Person:
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+```
+
+With this implementation, we can create an instance of the `Person` class, set the `first_name` and `last_name` attributes, and access them like this:
+
+```python
+person = Person('John', 'Doe')
+print(person.first_name)  # Output: John
+print(person.last_name)  # Output: Doe
+```
+
+This works fine, but what if we want to validate the values of these attributes? For example, we might want to make sure that the `first_name` attribute is always a string with a length of at least two characters. We could add validation to the `__init__` method, but that would only happen when the object is created. What if we want to change the values of these attributes later on? 
+
+This is where properties come in handy. We can use properties to add a layer of validation to the `first_name` and `last_name` attributes that gets called every time we try to read or write them. Here's the updated implementation:
+
+```python
+class Person:
+    def __init__(self, first_name, last_name):
+        self._first_name = first_name
+        self._last_name = last_name
+
+    @property
+    def first_name(self):
+        return self._first_name
+
+    @first_name.setter
+    def first_name(self, value):
+        if not isinstance(value, str) or len(value) < 2:
+            raise ValueError("First name must be a string with at least two characters")
+        self._first_name = value
+
+    @property
+    def last_name(self):
+        return self._last_name
+
+    @last_name.setter
+    def last_name(self, value):
+        if not isinstance(value, str) or len(value) < 2:
+            raise ValueError("Last name must be a string with at least two characters")
+        self._last_name = value
+```
+
+With this implementation, we've added two properties, `first_name` and `last_name`, that have getters and setters that validate the input. Now, if we try to create an instance of `Person` with a `first_name` that is not a string, or is a string with less than two characters, we'll get a `ValueError`.
+
+```python
+person = Person('J', 'Doe')  # Raises ValueError
+```
+
+## Improving API interface with Properties
+
+One of the main benefits of using properties is that they help us make our classes more user-friendly by hiding implementation details behind a simple API interface. This makes it easier for other developers to use our classes without having to know how they work under the hood.
+
+For example, let's say we have a class called `Temperature` that represents a temperature in Celsius:
+
+```python
+class Temperature:
+    def __init__(self, celsius):
+        self.celsius = celsius
+```
+
+The problem with this implementation is that it exposes the underlying implementation detail (that the temperature is stored in Celsius) to the user of the class. If we later decide to change the implementation to store the temperature in Fahrenheit, we would have to change every place that uses the `celsius` attribute.
+
+We can use a property to fix this issue by creating a read-only attribute that converts the temperature to Fahrenheit on-the-fly when it is accessed:
+
+```python
+class Temperature:
+    def __init__(self, celsius):
+        self._celsius = celsius
+
+    @property
+    def fahrenheit(self):
+        return self._celsius * 9 / 5 + 32
+```
+
+Now, if we create an instance of `Temperature` with a Celsius value of 20, we can access the Fahrenheit value like this:
+
+```python
+temp = Temperature(20)
+print(temp.fahrenheit)  # Output: 68.0
+```
+
+This implementation is much more user-friendly because it hides the implementation detail of the temperature being stored in Celsius.
+
+## Conclusion
+
+In this sub-chapter, we introduced the use of properties in Python to improve the usability of classes. We showed how properties can be used to create attribute accessors that validate input and hide implementation details from the user of the class. We also provided practical examples of how properties can be used to make our classes more user-friendly. Properties are a powerful tool in Python that can help us write better, more maintainable code.
+
+# Sub-chapter 4: Composition
+
+In Python, composition is an OOP concept that is used as an alternative to inheritance. Composition is a way of creating complex objects by combining simpler ones. It is achieved by including an instance of a class as a member of another class to reuse code.
+
+## What is Composition?
+
+Composition is used to create an object that is made up of other objects. In essence, it is a way of creating a new class by taking functionality from already defined classes. By doing so, we avoid the disadvantages of inheritance and improve code structure. 
+
+To use composition, we can define a new class that takes instances of other classes as arguments in its constructor. Once we have access to these instances, we can reuse methods and attributes from those classes to create more complex functionality.
+
+For instance, let's say we have two classes `Engine` and `Wheels`. Instead of creating a `Car` class by inheriting `Engine` and `Wheels`, we can use composition to create a `Car` class that takes instances of `Engine` and `Wheels`.
+
+```python
+class Engine:
+    def start(self):
+        pass
+
+class Wheels:
+    def rotate(self):
+        pass
+
+class Car:
+    def __init__(self, engine, wheels):
+        self.engine = engine
+        self.wheels = wheels
+    def start(self):
+        self.engine.start()
+    def drive(self):
+        self.wheels.rotate()
+```
+The `Car` class uses instances of the `Engine` and `Wheels` class to implement its own methods `start()` and `drive()`. 
+
+## How and When to Use Composition?
+
+Composition is a powerful technique that allows us to reuse code and make our classes more flexible. It is especially useful when we need to create complex objects that require a combination of existing classes. 
+
+When designing classes, we should always consider composition as an alternative to inheritance. Inheritance can lead to a complex class hierarchy that is difficult to manage, especially as programs become larger and more complex. Composition, on the other hand, allows us to create simple, loosely coupled classes that are easier to extend and modify.
+
+We should also use composition when we need to add new functionality to an existing class. This way, we can avoid modifying the original class and instead create a new class that includes the old one. 
+
+## Advantages of Composition 
+
+Composition has several advantages over inheritance. 
+
+Firstly, composition allows for greater code reuse. Instead of inheriting from a class and all of its methods, we can pick and choose only those methods we need, making our code more modular and readable.
+
+Secondly, composition allows for better flexibility. We can add or remove functionality by modifying the objects that make up our classes, rather than the classes themselves. This makes our code less brittle and less prone to errors.
+
+Finally, composition is less prone to the problems associated with multiple inheritance. Multiple inheritance can lead to complex hierarchies and conflicts between inherited methods. Composition is a simpler and more flexible alternative.
+
+## Examples
+
+To illustrate the concept of composition, let's look at some examples.
+
+### Example 1: HTML Generator
+
+Suppose we want to create an HTML generator that can create HTML code for different elements, such as headings, paragraphs, and images. Instead of creating a separate class for each of these elements, we can use composition to create them dynamically.
+
+```python
+class Element:
+    def __init__(self, tag, content = "", **kwargs):
+        self.tag = tag
+        self.content = content
+        self.attributes = kwargs
+    
+    def __str__(self):
+        attributes = ''.join(f'{attr}="{value}" ' for attr, value in self.attributes.items())
+        return f'<{self.tag} {attributes}>{self.content}</{self.tag}>'
+    
+class Heading:
+    def __init__(self, level, content):
+        self.level = level
+        self.content = content
+        
+    def __str__(self):
+        return f'<h{self.level}>{self.content}</h{self.level}>'
+    
+class Paragraph:
+    def __init__(self, content):
+        self.content = content
+        
+    def __str__(self):
+        return f'<p>{self.content}</p>'
+
+class Image:
+    def __init__(self, source, alt="", width=None, height=None):
+        self.source = source
+        self.alt = alt
+        self.width = width
+        self.height = height
+        
+    def __str__(self):
+        attributes = {'src': self.source, 'alt': self.alt}
+        if self.width:
+            attributes['width'] = str(self.width)
+        if self.height:
+            attributes['height'] = str(self.height)
+        return str(Element('img', '', **attributes))
+```
+
+In this example, we have a generic `Element` class that takes a tag name and attributes as arguments, as well as a `content` argument that defines the content enclosed by the tag. 
+
+Using composition, we can create more specialized classes such as `Heading`, `Paragraph`, and `Image`, that use instances of `Element` to generate HTML code. In this way, we can create complex HTML structures by combining simpler ones.
+
+### Example 2: Game Development
+
+In game development, composition can be used to create complex characters by combining different traits. 
+
+```python
+class Trait:
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
+        
+class Player:
+    def __init__(self, name):
+        self.name = name
+        self.traits = []
+        
+    def add_trait(self, trait):
+        self.traits.append(trait)
+        
+    def remove_trait(self, trait):
+        self.traits.remove(trait)
+        
+    def get_traits(self):
+        return [trait.name for trait in self.traits]
+```
+
+In this example, we have a `Trait` class that defines specific traits that can be added to a `Player`. Using composition, we can create more specialized characters by combining different traits.
+
+The `Player` class allows us to add and remove traits dynamically, as well as get a list of all the traits that a player has. This makes it possible to create complex and varied characters by combining different traits. 
+
+## Conclusion
+
+Composition is a powerful and flexible technique that allows us to create complex objects by combining simpler ones. By using composition, we can improve code structure, avoid the problems associated with inheritance, and create more flexible and reusable classes. It is a technique that should be considered alongside inheritance when designing classes, and can be especially useful when creating complex objects or adding new functionality to existing classes.
+
+# Sub-chapter 5: Design Patterns
+
+Design patterns are a set of recurring solutions to common software development problems that have been tested and found effective. They provide a way of structuring code that helps to promote reusability, modularity, and maintainability. In this sub-chapter, we'll discuss the benefits of design patterns and explore some practical examples of using design patterns in Python.
+
+## Benefits of Design Patterns
+
+Design patterns offer several advantages over ad-hoc coding. They:
+
+- Provide a common vocabulary for developers to communicate about code structures.
+- Encapsulate expertise and provide a way to reuse that expertise across projects.
+- Improve code structure, making it easier to modify and maintain.
+- Are well-documented and tested to be effective in solving specific problems.
+
+## Types of Design Patterns 
+
+There are three main types of design patterns: creational, structural, and behavioral patterns. 
+
+- **Creational patterns** focus on object creation mechanisms and their best practices to ensure object initialization is performed efficiently and safely.
+- **Structural patterns** involve object composition, relationships between objects, and class organization. These patterns help in assembling objects and classes into larger groups and structures.
+- **Behavioral patterns** focus on communication and coordination between objects, facilitating the building of highly maintainable systems with easily interchanged parts.
+
+## Practical Examples of Design Patterns in Python
+
+### Factory Method
+
+The factory method pattern is a creational design pattern that is used when creating objects that are costlier to create. In cases where instantiating an object is expensive or involves a lot of time and resources, the factory method helps in decoupling object creation by using a separate class factory for object creation.
+
+Here's an example of the factory method pattern in Python:
+
+```python
+class Dog:
+    def __init__(self, name):
+        self.name = name
+    
+    def speak(self):
+        return "Woof!"
+    
+class DogFactory:
+    def create_dog(self, name):
+        return Dog(name)
+```
+
+We create a separate `DogFactory` class that is responsible for creating the `Dog` objects. The factory method `create_dog` is used for creating `Dog` objects without directly instantiating them.
+
+### Decorator
+
+The decorator pattern is a structural design pattern that is used when adding responsibilities to an object dynamically. It is designed to extend the functionality of an object without modifying its original implementation.
+
+Here's an example of the decorator pattern in Python:
+
+```python
+class TextTag:
+    def __init__(self, text):
+        self.text = text
+        
+    def render(self):
+        return self.text
+    
+class BoldTag:
+    def __init__(self, wrapped):
+        self.wrapped = wrapped
+    
+    def render(self):
+        return f"<b>{self.wrapped.render()}</b>"
+```
+
+In this example, we have two classes, `TextTag` and `BoldTag`. `BoldTag` is a decorator, which adds bold formatting to the text from `TextTag` without changing the original implementation of `TextTag`.
+
+### Observer
+
+The observer pattern is a behavioral pattern that allows for objects to be notified and updated when another object changes. It is used in many user-interface design frameworks to update the view when the data model changes.
+
+Here's an example of the observer pattern in Python:
+
+```python
+class Subject:
+    def __init__(self):
+        self.observers = []
+        self._state = None
+    
+    def attach(self, observer):
+        self.observers.append(observer)
+    
+    def detach(self, observer):
+        self.observers.remove(observer)
+    
+    def notify(self):
+        for observer in self.observers:
+            observer.update()
+            
+    def set_state(self, state):
+        self._state = state
+        self.notify()
+    
+    def get_state(self):
+        return self._state
+    
+class Observer:
+    def __init__(self, subject):
+        self.subject = subject
+        self.subject.attach(self)
+    
+    def update(self):
+        print(f"Observer {id(self)} has received the state: {self.subject.get_state()}")
+```
+
+In this example, we have two classes, `Subject` and `Observer`. `Subject` maintains a list of its observers and notifies them whenever its state changes. `Observer` registers itself with the `Subject` and receives the state changes.
+
+## Conclusion
+
+Design patterns are an essential tool in software development that can help improve code structure and maintainability. By providing reusable solutions to common problems, design patterns can save time and effort in developing software systems. In this sub-chapter, we've covered the three main types of design patterns and provided practical real-world examples of design pattern implementations in Python.

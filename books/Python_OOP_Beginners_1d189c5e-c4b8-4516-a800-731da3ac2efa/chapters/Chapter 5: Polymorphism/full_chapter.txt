@@ -1,0 +1,356 @@
+Chapter 5: Polymorphism
+
+# Introduction to Polymorphism
+
+Polymorphism is a fundamental concept of Object-Oriented Programming (OOP) that allows objects of different types to be treated as if they were of the same type. In other words, it is the ability of an object to take on many forms. In Python, polymorphism is achieved by using methods with the same name in different classes.
+
+There are two main types of polymorphism: dynamic and static polymorphism. Dynamic polymorphism is also known as runtime polymorphism or method overriding, which occurs when different classes have methods with the same name and signature. During runtime, the correct method to be called is determined based on the type of the object. On the other hand, static polymorphism is also known as compile-time polymorphism or method overloading. In static polymorphism, methods in the same class have the same name with different parameters, and the correct method to be called is determined by the number and type of arguments during compile-time.
+
+In Python, polymorphism has several benefits. Firstly, it makes code more reusable and maintainable, as it allows the same code to be used with different types of objects. Secondly, it promotes code extensibility, as new classes with the same methods can be created and used interchangeably with existing ones. Lastly, it improves the readability and organization of code, as it groups concepts that are logically similar.
+
+To understand the significance of polymorphism in Python, let us look at some examples. Consider a simple example where we have a class named `Rectangle` and another class named `Triangle`. Both classes have a method called `area()` that returns the respective area of the shape. With polymorphism, we can create a list of shapes that includes both `Rectangle` and `Triangle` objects, and iterate through the list to obtain the area of each object without worrying about their specific types. The code snippet below shows how this can be achieved.
+
+```python
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+        
+    def area(self):
+        return self.length * self.width
+
+class Triangle:
+    def __init__(self, base, height):
+        self.base = base
+        self.height = height
+        
+    def area(self):
+        return 0.5 * self.base * self.height
+
+shapes = [Rectangle(5, 10), Triangle(8, 6)]
+
+for shape in shapes:
+    print(shape.area())
+```
+
+This code creates a list `shapes` that contains a `Rectangle` object and a `Triangle` object. The `for` loop iterates through each object in the list and calls the `area()` method. Since both `Rectangle` and `Triangle` classes have an `area()` method, Python can determine the correct method to call.
+
+In conclusion, polymorphism is a powerful feature in Python that enables objects of different classes to be treated as if they were of the same type. This simplifies code, increases code reusability, and makes code more extensible. In the next sub-chapter, we will explore examples of polymorphism in Python in more detail.
+
+# Static Polymorphism
+
+In Object-Oriented Programming (OOP), polymorphism refers to the ability to use a single interface for multiple forms of data. Polymorphism in Python can be implemented in two ways: static polymorphism and dynamic polymorphism. This sub-chapter will focus on static polymorphism and its different forms.
+
+## Static Polymorphism
+
+Static polymorphism is also known as compile-time polymorphism, where the compiler determines the polymorphic behavior during the compilation phase. In Python, static polymorphism can be implemented using function overloading, method overloading, and operator overloading.
+
+Function overloading allows functions with the same name to be defined with different parameter lists to handle different data types. The function takes a different number of arguments, each with different data types. Python does not support function overloading in the way that other programming languages, such as Java or C++, do. However, Python allows function overloading in a different way, using default arguments or variable-length arguments.
+
+```python
+def calculate_total(a, b, c=0):
+    return a + b + c
+
+def calculate_total(a, b, c, d):
+    return a + b + c + d
+```
+
+In the above code, we have defined two `calculate_total` functions, one with three arguments, and another with four arguments. When calling this function with three arguments, Python will invoke the first `calculate_total` function, and with four arguments, the second `calculate_total` function will be invoked.
+
+Method overloading is similar to function overloading, but instead of having multiple functions with the same name, we have multiple methods with the same name, defined within the same class, but with different parameter lists. 
+
+```python
+class Shape:
+    def area(self):
+        pass
+    
+class Rectangle(Shape):
+    def area(self, length, breadth):
+        return length * breadth
+    
+class Square(Shape):
+    def area(self, side):
+        return side ** 2
+```
+
+In the above code, both `Square` and `Rectangle` classes have an area method, but each takes a different number of arguments. When the area method is called for `Square`, it will use the area method that accepts only one argument, and for `Rectangle`, it will use the area method that accepts two arguments.
+
+Operator overloading allows the use of the same operator for different types of data. In Python, all operators are treated as method calls.
+
+``` python
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+        
+    def __add__(self, other):
+        x = self.x + other.x
+        y = self.y + other.y
+        return Point(x,y)
+        
+p1 = Point(1,2)
+p2 = Point(2,3)
+p3 = p1 + p2
+```
+
+In the above code, we have defined the addition operator for the `Point` class. When we perform the addition operation on two `Point` objects, Python will use the `__add__` method defined in the `Point` class to perform the addition operation.
+
+## Conclusion
+
+Static polymorphism is an essential feature of OOP that allows the creation of more concise and modular code. The different forms of static polymorphism, such as function overloading, method overloading, and operator overloading, each offers unique benefits for developers. In Python, some forms of static polymorphism, such as function overloading, are implemented differently than in other programming languages, but they still provide the same benefits of concise and modular code.
+
+## Dynamic Polymorphism
+
+Dynamic Polymorphism, also known as run-time Polymorphism, is the capability of an object to take on various forms during run time. It is a feature that allows objects of different classes to be treated as objects of the same class. Unlike static Polymorphism, where the output of a method is determined at compile time, dynamic Polymorphism ensures that the output of a method is determined at runtime.
+
+### Method Overriding
+
+Method Overriding is a feature of dynamic polymorphism that allows a subclass to provide a specific implementation of a method that is already defined and implemented in its parent class. In Python, it is achieved through the use of inheritance. When a method is called from a subclass object, the method in the subclass replaces the method in the parent class. 
+
+To override a method in Python, use the following syntax:
+
+```python
+class Parent:
+    def method(self):
+        print("This is the Parent method.")
+
+class Child(Parent):
+    def method(self):
+        print("This is the Child method.")
+```
+
+The above code creates a parent class and a child class that inherits from its parent. The method in the child class overrides the method in the parent class.
+
+### Abstract Classes and Interfaces
+
+Abstract Classes are classes that cannot be instantiated on their own. They are designed to serve as base classes to facilitate code reuse through inheritance. An abstract class contains an abstract method or methods, which do not have any implementation. 
+
+On the other hand, an Interface is a blueprint of a class without any implementation details. It contains only the method signatures or declarations, but not the methods' implementations. 
+
+In Python, Abstract Classes can be implemented using the built-in module, abc (Abstract Base Class). The following code shows how to use the abc module to define an abstract class:
+
+```python
+from abc import ABC, abstractmethod
+
+class AbstractClass(ABC):
+    @abstractmethod
+    def method(self):
+        pass
+```
+
+Here, the AbstractClass example has an abstract method, method(), which must be implemented in a subclass. If a subclass does not implement this method, it will raise an error.
+
+### Duck Typing
+
+Duck typing is a programming concept that allows the interpreter to determine an object's type based on its behavior or attributes, rather than its definition. It is a feature in Python that defines an object's type by the methods and attributes it possesses.
+
+For example:
+
+```python
+class Duck:
+    def fly(self):
+        print("A duck can fly.")
+
+class Airplane:
+    def fly(self):
+        print("An airplane can fly.")
+```
+
+Both the Duck and Airplane classes share the same method name, fly(). Even though these classes don't inherit from a common ancestor, both can be used together in a polymorphic manner if an object requires the use of the fly() method.
+
+```python
+def let_it_fly(obj):
+    obj.fly()
+    
+d = Duck()
+a = Airplane()
+
+let_it_fly(d)
+let_it_fly(a)
+```
+
+In the above example, the let_it_fly() function expects an object that has a fly() method. The function takes a duck object and an airplane object and passes each of them to the let_it_fly() function where the fly() method gets executed.
+
+### Conclusion
+
+Dynamic Polymorphism is a necessary feature in OOP that allows objects to take on various forms during runtime. Python provides various ways to implement dynamic Polymorphism, such as method overriding, abstract classes and interfaces, and duck typing. Understanding these concepts can help a programmer create more flexible and maintainable code.
+
+# Implementing Polymorphism in Python
+
+Polymorphism is the ability of an object to take on multiple forms. It allows objects of different classes to be used interchangeably. Polymorphism is considered an essential concept of object-oriented programming because it allows for code that is both reusable and flexible.
+
+## Importance of Implementing Polymorphism in Python
+
+Polymorphism is crucial in Python as it enables the creation of code that is flexible to changes. With polymorphism, code can be written in a way that it can be easily modified, extended, and reused in other programs. By using polymorphism, you can write programs that can work with objects of many different types, without requiring any special coding for each type. This enables you to create more readable and maintainable code.
+
+## Implementing Polymorphism using Methods, Classes, and Objects in Python
+
+Polymorphism can be achieved in Python using methods, classes, and objects. When a method is called on an instance of a class, Python checks the class definition to see if the method is defined. If the method definition is not found in the class definition, Python looks for the method in the class's superclass.
+
+One way to implement polymorphism in Python is by using inheritance. Inheritance allows you to derive new classes from existing ones. The derived classes, called subclasses, inherit the attributes and behavior of the parent class, called the base class. By using inheritance, you can create subclasses that share some code while also having unique behavior.
+
+Another way to implement polymorphism is by using method overloading. Method overloading is a way of defining the same method with different parameters. In Python, method overloading is achieved by defining a method with multiple signatures.
+
+```python
+class Shape:
+    def area(self):
+        pass
+    
+class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+    
+    def area(self):
+        return self.length * self.width
+    
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+    
+    def area(self):
+        return 3.14 * (self.radius ** 2)
+```
+
+The `Shape` class defines the `area()` method, which will be overridden in the `Rectangle` and `Circle` classes. The `Rectangle` and `Circle` classes implement the `area()` method with their specific calculation. Since the classes inherit from the `Shape` class, they will have the same `area()` method signature, which makes them polymorphic.
+
+Polymorphism can also be achieved in Python by using operator overloading. You can overload operators such as `+`, `-`, and `*` to provide different behaviors for different types.
+
+```python
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    def __add__(self, point):
+        return Point(self.x + point.x, self.y + point.y)
+```
+
+Here, the `__add__()` method is overloaded to enable addition of two Point objects. By doing this, you can add two instances of the `Point` class using the `+` operator.
+
+## Conclusion
+
+In this sub-chapter, we covered the importance of polymorphism in Python, and how to use it with methods, classes, and objects. We also provided code examples to help illustrate the concept, as it is essential to understanding how polymorphism works. By using polymorphism, you can create code that is flexible, reusable, and easy to maintain.
+
+# Examples of Polymorphism in Python
+
+Polymorphism refers to the ability of objects and functions to take on multiple forms or behaviors. It allows for the creation of flexible and reusable code, making programming in Python more efficient and effective.
+
+Python provides several examples of polymorphism in built-in functions and user-defined functions. In this sub-chapter, we will cover some of these examples, including polymorphism of classes. All code examples will be well-commented to provide a clear understanding of the essence of the code.
+
+## Polymorphism with Built-in Functions
+
+One of the most straightforward examples of polymorphism with built-in functions in Python is the `len()` function. The `len()` function can be used with multiple types of objects, such as strings, lists, and dictionaries, returning the number of elements in each object. For instance:
+
+```python
+string = "Hello, World!"
+lst = [1, 2, 3, 4, 5]
+dictionary = {'a': 1, 'b': 2, 'c': 3}
+
+print(len(string)) # Output: 13
+print(len(lst)) # Output: 5
+print(len(dictionary)) # Output: 3
+```
+
+Another built-in function that displays polymorphic behavior in Python is the `print()` function. It can be used to display different types of data types, such as strings, integers, and decimal values. For instance:
+
+```python
+print("Hello world!") # Output: Hello world!
+print(25) # Output: 25
+print(3.14) # Output: 3.14
+```
+
+The built-in functions `max()` and `min()` are more examples of polymorphism in Python. They are used to return the maximum and minimum values of an object or list, regardless of the object's data type. For instance:
+
+```python
+numbers = [1, 2, 3, 4, 5]
+alpha = ['a', 'b', 'c', 'd', 'e']
+
+print(max(numbers)) # Output: 5
+print(min(alpha)) # Output: a
+```
+
+## Polymorphism with User-Defined Functions
+
+User-defined functions in Python can also exhibit polymorphic behavior. Polymorphism in user-defined functions is achieved by writing functions that can take multiple types of arguments, and customize their behavior based on the argument types. 
+
+Here's an example of a user-defined function that takes arguments of type string or list and returns the number of words or elements in the object.
+
+```python
+def object_length(object):
+    if isinstance(object, str):
+        return len(object.split())
+    elif isinstance(object, list):
+        return len(object)
+    else:
+        return "Not a supported object type."
+
+print(object_length('Object Oriented Programming')) # Output: 3
+print(object_length([1,2,3,4,5])) # Output: 5
+```
+
+Here, the user-defined function `object_length()` takes an object as an argument and determines whether it is a string or a list using the `isinstance()` method. It then returns the length of the object if it is a string or a list. If it is neither, the function returns an error message.
+
+Another example of polymorphism achieved through user-defined functions is method overloading. Method overloading involves creating two or more functions with the same name that differ in their input parameters. The appropriate function is then called depending on the type of parameters passed to it. 
+
+```python
+class Shape:
+    def area(self):
+        pass
+
+class Square(Shape):
+    def __init__(self, length):
+        self.length = length
+
+    def area(self):
+        return self.length * self.length
+
+class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+square = Square(5)
+rectangle = Rectangle(5, 3)
+
+print(square.area()) # Output: 25
+print(rectangle.area()) # Output: 15
+```
+
+Here, we create two different classes, `Square` and `Rectangle`, that inherit from the parent class `Shape`. Each class has its own implementation of the `area()` method, which calculates the area of the object. Depending on the object type, the appropriate `area()` method is called when invoked, demonstrating polymorphism achieved through method overloading.
+
+## Polymorphism with Classes
+
+Polymorphism can also be achieved through classes in Python. Here is an example of polymorphism with classes:
+
+```python
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def sound(self):
+        return "Woof!"
+
+class Cat:
+    def __init__(self,name):
+        self.name = name
+
+    def sound(self):
+        return "Meow!"
+
+def animal_sound(animal):
+    print(animal.sound())
+
+dog = Dog("Rover")
+cat = Cat("Fluffy")
+
+animal_sound(dog) # Output: Woof!
+animal_sound(cat) # Output: Meow!
+```
+
+Here, we define two different classes, `Dog` and `Cat`, both having different implementations of the `sound()` method. We then define a function `animal_sound(animal)` that takes an animal object as an argument and calls its `sound()` method. When invoked, it returns the appropriate sound based on the animal type, demonstrating polymorphism achieved through classes.
+
+In conclusion, polymorphism is a powerful feature of Python that simplifies programming by enabling objects and functions to take multiple forms or behaviors. It enables code to be written in a flexible and reusable way, resulting in more efficient and effective programming. Polymorphism in Python can be achieved through built-in functions, user-defined functions, and classes, all of which provide different and useful ways of implementing polymorphic behavior.

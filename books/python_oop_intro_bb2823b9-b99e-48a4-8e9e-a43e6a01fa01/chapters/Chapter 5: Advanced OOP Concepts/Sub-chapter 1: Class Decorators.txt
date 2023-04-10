@@ -1,0 +1,101 @@
+# Sub-chapter 1: Class Decorators
+
+In Python, decorators are a powerful feature that allows the modification of a function, method, or class without actually changing its source code. In this sub-chapter, we will focus on class decorators and how they can be used to improve the behavior and functionality of a class.
+
+## Introducing Class Decorators
+
+A class decorator is a function that takes a class as its argument and wraps it in another class. The resulting wrapped class is returned by the decorator function, which can then be used to instantiate objects. By modifying the class definition, it can add new attributes, modify existing ones, or even completely replace a class's behavior.
+
+Class decorators are applied to the class definition by placing them above the class definition, as shown in the code below.
+
+```
+@decorator_function
+class MyClass:
+    pass
+```
+
+## Practical Examples
+
+Let us take a look at some practical examples of using class decorators to better understand how they work.
+
+### Example 1: Adding a Property
+
+One of the most common uses of class decorators is to add new properties or attributes to a class, without having to modify the class definition. This can be useful when working with legacy code, where changing the class definition is not an option.
+
+```
+def add_property(cls):
+    cls.new_property = 123
+    return cls
+
+@add_property
+class MyClass:
+    pass
+
+obj = MyClass()
+print(obj.new_property) # Output: 123
+```
+
+### Example 2: Logging
+
+Class decorators can be used to log class method calls. This can be useful for debugging or for keeping track of how a class is being used.
+
+```
+def log_methods(cls):
+    for key, value in vars(cls).items():
+        if callable(value) and not key.startswith('__'):
+            setattr(cls, key, log(value))
+    return cls
+
+def log(func):
+    def wrapper(*args, **kwargs):
+        print(f"Calling method {func.__name__}")
+        return func(*args, **kwargs)
+    return wrapper
+
+@log_methods
+class MyClass:
+    def method1(self):
+        pass
+    def method2(self):
+        pass
+
+obj = MyClass()
+obj.method1()
+obj.method2()
+```
+
+Output:
+```
+Calling method method1
+Calling method method2
+```
+
+### Example 3: Adding a Meta Class
+
+Class decorators can also be used to add a metaclass to a class. A metaclass is the class of a class and provides additional functionality to a class. For example, a metaclass can add new methods or properties to a class.
+
+```
+def add_meta(cls):
+    class NewMeta(type):
+        def new_method(self):
+            print("Calling new method")
+    cls = NewMeta(cls.__name__, cls.__bases__, dict(cls.__dict__))
+    return cls
+
+@add_meta
+class MyClass:
+    def method1(self):
+        pass
+
+obj = MyClass()
+obj.new_method()
+```
+
+Output:
+```
+Calling new method
+```
+
+## Conclusion
+
+Class decorators are a powerful tool that can be used to modify class definitions without altering their source code. They allow for the addition of new attributes or methods, logging, and even adding a metaclass to a class. By using decorators, we can make our code more flexible and reusable.

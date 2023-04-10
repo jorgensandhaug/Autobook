@@ -1,0 +1,137 @@
+# Classes and methods
+
+Now that we have covered the basics of Object-Oriented Programming (OOP) and the importance of the concepts that underly it, let's delve deeper into the building blocks of OOP: classes and methods.
+
+## Classes and objects
+
+In Python, a class is a blueprint for creating objects that share similar attributes and methods. To define a class, we use the `class` keyword followed by the name of the class in CamelCase. 
+
+For example, let's create a simple `Person` class:
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+```
+
+The `__init__` method is a special method in Python classes that is called when the class is instantiated (i.e., an object is created from the class). This method takes the `self` parameter and any other parameters we want to pass to it. In this case, we are passing `name` and `age` as parameters.
+
+To create an object from a class, we can simply call the class with the desired arguments:
+
+```python
+person1 = Person("Alice", 25)
+person2 = Person("Bob", 30)
+```
+
+Here, we have created two `Person` objects, `person1` and `person2`, each with their own `name` and `age` attributes.
+
+
+## Methods
+
+In addition to attributes, a class can also have methods, which are functions that are defined inside the class. Methods can be used to perform operations on the object's attributes. 
+
+For example, let's add a `say_hello` method to the `Person` class:
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def say_hello(self):
+        print("Hello, my name is " + self.name)
+```
+
+Here, we have defined a `say_hello` method that takes the `self` parameter and uses it to access the `name` attribute of the object. 
+
+To call a method on an object, we use the dot notation:
+
+```python
+person1.say_hello()
+```
+
+This will print "Hello, my name is Alice".
+
+### Instance methods
+
+Methods that operate on an instance of a class are called instance methods. These methods take the `self` parameter as the first argument, which refers to the instance that the method is called on. 
+
+In the `Person` class, the `__init__` and `say_hello` methods are both instance methods.
+
+### Class methods
+
+In addition to instance methods, Python also supports class methods, which are methods that operate on the class itself rather than its instances. 
+
+To create a class method, we use the `@classmethod` decorator:
+
+```python
+class Person:
+    population = 0
+    
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Person.population += 1
+    
+    def say_hello(self):
+        print("Hello, my name is " + self.name)
+    
+    @classmethod
+    def get_population(cls):
+        print("There are " + str(cls.population) + " people in the population")
+```
+
+Here, we have added a `population` class attribute that keeps track of the number of `Person` objects that have been created. We have also defined a `get_population` class method that prints out the current population count.
+
+Notice that the `@classmethod` decorator is used to define the `get_population` method. This tells Python that the method is a class method rather than an instance method, and that the first parameter should be the class itself (by convention, we call this parameter `cls`).
+
+To call a class method, we use the dot notation on the class itself:
+
+```python
+Person.get_population()
+```
+
+This will print "There are 2 people in the population" (assuming we have created 2 `Person` objects).
+
+### Static methods
+
+In addition to instance and class methods, Python also supports static methods, which are methods that don't operate on the class or its instances. 
+
+To create a static method, we use the `@staticmethod` decorator:
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def say_hello(self):
+        print("Hello, my name is " + self.name)
+    
+    @classmethod
+    def get_population(cls):
+        print("There are " + str(cls.population) + " people in the population")
+    
+    @staticmethod
+    def say_something():
+        print("Something")
+```
+
+Here, we have defined a `say_something` static method that simply prints "Something" to the console.
+
+Notice that the `@staticmethod` decorator is used to define the `say_something` method. This tells Python that the method is a static method rather than an instance or class method.
+
+To call a static method, we use the dot notation on the class itself:
+
+```python
+Person.say_something()
+```
+
+This will print "Something".
+
+## Conclusion
+
+In this chapter, we have covered the basics of classes and methods in Python. We have defined what classes are and how objects are created from them. We have also explained what methods are, how they are created and used, and how they differ from regular functions. Finally, we have covered the differences between instance, class, and static methods, and how to define and call each of them.
+
+In the next chapter, we will explore the concept of inheritance in OOP and how it can be used to create new classes from existing ones.

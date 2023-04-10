@@ -1,0 +1,56 @@
+# Abstract Classes and Interfaces in Python
+
+In addition to encapsulation and inheritance, Python also supports abstraction. Abstraction is a crucial OOP concept that allows hiding the implementation details of a class from the outside world, making the class simpler to use and understand. Abstract classes and interfaces are two examples of abstractions in Python. 
+
+## Abstract Classes
+
+An abstract class is a class that cannot be instantiated on its own and has one or more abstract methods. An abstract method is a method declared without a body, but with the `@abstractmethod` decorator. Abstract methods are meant to be overridden in a subclass. 
+
+A common use of abstract classes is to define a blueprint for a group of related classes. Subclasses that inherit from an abstract class must implement all of its abstract methods to be considered complete. By enforcing the implementation of all abstract methods, abstract classes provide a way to enforce abstraction in Python. 
+
+Here's an example of an abstract class:
+
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+```
+
+In this example, the `Shape` class is an abstract class that defines two abstract methods, `area()` and `perimeter()`. Any subclass of `Shape` must implement these two methods before it can be instantiated. 
+
+## Interfaces
+
+An interface is similar to an abstract class in that it defines a blueprint for a group of related classes. However, interfaces are more rigid than abstract classes. In an interface, all methods are abstract, and there is no implementation code. In other words, an interface only provides method signatures, and a class that implements an interface must implement all of its methods. 
+
+Python doesn't have built-in support for interfaces, but they can be implemented using abstract classes. Here's an example:
+
+```python
+from abc import ABC, abstractmethod
+
+class Printable(ABC):
+    @abstractmethod
+    def print(self):
+        pass
+
+class Document(Printable):
+    def print(self):
+        # implementation details
+        pass
+```
+
+In this example, the `Printable` class is an abstract class that defines one abstract method, `print()`. The `Document` class implements the `Printable` interface by implementing the `print()` method. 
+
+## Differences between Abstract Classes and Interfaces
+
+The main difference between abstract classes and interfaces is that abstract classes can have both abstract and non-abstract methods, while interfaces can only have abstract methods. Additionally, a class can implement multiple interfaces, but it can only inherit from one abstract class. 
+
+## Conclusion 
+
+Abstract classes and interfaces are powerful tools for enforcing abstraction in Python. They allow you to define a blueprint for a group of related classes, and they provide a way to ensure that all subclasses implement the necessary methods. By using abstract classes and interfaces, you can create more modular and reusable code.

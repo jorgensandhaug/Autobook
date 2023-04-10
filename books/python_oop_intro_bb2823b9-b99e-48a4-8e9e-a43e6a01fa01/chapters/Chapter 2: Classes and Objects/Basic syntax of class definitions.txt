@@ -1,0 +1,93 @@
+# Basic Syntax of Class Definitions
+
+In Python, everything is an object, and with object-oriented programming, you can create your own objects with customized behaviors and properties. Classes are user-defined blueprint to create individual instances with unique data.
+
+## Definition of a Class
+
+A class can be defined with the `class` keyword followed by the name of the class. In Python, class names conventionally use PascalCase notation. A class can also have a docstring that provides documentation about the class.
+
+```python
+class MyClass:
+    """This is a docstring explaining what the class does."""
+    pass
+```
+
+## Instance of a Class
+
+An instance of a class is also called an object. You can create an instance of a class by calling its constructor using the class name followed by parentheses. You can also access the attributes of the instance using the dot notation.
+
+```python
+class MyClass:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+obj = MyClass(4, 5)
+print(obj.x)  # Output: 4
+print(obj.y)  # Output: 5
+```
+
+## The `self` Parameter
+
+The `self` parameter in a method of a class represents the instance that the method is called from. It is always the first parameter of any method in a class.
+
+```python
+class MyClass:
+    def my_method(self):
+        print("Hello, world!")
+
+obj = MyClass()
+obj.my_method()  # Output: Hello, world!
+```
+
+## The `__init__()` Function
+
+The `__init__()` method is a constructor in Python that gets called when an object or instance of the class is created. It is used to initialize or set the initial values of data attributes of the object. The `self` parameter is also used in this method.
+
+```python
+class MyClass:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+obj = MyClass(4, 5)
+print(obj.x)  # Output: 4
+print(obj.y)  # Output: 5
+```
+
+## The `__str__()` Function
+
+The `__str__()` method is another special method in Python that represents the class's instance as a string. It is used to get a string representation of the object.
+
+```python
+class MyClass:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return f"({self.x},{self.y})"
+
+obj = MyClass(4, 5)
+print(obj)  # Output: (4,5)
+```
+
+## Examples of Creating Classes and Objects
+
+```python
+class Car:
+    """A class representing a car."""
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+car1 = Car("Toyota", "Camry", 2017)
+car2 = Car("Honda", "Accord", 2018)
+print(car1.make, car1.model, car1.year)  # Output: Toyota Camry 2017
+print(car2.make, car2.model, car2.year)  # Output: Honda Accord 2018
+``` 
+
+In this example, we created a class `Car` and defined it with a constructor that initializes the make, model, and year of the car. Then we created objects of class `Car`, `car1` and `car2`, with different attributes initialized, and accessed the attributes using the dot notation.
+
+That's the basic syntax of creating classes and objects in Python. In the next chapter, we will dive deeper into object attributes and methods.

@@ -1,0 +1,34 @@
+## Aggregation
+
+In object-oriented programming (OOP), aggregation is a way to combine different objects into a single new object. This is often achieved by creating a new class that references other objects as attributes. The new class does not own the objects it references, meaning that it does not control their lifetime or behavior. Instead, it simply aggregates these objects together into a new abstraction that represents a higher-level concept.
+
+One of the main benefits of using aggregation is that it allows you to represent complex relationships between objects without having to create complex class hierarchies. For example, consider a school database that has classes for students, teachers, and classes. To represent the relationship between a class and its students, you could create a new class called "Class" that has a list attribute called "students" which aggregates all the student objects assigned to that class.
+
+```python
+class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+
+class Class:
+    def __init__(self, number, teacher, students):
+        self.number = number
+        self.teacher = teacher
+        self.students = students
+    
+teacher = Teacher("John Smith", "Math")
+students = [
+    Student("Alice", 12),
+    Student("Bob", 11),
+    Student("Charlie", 12),
+]
+class_1 = Class(1, teacher, students)
+```
+
+In this example, the `Class` class is aggregating a list of student objects into a higher-level abstraction that represents a class.
+
+It's important to note that aggregation is different from composition. Composition is a stronger form of aggregation that implies a stronger ownership relationship between the aggregated objects and the new object. In composition, the new object owns the objects it references, meaning that it controls their lifetime and behavior. In contrast, aggregation does not imply ownership.
+
+When deciding whether to use aggregation or composition, it's important to consider the lifetime of the aggregated objects. If the aggregated objects are temporary or can exist independently of the new object, then aggregation is likely the better choice. If the aggregated objects are permanent and should only exist in relation to the new object, then composition is likely the better choice.
+
+In summary, aggregation is a useful concept in OOP that allows you to combine different objects into a single new object. It is often used to represent complex relationships between objects without having to create complex class hierarchies. When deciding whether to use aggregation or composition, it's important to consider the lifetime of the aggregated objects and how they relate to the new object.

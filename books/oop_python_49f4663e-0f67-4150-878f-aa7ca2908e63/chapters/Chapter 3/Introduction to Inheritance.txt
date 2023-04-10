@@ -1,0 +1,13 @@
+## Introduction to Inheritance
+
+Inheritance is a key concept in Object-Oriented Programming (OOP). It is the process of creating new classes by inheriting properties and characteristics from existing classes. In OOP, inheritance defines an "is-a" relationship between classes, which means that a new class can be created by inheriting properties and methods from a parent or base class.
+
+The concept of inheritance exists to save time and effort in programming by reusing existing code. Rather than writing a new class from scratch, we can inherit from an existing class and add or modify the inherited properties and methods to fit our needs. This saves time and effort by avoiding repetitive coding and promotes a modular coding approach.
+
+Python supports inheritance, making it easier to create new classes from existing ones. The new class is commonly referred to as the child or derived class, while the existing class is the parent or base class. In Python, the child class can inherit all the attributes and behaviors of the parent class, allowing us to reuse the code effectively.
+
+Let's look at an example in real life to understand the concept of inheritance better. Suppose we have a "Vehicle" class, which has attributes like wheels, engine type, and horsepower, and methods like start, stop, and accelerate. Now, we want to create a new "Car" class that has all of the attributes and methods of the "Vehicle" class but also has some additional attributes like the number of doors, the transmission type, etc.
+
+With inheritance, we can create the "Car" class by inheriting all the properties and behaviors of the "Vehicle" class and adding our new attributes and methods to it. This saves us from defining all the attributes and methods of the Car class from scratch, allowing us to create our new class more efficiently.
+
+Inheritance is a fundamental concept in OOP and is widely used in Python programming. We will explore various types of inheritance in the following sections to have a more in-depth understanding of this concept.

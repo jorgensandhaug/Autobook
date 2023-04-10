@@ -1,0 +1,11 @@
+# Introduction to classes and objects
+
+In Python, a class is a blueprint for creating objects that share similar properties and functionalities. An object is an instance of a class. In simpler terms, a class defines a set of attributes that characterize any object created from that class, and the object is an instance of that class that possesses these attributes.
+
+Python is an object-oriented programming (OOP) language, and therefore, everything in Python is an object. It means that every data type, including integers, floating-point numbers, strings, and even functions, are objects. In Python, everything is an object, which can be manipulated and used like any other object.
+
+There are several advantages of using classes and objects in Python. With classes and objects, you can encapsulate data and methods into one entity, making code more organized and easier to maintain. Classes and objects also provide the ability to create reusable code through inheritance.
+
+Variables in Python classes are called attributes or properties. There are two types of attributes: instance attributes and class attributes. An instance attribute belongs to an instance of a class and can be unique for each instance. A class attribute, on the other hand, belongs to the class and is shared by all instances of the class.
+
+In the next sub-chapters, we will see how to create classes and objects in Python and how to define attributes and methods for a class. We will also learn about constructors and how to use them to initialize objects. By the end of this chapter, you will have a basic understanding of classes and objects in Python and will be able to create a class, define attributes and methods, and create objects.

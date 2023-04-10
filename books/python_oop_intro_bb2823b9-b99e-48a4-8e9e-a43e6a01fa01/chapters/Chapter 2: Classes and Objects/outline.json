@@ -1,0 +1,35 @@
+{
+  "chapter_title": "Chapter 2: Classes and Objects",
+  "sub_chapters": [
+    {
+      "title": "Basic syntax of class definitions",
+      "outline": "Explanation of how class definitions work in Python. Definition of a Class. Instance of a Class. The self parameter. The __init__() function. The __str__() function. Examples of creating classes and objects.",
+      "instructions": "This sub-chapter should explain the basic syntax of class definitions in Python. Make sure to provide clear examples and explanations of instance creation, the __init__() and __str__() functions, as well as what the self parameter is.",
+      "index": 1
+    },
+    {
+      "title": "Object attributes and methods",
+      "outline": "Explanation of object attributes and methods. Accessing attributes and methods. Visibility and name mangling. Examples of attributes and methods in a class.",
+      "instructions": "In this sub-chapter, focus on explaining object attributes and methods, how to access them, and their visibility. Provide clear examples to help readers understand the concepts presented. Note the importance of name mangling and provide an explanation, but don't go too in-depth on this topic.",
+      "index": 2
+    },
+    {
+      "title": "Constructor methods",
+      "outline": "Explanation of constructor methods. The __init__() function. Parameters and arguments in constructor methods. Example of creating objects using constructor methods.",
+      "instructions": "This sub-chapter should explain constructor methods and the importance of the __init__() function. Explain how they differ from regular methods and their role in creating objects. Provide clear examples of creating objects using constructor methods.",
+      "index": 3
+    },
+    {
+      "title": "Class inheritance",
+      "outline": "Explanation of inheritance. The super() function. Single-level inheritance. Multi-level inheritance. Method overriding. Examples of class inheritance.",
+      "instructions": "In this sub-chapter, explain the concept of inheritance, single-level, and multi-level inheritance. Explain the super() function and its role in inheritance. Note the importance of method overriding, but don't go too in-depth on this topic. Provide clear examples of class inheritance.",
+      "index": 4
+    },
+    {
+      "title": "Special methods",
+      "outline": "Explanation of special methods. Magic methods in Python. Implementing special methods. Examples of special methods.",
+      "instructions": "This sub-chapter should explain special methods, magic methods in Python, and provide clear examples of implementing special methods. Focus on __str__(), __repr__(), and __len__() functions, as they are commonly used in the examples. ",
+      "index": 5
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+# Method Overriding
+
+In object-oriented programming, **method overriding** happens when a sub-class or child class provides a specific implementation of a method already defined in its parent class or super class. The child class will have a method with the same name and signature as the parent class, and it will have a different implementation. When calling the method from an object of the child class, the parent class's method is not used; rather, the child's method is invoked.
+
+Method overriding is used to adapt the behavior of the parent class methods to fit the requirements of the child class. The child class' implementation of the method must match the method signature of the parent class. The method signature includes the method name, return type, and parameter list.
+
+In Python, method overriding is implemented by defining a method with the same name in the child class as the one defined in the parent class. Then, the method is defined with a new implementation, which replaces the implementation in the parent class. 
+
+``` python
+class Parent:
+    def display(self):
+        print("This is the parent class")
+        
+class Child(Parent):
+    def display(self):
+        print("This is the child class")
+```
+
+Here, we define two classes, Parent and Child. The Child class is inheriting from the Parent class. We define a method `display` in both classes. 
+
+When we create an object of the Child class and call the method `display()` on it, the method from the Child class will be invoked. 
+
+```python
+p = Parent()
+p.display()  # Output: This is the parent class
+
+c = Child()
+c.display()  # Output: This is the child class
+```
+
+Notice, that calling the `display()` method on an object of the Parent class calls the implementation defined in the Parent class, while calling it on an object of the Child class calls the implementation defined in the Child class. This is an example of polymorphism.
+
+When a method is overridden, the child class can choose to invoke the parent class's implementation of the method using the `super()` function. 
+
+```python
+class Child(Parent):
+    def display(self):
+        super().display()
+        print("This is the child class")
+```
+
+Here, calling the `display()` method from an object of the Child class will first call the implementation of the method from the parent class using `super().display()`. It will then call the implementation of the Child class, which will print "This is the child class".
+
+In conclusion, method overriding is the process of defining a method with the same name and signature as one that is defined in the parent class, but with a different implementation. It allows the behavior of the parent class methods to be tailored to meet the requirements of the child class. Overridden methods are called on objects of the child class, and the default methods are called on objects of the parent class.

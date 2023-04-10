@@ -1,0 +1,129 @@
+# Class inheritance
+
+In OOP, inheritance allows us to define a new class based on an existing class. The new class inherits all the attributes and methods of the original class, and we can also add new methods and attributes to the new class. 
+
+## Single-level inheritance
+
+Single-level inheritance is the simplest form of inheritance, where a child class is derived from a single parent class. Let's take a look at an example:
+
+```python
+class Vehicle:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        
+    def start(self):
+        print("The vehicle starts")
+
+class Car(Vehicle):
+    def __init__(self, make, model, year):
+        super().__init__(make, model, year)
+        
+    def drive(self):
+        print("The car is now driving")
+
+my_car = Car("Toyota", "Corolla", 2021)
+print(my_car.make) # prints "Toyota"
+my_car.start() # prints "The vehicle starts"
+my_car.drive() # prints "The car is now driving"
+```
+
+In this example, we have a `Vehicle` class with an `__init__()` method and a `start()` method. Then, we define a `Car` class that inherits from the `Vehicle` class. We use the `super()` function inside the `__init__()` method of the child class to call the constructor of the parent class. 
+
+We can also add new methods to the child class. In this case, we add a `drive()` method to the `Car` class.
+
+## Multi-level inheritance
+
+Multi-level inheritance is a type of inheritance where a child class inherits from a parent class, which in turn, inherits from another parent class. Here's an example:
+
+```python
+class Animal:
+    def __init__(self, species):
+        self.species = species
+        
+    def eat(self):
+        print("The animal is now eating")
+        
+class Mammal(Animal):
+    def __init__(self, species, feed_type):
+        super().__init__(species)
+        self.feed_type = feed_type
+        
+    def feed(self):
+        print("The mammal is now feeding")
+
+class Dog(Mammal):
+    def __init__(self, species, feed_type, breed):
+        super().__init__(species, feed_type)
+        self.breed = breed
+        
+    def bark(self):
+        print("The dog is now barking")
+
+my_dog = Dog("Canis lupus familiaris", "carnivore", "Golden Retriever")
+print(my_dog.species) # prints "Canis lupus familiaris"
+my_dog.feed() # prints "The mammal is now feeding"
+my_dog.eat() # prints "The animal is now eating"
+my_dog.bark() # prints "The dog is now barking"
+```
+
+In this example, we have an `Animal` class with an `__init__()` method and an `eat()` method. We also have a `Mammal` class that inherits from the `Animal` class, with a `feed()` method. Finally, we have a `Dog` class that inherits from the `Mammal` class, with a `bark()` method.
+
+We can see that the `Dog` class can access method inherited from both the `Animal` and `Mammal` classes.
+
+## The super() function
+
+Inheritance allows us to reuse code from existing classes, which is one of the main benefits of object-oriented programming. However, we often need to call the constructor of the parent class from the child class. That's where the `super()` function comes in. 
+
+The `super()` function allows us to call the constructor of the parent class, so that we can initialize the attributes inherited from that class. When we call `super().__init__()`, it calls the constructor of the immediate parent class.
+
+## Method overriding
+
+Sometimes, we may want to change the behavior of a method in a child class. We can do this by "overriding" the method in the child class. Method overriding allows us to use a different implementation of an inherited method in the child class. 
+
+Here's an example:
+
+```python
+class Shape:
+    def __init__(self, color):
+        self.color = color
+
+    def area(self):
+        raise NotImplementedError("Subclass must implement abstract method")
+
+class Rectangle(Shape):
+    def __init__(self, color, width, height):
+        super().__init__(color)
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+class Circle(Shape):
+    def __init__(self, color, radius):
+        super().__init__(color)
+        self.radius = radius
+
+    def area(self):
+        return 3.14159 * self.radius ** 2
+
+my_rect = Rectangle("blue", 5, 10)
+print(my_rect.area()) # prints 50
+
+my_circle = Circle("red", 5)
+print(my_circle.area()) # prints 78.53975
+```
+
+In this example, we have a `Shape` class with an `__init__()` method and an `area()` method, which raises a `NotImplementedError`. This indicates that any subclasses of `Shape` must implement their own version of the `area()` method. We then define two subclasses, `Rectangle` and `Circle`, which override the `area()` method in their own implementation.
+
+## Examples of class inheritance
+
+Inheritance is a powerful feature of OOP that allows us to create more specialized classes from existing ones. Here are some examples of class inheritance in real-world scenarios:
+
+- A `Bird` class can inherit from an `Animal` class, with specialized methods such as `fly()` and `lay_eggs()`.
+- A `Car` class can inherit from a `Vehicle` class, with specialized methods such as `drive()` and `park()`.
+- A `BankAccount` class can inherit from a `Person` class, with specialized methods such as `deposit()` and `withdraw()`.
+
+In each of these examples, the child classes inherit attributes and methods from their parent classes, and can also add new attributes and methods specific to their own use cases.

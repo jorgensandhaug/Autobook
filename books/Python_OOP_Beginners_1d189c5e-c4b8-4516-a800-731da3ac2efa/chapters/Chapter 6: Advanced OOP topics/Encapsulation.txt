@@ -1,0 +1,68 @@
+# Encapsulation
+
+Encapsulation is a fundamental concept in Object-Oriented Programming (OOP). It refers to the approach of wrapping data and methods within a single unit, and restricting access to the internal details of a class. Encapsulation provides several benefits, including:
+
+- Data protection: encapsulated data can only be accessed using approved methods within the class, preventing unauthorized access or modification of data.
+- Reduced complexity: encapsulation reduces the complexity of a program by hiding the internal details of a class and providing simple interfaces to work with.
+- Modularity: encapsulation provides a way to group related data and methods into a single unit or module.
+
+In Python, encapsulation is achieved through the use of access modifiers such as private and protected attributes and methods.
+
+# Access Modifiers
+
+Access modifiers are keywords that modify the scope of class members (attributes and methods) in Python. Python has three access modifiers: public, protected, and private.
+
+- Public: public members are accessible from anywhere in the program, both within and outside the class. The access modifier for public members is not specified in Python, as all members are public by default.
+
+- Protected: protected members are accessible within the class and its subclasses. The access modifier for protected members in Python is a single underscore (_).
+
+- Private: private members are only accessible within the class in which they are defined. The access modifier for private members in Python is two underscores (__).
+
+# Creating Private and Protected Attributes and Methods
+
+To create private and protected attributes and methods in Python, we specify the access modifier before the attribute or method name. 
+
+Here's an example of creating private and protected attributes in Python:
+
+```
+class Employee:
+    def __init__(self, name, emp_id, salary):
+        self._name = name       # protected attribute
+        self.__emp_id = emp_id  # private attribute
+        self.salary = salary    # public attribute
+```
+
+In this example, `_name` is a protected attribute accessible within the class and its sub-classes. `__emp_id` is a private attribute and is only accessible within the `Employee` class.
+
+To create private and protected methods in Python, we follow the same syntax as for attributes:
+
+```
+class Employee:
+    def __init__(self, name, emp_id, salary):
+        self.__name = name     # private attribute
+        self._emp_id = emp_id   # protected attribute
+        self.salary = salary    # public attribute
+    
+    # private method
+    def __calculate_bonus(self):
+        return self.salary * 0.1
+        
+    # protected method
+    def _display_employee_details(self):
+        print("Name:", self.__name)
+        print("Emp Id:", self._emp_id)
+```
+
+In this example,  `__calculate_bonus()` is a private method and can only be accessed within the `Employee` class. `_display_employee_details()` is a protected method and can be accessed within the class and its sub-classes.
+
+# Importance of Encapsulation
+
+Encapsulation is essential in good OOP design because of its many benefits. It helps to control the complexity of large programs by grouping related data and functionality, providing a clear interface to work with, and protecting data from unauthorized access.
+
+Encapsulation also helps with code reusability. By grouping related functionality and data into a single unit, we can reuse that unit across multiple programs. It also makes it easier to modify the internal details of a class without affecting other parts of the program, as long as the interface remains the same.
+
+Ultimately, proper use of encapsulation can make your code more modular, easier to maintain, and more reusable. As such, it is an essential concept for all programmers to understand.
+
+# Conclusion
+
+In this sub-chapter, we covered the concept of encapsulation in Python. We discussed how to create private and protected attributes and methods in Python and why encapsulation is essential for good OOP design. Encapsulation is crucial for keeping programs organized, protected, and extensible, and understanding it is a key step in becoming a proficient programmer.

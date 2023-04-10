@@ -1,0 +1,23 @@
+# Types of Methods
+
+In Python classes, there are various types of methods such as instance, class, and static methods. Each of these methods has its own characteristics, which can be useful in different scenarios.
+
+## Instance Methods
+
+Instance methods are the most common type of method in Python classes, and they are bound to the object created from the class. They take the `self` parameter, which represents the instance of the object, as their first parameter. The `self` parameter is used to access the object's data attributes and other instance methods.
+
+Instance methods are useful in scenarios where different instances of the class could have different values for their data attributes. For example, consider a `Person` class that has a `name` and an `age` data attribute. Each instance of the `Person` class could have different values for their `name` and `age` attributes. An instance method in this scenario, say `get_age()`, will access `self.age` to return the age of the person represented by the instance.
+
+## Class Methods
+
+A class method is a method that is bound to the class rather than the instance of the class. They take the `cls` parameter, which represents the class itself, as their first parameter. Class methods are defined using the `@classmethod` decorator.
+
+Class methods are useful when the method only needs to access the class data attributes and not any instance attributes. For example, consider a `Shape` class with a `count` class variable that keeps track of the number of shapes created. A class method in this scenario, say `get_count()`, could access `cls.count` to return the number of shapes created.
+
+## Static Methods
+
+Static methods in Python classes are defined using the `@staticmethod` decorator. They do not take any special parameter such as `self` or `cls`, and they cannot access any attributes or methods of the class or instance.
+
+Static methods are useful when a method does not need to access the class or instance attributes. For example, consider a `Calculator` class that has a `add()` method to add two numbers. A static method, say `is_valid_number()` could be used to check whether the input is a valid number, without needing to access any class or instance attributes.
+
+In summary, knowing the type of method to use in a situation is important for efficient and effective object-oriented programming, and each type of method presents its own usefulness.

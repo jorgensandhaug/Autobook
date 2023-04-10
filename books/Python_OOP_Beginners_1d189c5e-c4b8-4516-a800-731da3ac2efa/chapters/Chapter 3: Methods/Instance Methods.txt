@@ -1,0 +1,34 @@
+# Instance Methods
+
+Instance methods are functions that are defined within a class and operate on an instance of that class. They can access and manipulate the instance's attributes and perform actions on the instance itself. 
+
+To create an instance method, it must first be defined in the class definition, and it should include a self parameter as its first parameter. The self parameter is a reference to the instance object and is automatically passed in when an instance method is called on an object. 
+
+An instance method can be called on an instance of the class by using dot notation and passing in any additional parameters required. The self parameter is not explicitly passed in, as it is already bound to the instance on which the method is being called. 
+
+Let's look at an example of how to create and use an instance method.
+
+```python
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer = 0
+    
+    def drive(self, miles):
+        self.odometer += miles
+        print(f"You drove {miles} miles.")
+    
+my_car = Car("Toyota", "Corolla", 2021)
+print(my_car.odometer) # Output: 0
+
+my_car.drive(100)
+print(my_car.odometer) # Output: 100
+```
+
+In this example, we have a Car class with an instance method called `drive`. The `__init__` method initializes the Car object's attributes such as make, model, year, and odometer, which is set to 0 by default. The `drive` method takes in a parameter `miles`, which represents the number of miles driven by the car, and adds it to the `odometer` attribute. Finally, it prints a message saying how many miles have been driven.
+
+We create an instance of the Car class named `my_car` and print its default `odometer` value. Then we call the `drive` method on `my_car`, passing in the number of miles driven, and print the updated odometer value. 
+
+It's important to note that instance methods use the `self` parameter to access and manipulate the instance's attributes. If the `self` parameter is not included in the instance method, the method will not have access to the instance's attributes, and an error will occur. Therefore, the `self` parameter is an essential part of instance methods in Python classes.

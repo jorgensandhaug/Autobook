@@ -1,0 +1,23 @@
+{
+  "chapter_title": "Chapter 8",
+  "sub_chapters": [
+    {
+      "title": "Recap of Key Concepts",
+      "outline": "This sub-chapter should provide a clear summary of the key concepts learned throughout the book. It should recap the concepts of OOP including inheritance, encapsulation, polymorphism, and abstraction. However, it should not go into depth about each concept as that has already been covered in the previous chapters. Its length should be approximately 4-5 pages.",
+      "instructions": "Make sure to provide a clear, concise summary of each key concept learned throughout the book. This sub-chapter should not go into too much detail as the context has already been covered in the previous chapters, keep it short and to the point. Aim for about 4-5 pages in length, as this is a wrap-up chapter.",
+      "index": 1
+    },
+    {
+      "title": "Sample Coding Exercises",
+      "outline": "This sub-chapter should provide sample coding exercises that reinforce each individual concept learned throughout the book. The exercises should be straightforward and to the point so the reader can quickly gain experience in using the concepts. Its length should be approximately 4-5 pages.",
+      "instructions": "Provide 2 easy, straightforward coding exercises for each key concept learned throughout the book. Each exercise should reinforce an individual concept learned throughout the book. Make sure to use clear, concise instructions for each exercise. The reader should be able to complete each exercise in a few minutes. The total length of this sub-chapter should be approximately 4-5 pages.",
+      "index": 2
+    },
+    {
+      "title": "Encouragement to Continue Learning and Further Learning Resources",
+      "outline": "This sub-chapter should encourage the reader to continue learning and provide resources for further learning. This could include extra books or online courses that may be useful in advanced learning. No specific external resources should be mentioned or referred to in the book, so this sub-chapter should only provide general advice and guidelines. Its length should be approximately 2-3 pages.",
+      "instructions": "Offer encouraging words to the reader to continue exploring the subject and provide general advice and guidelines for further learning. Avoid mentioning any specific external resources, mention only general categories such as online courses or books that may be useful for advanced learners.",
+      "index": 3
+    }
+  ]
+}

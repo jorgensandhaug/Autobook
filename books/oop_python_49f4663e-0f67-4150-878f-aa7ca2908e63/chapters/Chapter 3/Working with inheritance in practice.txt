@@ -1,0 +1,86 @@
+# Working with inheritance in practice
+
+Inheritance is one of the essential concepts of object-oriented programming that allows the creation of a new class from an existing class. In the previous chapter, we learned the basics of inheritance, such as parent and child classes, and their relationships. In this section, we will take a deeper dive into inheritance to learn how to use parent and child classes together effectively. 
+
+## Using Parent Class Methods and Attributes in Child Classes
+
+One of the significant benefits of inheritance is that child classes inherit methods and attributes from their parent classes. We can use those methods and attributes in child classes without having to rewrite the entire functionality. 
+
+Let's take an example to demonstrate this concept. Suppose we have a parent class `Shape`. This class has two methods, `area()` and `perimeter()`, and an attribute `color`.
+
+``` python
+class Shape:
+    def __init__(self, color):
+        self.color = color
+    
+    def area(self):
+        pass
+    
+    def perimeter(self):
+        pass
+```
+
+Now, we want to create child classes `Circle` and `Rectangle` that inherit `color`, `area()`, and `perimeter()` from the parent `Shape` class. We only need to define the specific functionality for `Circle` and `Rectangle` that makes them different from each other.
+
+``` python
+class Circle(Shape):
+    def __init__(self, color, radius):
+        super().__init__(color)
+        self.radius = radius
+    
+    def area(self):
+        return 3.14 * self.radius ** 2
+    
+    def perimeter(self):
+        return 2 * 3.14 * self.radius
+
+class Rectangle(Shape):
+    def __init__(self, color, length, width):
+        super().__init__(color)
+        self.length = length
+        self.width = width
+    
+    def area(self):
+        return self.length * self.width
+    
+    def perimeter(self):
+        return 2 * (self.length + self.width)
+```
+
+Here, we defined `Circle` and `Rectangle` that extend the `Shape` class. The `Circle` class receives the `color` attribute from the parent class, and it has its implementation of the `area()` and `perimeter()` methods that use `radius` as an input parameter. Similarly, for the `Rectangle` class, it uses `length` and `width` as input parameters to `area()` and `perimeter()` methods. By using inheritance, we can avoid duplicating the code for the `color` attribute and `area()` and `perimeter()` methods.
+
+## Overriding Parent Class Methods
+
+Child classes can override parent class methods if the behavior defined in the parent class is not appropriate for the child class. Overriding methods in child classes is a key feature of inheritance that supports polymorphism.
+
+Let's expand on the previous example to show how to override a method. Suppose we have a parent class `Shape` with a `perimeter()` method that returns a message. We want to override this method in the `Rectangle` class such that it returns an integer value of the perimeter.      
+
+``` python
+class Shape:
+    def __init__(self, color):
+        self.color = color
+    
+    def area(self):
+        pass
+    
+    def perimeter(self):
+        return "Perimeter method in the shape class"
+
+class Rectangle(Shape):
+    def __init__(self, color, length, width):
+        super().__init__(color)
+        self.length = length
+        self.width = width
+    
+    def area(self):
+        return self.length * self.width
+    
+    def perimeter(self):
+        return 2 * (self.length + self.width)
+```
+
+In the `Rectangle` class, we override `perimeter()` method to return an integer value instead of a message. Here, the implementation of `perimeter()` differs between the parent class and child class, so we need to override the `perimeter()` method to return the appropriate value for the `Rectangle` class.
+
+## Conclusion
+
+We have learned how to use inheritance in Python effectively. By using inheritance, we can create a new child class and inherit methods and attributes from the parent class. Child classes can override parent class methods to provide their implementation. Inheritance improves code reusability and reduces code duplication. Always remember to use inheritance wisely, keeping in mind the principles of object-oriented programming.

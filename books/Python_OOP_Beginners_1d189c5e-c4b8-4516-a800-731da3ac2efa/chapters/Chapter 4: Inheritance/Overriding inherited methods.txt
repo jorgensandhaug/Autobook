@@ -1,0 +1,64 @@
+# Overriding Inherited Methods
+
+In Python, inheritance allows us to inherit attributes and methods from a parent class to a child class. Often, we might find that we need to modify the behavior of a method inherited from a parent class in the child class. This can be done by overriding the method in the child class.
+
+## What is Overriding Inheritance?
+
+Overriding inheritance refers to defining a method in a child class that already exists in the parent class. In other words, when a method is defined in a child class with the same name as a method in the parent class, it is said to override the method in the parent class.
+
+The child class can have a modified version of a method that is inherited from the parent class, and this modified method will take precedence over the parent method when called from an object of the child class.
+
+## Changing Behavior of Inherited Methods
+
+When we override an inherited method, we can change its behavior in the child class, but we must make sure that the new behavior is consistent with the original behavior of the method. The method signature must be the same, which means the method name and the number and types of parameters should be the same. This is because the overridden method in the child class must have the same interface as the parent method to maintain compatibility with the rest of the code.
+
+Let's see an example of how to override an inherited method in Python. Suppose we have a class `Animal` with a method called `move()`, which simply prints "moving." We want to create a subclass called `Bird` that inherits from `Animal` but overrides `move()` to print "flying" instead of "moving." 
+
+```python
+class Animal:
+    def move(self):
+        print("Moving")
+
+
+class Bird(Animal):
+    def move(self):
+        print("Flying")
+```
+
+Now, when we create an instance of `Bird`, we can call the `move()` method, which will print "flying" instead of "moving", which was the default behavior inherited from the `Animal` class.
+
+```python
+bird = Bird()
+bird.move()  # prints "Flying"
+```
+
+## When to Override Methods
+
+Overriding a method is useful when we need to modify the behavior of a method inherited from the parent class. However, it is important to consider whether the modification we want to make is consistent with the original purpose of the method. We should only override a method if there is a valid reason to do so. 
+
+For example, suppose we have a class `Person` with a method `speak()` that simply prints "Hello". We want to create a subclass called `Mime` that inherits from `Person` but overrides the `speak()` method to print nothing.
+
+```python
+class Person:
+    def speak(self):
+        print("Hello")
+
+
+class Mime(Person):
+    def speak(self):
+        pass
+```
+
+In this case, overriding the `speak()` method in the `Mime` class to do nothing is probably not a good idea since `speak()` is an essential method for `Person`, and we might want to use it in some other way for `Mime`.
+
+Therefore, before overriding a method, it is essential to ensure that it makes sense in the context of the child class and does not break the expected behavior of the method in the parent class.
+
+## When Not to Override Methods
+
+We should avoid overriding methods that are critical to the functioning of the parent class or are part of the public interface of the parent class. Overriding such methods can lead to unexpected behavior and make the code hard to maintain. If we need to modify the behavior of such methods, we can use other techniques such as composition or delegation instead of inheritance.
+
+Thus, we should be cautious when overriding methods and carefully consider whether it is the best way to achieve our desired behavior. 
+
+## Conclusion
+
+In summary, overriding an inherited method refers to defining a method in a child class that already exists in the parent class. This allows us to modify the behavior of the method in the child class while maintaining the original behavior of the method in the parent class. We should only override methods when it makes sense in the context of the child class and does not break the expected behavior of the method in the parent class. We should avoid overriding methods that are critical to the functioning of the parent class or are part of the public interface of the parent class.

@@ -1,0 +1,64 @@
+# Exercises
+
+To reinforce and help readers understand the access modifiers of encapsulation, this section includes exercises that challenge them to implement encapsulation in their own code. These exercises will cover all the access modifiers of encapsulation, such as public, private, and protected.
+
+## Exercise 1
+
+Create a Python class called `School` and define the following attributes:
+- A public attribute called `name`
+- A private attribute called `students`
+- A protected attribute called `courses`
+
+Ensure that `students` and `courses` can only be accessed within the class.
+
+## Exercise 2
+
+Create a Python class called `BankAccount` with the following attributes:
+- A private attribute called `balance`
+- A public attribute called `account_number`
+- A protected attribute called `pin`
+
+Write methods in the class to deposit and withdraw money, but ensure that the `pin` attribute can only be accessed within the class itself.
+
+## Exercise 3
+
+Create a Python class called `Animal` and define the following attributes:
+- A public attribute called `name`
+- A private attribute called `age`
+- A protected attribute called `color`
+
+Ensure that `age` and `color` can only be accessed within the class.
+
+Write methods in the class to change and print the values of these attributes.
+
+## Exercise 4
+
+Create a Python class called `Car` with the following attributes:
+- A private attribute called `model`
+- A public attribute called `make`
+- A protected attribute called `year`
+
+Write methods in the class to change and print the values of these attributes, but ensure that `model` can only be accessed within the class itself.
+
+## Exercise 5
+
+Create a Python class called `Person` and define the following attributes:
+- A public attribute called `name`
+- A private attribute called `address`
+- A protected attribute called `phone`
+
+Ensure that `address` and `phone` can only be accessed within the class.
+
+Write methods in the class to change and print the values of these attributes.
+
+## Best Practices
+
+When implementing encapsulation in your code, consider the following best practices:
+- Use public attributes for values that should be accessed and changed within and outside the class.
+- Use private attributes for values that should only be accessed and changed within the class.
+- Use protected attributes for values that should only be accessed and changed within the class and its subclasses.
+- Use accessor and mutator methods to change or retrieve the values of private and protected attributes.
+- Avoid using direct access to private attributes from outside the class.
+- Use meaningful names for your attributes and methods to improve code readability.
+
+By following these best practices, you can write clean and organized code that is easy to maintain and modify.

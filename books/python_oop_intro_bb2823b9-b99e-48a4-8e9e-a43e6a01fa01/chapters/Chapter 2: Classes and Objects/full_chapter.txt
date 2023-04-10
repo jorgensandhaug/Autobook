@@ -1,0 +1,448 @@
+Chapter 2: Classes and Objects
+
+# Basic Syntax of Class Definitions
+
+In Python, everything is an object, and with object-oriented programming, you can create your own objects with customized behaviors and properties. Classes are user-defined blueprint to create individual instances with unique data.
+
+## Definition of a Class
+
+A class can be defined with the `class` keyword followed by the name of the class. In Python, class names conventionally use PascalCase notation. A class can also have a docstring that provides documentation about the class.
+
+```python
+class MyClass:
+    """This is a docstring explaining what the class does."""
+    pass
+```
+
+## Instance of a Class
+
+An instance of a class is also called an object. You can create an instance of a class by calling its constructor using the class name followed by parentheses. You can also access the attributes of the instance using the dot notation.
+
+```python
+class MyClass:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+obj = MyClass(4, 5)
+print(obj.x)  # Output: 4
+print(obj.y)  # Output: 5
+```
+
+## The `self` Parameter
+
+The `self` parameter in a method of a class represents the instance that the method is called from. It is always the first parameter of any method in a class.
+
+```python
+class MyClass:
+    def my_method(self):
+        print("Hello, world!")
+
+obj = MyClass()
+obj.my_method()  # Output: Hello, world!
+```
+
+## The `__init__()` Function
+
+The `__init__()` method is a constructor in Python that gets called when an object or instance of the class is created. It is used to initialize or set the initial values of data attributes of the object. The `self` parameter is also used in this method.
+
+```python
+class MyClass:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+obj = MyClass(4, 5)
+print(obj.x)  # Output: 4
+print(obj.y)  # Output: 5
+```
+
+## The `__str__()` Function
+
+The `__str__()` method is another special method in Python that represents the class's instance as a string. It is used to get a string representation of the object.
+
+```python
+class MyClass:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return f"({self.x},{self.y})"
+
+obj = MyClass(4, 5)
+print(obj)  # Output: (4,5)
+```
+
+## Examples of Creating Classes and Objects
+
+```python
+class Car:
+    """A class representing a car."""
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+car1 = Car("Toyota", "Camry", 2017)
+car2 = Car("Honda", "Accord", 2018)
+print(car1.make, car1.model, car1.year)  # Output: Toyota Camry 2017
+print(car2.make, car2.model, car2.year)  # Output: Honda Accord 2018
+``` 
+
+In this example, we created a class `Car` and defined it with a constructor that initializes the make, model, and year of the car. Then we created objects of class `Car`, `car1` and `car2`, with different attributes initialized, and accessed the attributes using the dot notation.
+
+That's the basic syntax of creating classes and objects in Python. In the next chapter, we will dive deeper into object attributes and methods.
+
+# Object Attributes and Methods
+
+In Python, **attributes** are variables that belong to an object while **methods** are functions that belong to an object. In other words, attributes represent the state of an object while methods represent the behavior of an object. 
+
+## Accessing Attributes and Methods
+
+We can access attributes and methods of an object using the dot notation. Consider a class and an object created from that class:
+
+```python
+class Car:
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+    
+    def go(self):
+        print("The car is moving.")
+        
+mustang = Car("Ford", "Mustang")
+```
+
+We can access the attributes of the object `mustang` as follows:
+
+```python
+print(mustang.make) # output: Ford
+print(mustang.model) # output: Mustang
+```
+
+Similarly, we can access the methods of the object as follows:
+
+```python
+mustang.go() # output: The car is moving.
+```
+
+## Visibility and Name Mangling
+
+In Python, attributes and methods can have different levels of visibility. By default, all attributes and methods are public and can be accessed from anywhere. However, we can use a single underscore prefix to indicate that an attribute or method is protected, which means it can only be accessed from within the same class or from a subclass. Similarly, we can use a double underscore prefix to indicate that an attribute or method is private, which means it can only be accessed from within the same class.
+
+For example,
+
+```python
+class Car:
+    def __init__(self, make, model):
+        self._make = make   # Protected attribute
+        self.__model = model  # Private attribute
+        
+    def go(self):
+        print("The car is moving.")
+```
+
+We can still access both the protected and private attributes using the dot notation, but using a double underscore prefix for a private attribute causes the interpreter to perform **name mangling**. Name mangling is a mechanism where the interpreter changes the name of a private attribute to avoid name clashes. 
+
+Using the example above, we can access the protected attribute as follows:
+
+```python
+mustang = Car("Ford", "Mustang")
+print(mustang._make) # output: Ford
+```
+
+To access the private attribute, we need to use the mangled name:
+
+```python
+print(mustang._Car__model) # output: Mustang
+```
+
+Note that it is generally not recommended to access protected or private attributes directly from outside the class. Instead, we should use methods within the class to access or modify the attribute values. This promotes better encapsulation and abstraction of the class.
+
+## Examples of Attributes and Methods in a Class
+
+Let's consider a class `Rectangle` that represents a rectangle. The class will have a constructor method to initialize the width and height attributes of the rectangle. We'll also include methods to calculate the area and perimeter of the rectangle.
+
+```python
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    
+    def area(self):
+        return self.width * self.height
+    
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+```
+
+We can create an instance of the Rectangle class and call its methods to get the area and perimeter.
+
+```python
+rect = Rectangle(5, 4)
+print(rect.area()) # output: 20
+print(rect.perimeter()) # output: 18
+```
+
+In this example, the `width` and `height` attributes represent the state of the object, while the `area()` and `perimeter()` methods represent the behavior of the object.
+
+# Constructor methods
+
+In Python, **constructor methods** are special methods that enable the creation of objects from a class. The constructor method is called automatically when an object is created, and it is used to initialize the attributes of the object.
+
+The constructor method has a special name in Python: `__init__()`. This name is reserved for the constructor method, and it cannot be changed. The `__init__()` method takes at least one argument: `self`, which refers to the object being created. The `__init__()` method can also take additional parameters, which can be used to pass initial values for the object's attributes.
+
+Constructor methods differ from regular methods in two important ways: 
+1. Constructor methods are called automatically when an object is created, whereas regular methods have to be called explicitly. 
+2. The `self` parameter is required in constructor methods, but it is optional in regular methods.
+
+## Parameters and arguments in constructor methods
+
+As mentioned earlier, the `__init__()` method takes at least one parameter: `self`. This parameter refers to the object being created and is used to access the object's attributes and methods. 
+
+The `__init__()` method can also take additional parameters, which can be used to set the initial values of the object's attributes. These additional parameters are called **arguments**, and they are passed to the constructor method when the object is created.
+
+For example, let's say we have a class named `Person`, and we want to create objects of this class with an initial name and age. We can define a constructor method like this:
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+```
+
+In this example, the `__init__()` method takes three parameters: `self`, `name`, and `age`. When we create a new object of the `Person` class, we pass two arguments to the constructor method: the name and age of the person we're creating. For example:
+
+```python
+person1 = Person("Alice", 25)
+person2 = Person("Bob", 30)
+```
+
+In this example, `person1` and `person2` are objects of the `Person` class that have been created with initial values for their `name` and `age` attributes.
+
+## Example of creating objects using constructor methods
+
+Let's look at a more complete example that demonstrates how to create objects using constructor methods. 
+
+```python
+class Dog:
+    def __init__(self, name, breed, age):
+        self.name = name
+        self.breed = breed
+        self.age = age
+
+    def bark(self):
+        print("Woof!")
+
+dog1 = Dog("Fido", "Labrador", 3)
+dog2 = Dog("Rex", "German Shepherd", 5)
+
+print(dog1.name)  # output: "Fido"
+print(dog2.breed)  # output: "German Shepherd"
+
+dog1.bark()  # output: "Woof!"
+dog2.bark()  # output: "Woof!"
+```
+
+In this example, we have a class named `Dog` that has a constructor method named `__init__()`. The `__init__()` method takes three parameters: `self`, `name`, `breed`, and `age`. 
+
+When we create a new object of the `Dog` class, we pass three arguments to the constructor method: the name, breed, and age of the dog. We then set the `name`, `breed`, and `age` attributes of the object using these arguments.
+
+The `Dog` class also has a regular method named `bark()`. This method is called on the `dog1` and `dog2` objects and outputs "Woof!".
+
+Overall, constructor methods are an essential part of creating objects in Python. They allow us to initialize the attributes of objects automatically and easily when they are created. By using constructor methods, we can simplify our code and ensure that objects are always created with consistent initial values.
+
+# Class inheritance
+
+In OOP, inheritance allows us to define a new class based on an existing class. The new class inherits all the attributes and methods of the original class, and we can also add new methods and attributes to the new class. 
+
+## Single-level inheritance
+
+Single-level inheritance is the simplest form of inheritance, where a child class is derived from a single parent class. Let's take a look at an example:
+
+```python
+class Vehicle:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        
+    def start(self):
+        print("The vehicle starts")
+
+class Car(Vehicle):
+    def __init__(self, make, model, year):
+        super().__init__(make, model, year)
+        
+    def drive(self):
+        print("The car is now driving")
+
+my_car = Car("Toyota", "Corolla", 2021)
+print(my_car.make) # prints "Toyota"
+my_car.start() # prints "The vehicle starts"
+my_car.drive() # prints "The car is now driving"
+```
+
+In this example, we have a `Vehicle` class with an `__init__()` method and a `start()` method. Then, we define a `Car` class that inherits from the `Vehicle` class. We use the `super()` function inside the `__init__()` method of the child class to call the constructor of the parent class. 
+
+We can also add new methods to the child class. In this case, we add a `drive()` method to the `Car` class.
+
+## Multi-level inheritance
+
+Multi-level inheritance is a type of inheritance where a child class inherits from a parent class, which in turn, inherits from another parent class. Here's an example:
+
+```python
+class Animal:
+    def __init__(self, species):
+        self.species = species
+        
+    def eat(self):
+        print("The animal is now eating")
+        
+class Mammal(Animal):
+    def __init__(self, species, feed_type):
+        super().__init__(species)
+        self.feed_type = feed_type
+        
+    def feed(self):
+        print("The mammal is now feeding")
+
+class Dog(Mammal):
+    def __init__(self, species, feed_type, breed):
+        super().__init__(species, feed_type)
+        self.breed = breed
+        
+    def bark(self):
+        print("The dog is now barking")
+
+my_dog = Dog("Canis lupus familiaris", "carnivore", "Golden Retriever")
+print(my_dog.species) # prints "Canis lupus familiaris"
+my_dog.feed() # prints "The mammal is now feeding"
+my_dog.eat() # prints "The animal is now eating"
+my_dog.bark() # prints "The dog is now barking"
+```
+
+In this example, we have an `Animal` class with an `__init__()` method and an `eat()` method. We also have a `Mammal` class that inherits from the `Animal` class, with a `feed()` method. Finally, we have a `Dog` class that inherits from the `Mammal` class, with a `bark()` method.
+
+We can see that the `Dog` class can access method inherited from both the `Animal` and `Mammal` classes.
+
+## The super() function
+
+Inheritance allows us to reuse code from existing classes, which is one of the main benefits of object-oriented programming. However, we often need to call the constructor of the parent class from the child class. That's where the `super()` function comes in. 
+
+The `super()` function allows us to call the constructor of the parent class, so that we can initialize the attributes inherited from that class. When we call `super().__init__()`, it calls the constructor of the immediate parent class.
+
+## Method overriding
+
+Sometimes, we may want to change the behavior of a method in a child class. We can do this by "overriding" the method in the child class. Method overriding allows us to use a different implementation of an inherited method in the child class. 
+
+Here's an example:
+
+```python
+class Shape:
+    def __init__(self, color):
+        self.color = color
+
+    def area(self):
+        raise NotImplementedError("Subclass must implement abstract method")
+
+class Rectangle(Shape):
+    def __init__(self, color, width, height):
+        super().__init__(color)
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+class Circle(Shape):
+    def __init__(self, color, radius):
+        super().__init__(color)
+        self.radius = radius
+
+    def area(self):
+        return 3.14159 * self.radius ** 2
+
+my_rect = Rectangle("blue", 5, 10)
+print(my_rect.area()) # prints 50
+
+my_circle = Circle("red", 5)
+print(my_circle.area()) # prints 78.53975
+```
+
+In this example, we have a `Shape` class with an `__init__()` method and an `area()` method, which raises a `NotImplementedError`. This indicates that any subclasses of `Shape` must implement their own version of the `area()` method. We then define two subclasses, `Rectangle` and `Circle`, which override the `area()` method in their own implementation.
+
+## Examples of class inheritance
+
+Inheritance is a powerful feature of OOP that allows us to create more specialized classes from existing ones. Here are some examples of class inheritance in real-world scenarios:
+
+- A `Bird` class can inherit from an `Animal` class, with specialized methods such as `fly()` and `lay_eggs()`.
+- A `Car` class can inherit from a `Vehicle` class, with specialized methods such as `drive()` and `park()`.
+- A `BankAccount` class can inherit from a `Person` class, with specialized methods such as `deposit()` and `withdraw()`.
+
+In each of these examples, the child classes inherit attributes and methods from their parent classes, and can also add new attributes and methods specific to their own use cases.
+
+# Special methods
+
+Special methods are also called magic methods in Python. They are methods that have double underscores at the beginning and end of their names. By default, these methods are called by specific Python behaviors, such as object initialization or evaluation of the object string representation.
+
+## Implementing special methods
+
+To implement special methods, you must define methods in your class with certain names of the form `__name__()`. The double underscores indicate that these methods are special methods. These methods are called implicitly under certain circumstances that correspond to their functionality.
+
+## Examples of special methods
+
+### `__str__()`
+
+`__str__()` is a special method that returns a string representation of an object. This method is called when you use the `str()` or `print()` functions to represent an object.
+
+Below, is an example of the `__str__()` method in action.
+
+```python
+class Dog:
+    def __init__(self, name):
+        self.name = name
+    
+    def __str__(self):
+        return f"the dog's name is {self.name}"
+
+my_dog = Dog('Spot')
+print(my_dog) #Outputs "the dog's name is Spot"
+```
+
+### `__repr__()`
+
+`__repr__()` is similar to `__str__()`, as it returns a string representation of an object. However, it is instead called when you want a more precise and unambiguous representation of an object. You should define`__repr__()` as though it might be used to recreate the object when called.
+
+Below, is an example of the `__repr__()` method in action.
+
+```python
+class Dog:
+    def __init__(self, name):
+        self.name = name
+    
+    def __repr__(self):
+        return f"Dog(name='{self.name}')"
+
+my_dog = Dog('Spot')
+print(repr(my_dog)) #Outputs "Dog(name='Spot')"
+```
+
+### `__len__()`
+
+`__len__()` returns the length of the container objects such as lists, strings, and so on. `__len__()` is called when you use the `len()` built-in function.
+
+Below, is an example of the `__len__()` method in action.
+
+```python
+class MyClass:
+    def __init__(self, data):
+        self.data = data
+    
+    def __len__(self):
+        return len(self.data)
+
+my_obj = MyClass([1, 2, 3, 4, 5])
+print(len(my_obj)) #Outputs 5
+```

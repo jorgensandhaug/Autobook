@@ -1,0 +1,17 @@
+## Review of OOP in Python
+
+In this book, we have explored the fundamental concepts of Object-Oriented Programming (OOP) such as classes, objects, and methods, and progressed through more advanced topics such as inheritance and polymorphism. We have focused on the use of these concepts in Python programming and have seen how they can be implemented using simple code examples.
+
+In Chapter 1, we introduced OOP and its importance in modern-day programming. We explained how OOP provides a modular and reusable approach to programming that makes it easier to write, debug and maintain code. We provided an overview of basic terms and concepts such as classes, objects, and methods, and explained their relevance in OOP. 
+
+In Chapter 2, we explored the basics of classes and objects in Python. We defined what classes are and how they can be used to create objects. We explained how to define classes, create objects from classes and how to access attributes and methods of the created objects.
+
+In Chapter 3, we focused on methods in Python classes. We explained what methods are and how they are different from regular functions. We described the types of methods such as instance methods, class methods, and static methods, and showed how to define and use them.
+
+Chapter 4 was on inheritance. We explained what inheritance is and how it can be used to create new classes from existing ones. We showed how to define derived classes and how to use the properties and methods of the base class in the derived class.
+
+In Chapter 5, we explored polymorphism in Python. We explained what polymorphism is and how it works. We also demonstrated how to implement polymorphism using methods, classes, and objects, and how to use it to create more flexible and reusable code.
+
+Finally, in this chapter, Chapter 6,  we delved into more advanced topics in OOP such as composition, aggregation, and encapsulation. We explained each concept in detail and provided code examples of how each can be used in Python. We also provided tips on how to design effective class hierarchies and when to use each of these concepts.
+
+In conclusion, this book has provided a comprehensive introduction to OOP in Python. It has equipped the reader with the knowledge and skills required to write, debug and maintain object-oriented Python programs. However, learning never stops. To continue learning OOP beyond this book, readers should practice writing code, join online communities, participate in open-source projects, read blogs and attend meetups and workshops.

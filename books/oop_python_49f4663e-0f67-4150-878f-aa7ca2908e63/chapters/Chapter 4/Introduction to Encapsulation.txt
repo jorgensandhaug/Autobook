@@ -1,0 +1,9 @@
+# Introduction to Encapsulation
+
+Encapsulation is one of the fundamental principles of Object-Oriented Programming (OOP). It refers to the bundling of data and methods that operate on that data within a single unit or module, and restricting access to them from outside the module. Encapsulation enables the data to be hidden from the outside world and is only accessible through certain methods, while also ensuring that data integrity is maintained. 
+
+Encapsulation plays a critical role in writing high-quality code by strengthening security and reducing coupling. It helps in making the code more reliable as it reduces the possibility of bugs caused by unintentional changes by other parts of the code. Encapsulation ensures that the code is well organized and understandable, which makes it easier to maintain and extend. 
+
+In Python, access modifiers are used to implement encapsulation. Access modifiers are keywords that limit the scope of variables and methods. They are public, protected, and private. Public attributes and methods are accessible from anywhere in the code. Protected attributes and methods are only accessible from within the class and its sub-classes. Private attributes and methods are only accessible within the class in which they are defined. 
+
+In the next chapters, we will dive deeper into the different access modifiers and how to use them effectively in Python. In the meantime, it's essential to note that proper use of access modifiers can help create clean, well-designed code that is easy to maintain and extend.

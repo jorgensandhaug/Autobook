@@ -1,0 +1,28 @@
+# Continuing learning OOP beyond the book
+
+Congratulations on mastering the basics of Object-Oriented Programming (OOP) using Python! As you round up your journey in this book, it's important to note that OOP is a vast and dynamic subject. Beyond the scope of this beginner's book, there is still so much to learn and explore. This section aims to provide you with a list of resources that you can use to continue learning OOP beyond this book.
+
+## Books on OOP
+As with any subject, books are a great resource for diving deeper into OOP. There are many books on OOP that you can use to supplement your knowledge from this book. Here are a few recommended ones:
+
+- Head First Object-Oriented Analysis and Design by Brett D. McLaughlin, Gary Pollice, and David West
+- Clean Code: A Handbook of Agile Software Craftsmanship by Robert C. Martin
+- Object-Oriented Thought Process by Matt Weisfeld
+- Python 3 Object-Oriented Programming by Dusty Phillips
+
+## Online courses on OOP
+Online courses are another resource for learning OOP. They offer a structured way of learning with dedicated instructors and can provide a more interactive learning experience. Here are some recommended online courses:
+
+- Object-Oriented Programming (OOP) in Python 3 by Corey Schafer on YouTube
+- Object-Oriented Programming in Python by Joe Marini on LinkedIn Learning
+- Python: Object-Oriented Programming by Joe Marini on LinkedIn Learning
+
+## Other resources
+Apart from books and online courses, there are many other resources you can use to continue learning OOP. Here are some recommended ones:
+
+- Documentations: the official Python documentation offers detailed information about OOP in Python. You can also find documentation on OOP for other programming languages.
+- GitHub: GitHub is a platform for software development collaboration. It offers a wide range of open-source projects that can serve as reference points for learning OOP.
+- StackOverflow: StackOverflow is an excellent platform where you can ask and answer questions on OOP and other programming concepts.
+
+## Conclusion
+In conclusion, OOP is a vast subject, and this book provides an ideal beginner's guide to the basics of OOP. To continue learning OOP, we recommend using the recommended resources above. It's important to note that practice is the key to mastering OOP and that mastering it takes time and dedication. With consistent practice and using the recommended resources, you can become proficient in OOP with Python. Good luck!

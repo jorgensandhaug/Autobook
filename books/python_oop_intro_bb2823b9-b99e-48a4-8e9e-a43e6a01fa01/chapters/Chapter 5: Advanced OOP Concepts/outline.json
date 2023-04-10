@@ -1,0 +1,35 @@
+{
+  "chapter_title": "Chapter 5: Advanced OOP Concepts",
+  "sub_chapters": [
+    {
+      "title": "Sub-chapter 1: Class Decorators",
+      "outline": "This sub-chapter will introduce class decorators in Python. It will cover how class decorators are used to modify classes to improve their behavior and functionality. The sub-chapter will cover examples of using class decorators to better understand how they work.",
+      "instructions": "The primary focus of this sub-chapter is to introduce class decorators and provide practical examples of their application. Avoid going too in-depth with decorators by bringing in decorators from other parts of the stdlib or third-party libraries. It is important to ensure that the reader understands the code provided and the applied benefit of decorator usage. Length: 750-1000 words.",
+      "index": 1
+    },
+    {
+      "title": "Sub-chapter 2: Static and Class Methods",
+      "outline": "This sub-chapter will cover the usage of static and class methods in Python. The sub-chapter will distinguish static and class methods and explain how and when to use them. It will provide examples of using static and class methods to improve the code structure.",
+      "instructions": "The primary focus of this sub-chapter is to introduce static and class methods and provide practical examples of their application. Avoid repeating examples used in previous sub-chapters. Ensure the reader understands when to use these methods and how to use them. Length: 750-1000 words.",
+      "index": 2
+    },
+    {
+      "title": "Sub-chapter 3: Properties",
+      "outline": "This sub-chapter will introduce the use of properties in Python. It will cover how properties can be used to improve the API interface of classes, making them more user-friendly. The sub-chapter will cover examples of using properties to better understand their application.",
+      "instructions": "The primary focus of this sub-chapter is to introduce properties and their application. Ensure that the reader understands how to use properties to increase the class's usability. Avoid repeating examples used in previous sub-chapters, ensure new practical examples are given. Length: 750-1000 words.",
+      "index": 3
+    },
+    {
+      "title": "Sub-chapter 4: Composition",
+      "outline": "This sub-chapter will introduce the use of composition in Python. It will cover how composition is used as an alternative to inheritance and how it can be used to improve code structure. The sub-chapter will cover examples of using composition to better understand the concept and its application.",
+      "instructions": "The primary focus of this sub-chapter is to introduce the concept of composition and how it can be applied to better the code structure. Avoid repeating examples used in previous sub-chapters. Ensure the reader understands how and when to use composition. Length: 750-1000 words.",
+      "index": 4
+    },
+    {
+      "title": "Sub-chapter 5: Design Patterns",
+      "outline": "This sub-chapter will introduce the use of design patterns in OOP. It will cover the benefits of using design patterns and how they can improve the code structure. The sub-chapter will provide examples of practical design pattern applications in Python.",
+      "instructions": "The primary focus of this sub-chapter is to introduce the concept of design patterns in OOP and provide the reader with real-world examples of using them to improve code structure. Ensure that the reader understands the practical application of the design patterns in Python. Avoid repeating examples used in previous sub-chapters. Length: 750-1000 words.",
+      "index": 5
+    }
+  ]
+}

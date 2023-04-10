@@ -1,0 +1,101 @@
+# Class-level Attributes and Class Methods
+
+Class-level attributes and class methods are essential in object-oriented programming as they allow for the creation of attributes and methods that are not unique to any instance of a class. This means that these attributes and methods are accessible through the class itself, rather than an object or instance of the class.
+
+## Defining Class-Level Attributes
+
+Defining a class-level attribute is similar to defining an instance variable. The difference is that the attribute must be defined within the class definition, but not within any method. We declare class attributes by defining the attribute names in the class definition section. Class attributes generally have default values that are shared by all instances of the class.
+
+For example, let's create a class `Person` and define a class-level attribute called `species`:
+
+```python
+class Person:
+    species = "Homo sapiens"  # class-level attribute
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+```
+
+Here, the `species` is a class-level attribute and is set to "Homo sapiens." This attribute is shared by all instances of the `Person` class.
+
+## Accessing Class-Level Attributes
+
+We can access class-level attributes in two ways:
+
+1. Through the class itself:
+
+```python
+print(Person.species)
+```
+
+Output:
+```
+Homo sapiens
+```
+
+2. Through an instance of the class:
+
+```python
+p1 = Person("John", 22)
+print(p1.species)
+```
+
+Output:
+```
+Homo sapiens
+```
+
+Because the `species` attribute is a class-level attribute, we can access it using the class itself or any instance of the class.
+
+## Defining Class Methods
+
+Class methods are also defined within the class definition, like class attributes. We can define class methods using the `@classmethod` decorator. The first parameter of a class method is always the class itself, conventionally named `cls`.
+
+For example, let's create a class method in the `Person` class that returns the value of the `species` attribute:
+
+```python
+class Person:
+    species = "Homo sapiens"  # class-level attribute
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    @classmethod
+    def get_species(cls):
+        return cls.species
+```
+
+Here, we have defined a class method called `get_species()`. To access the `species` attribute within this method, we use the `cls` parameter instead of the `self` parameter.
+
+## Accessing Class Methods
+
+We can access class methods in two ways:
+
+1. Through the class itself:
+
+```python
+print(Person.get_species())
+```
+
+Output:
+```
+Homo sapiens
+```
+
+2. Through an instance of the class:
+
+```python
+p1 = Person("John", 22)
+print(p1.get_species())
+```
+
+Output:
+```
+Homo sapiens
+```
+
+Similar to class attributes, we can access class methods using the class itself or any instance of the class. Class methods are primarily used when we need to perform actions on or retrieve information about the class itself rather than a specific instance of the class.
+
+In conclusion, class-level attributes and class methods are essential in object-oriented programming. They allow us to create attributes and methods that are not specific to any instance of a class, making it easier to work with and manage the class. By defining and accessing these attributes and methods, we can improve the efficiency and organization of our code.

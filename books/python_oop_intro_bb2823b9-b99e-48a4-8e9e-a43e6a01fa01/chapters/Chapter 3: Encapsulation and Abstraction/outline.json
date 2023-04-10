@@ -1,0 +1,29 @@
+{
+  "chapter_title": "Chapter 3: Encapsulation and Abstraction",
+  "sub_chapters": [
+    {
+      "title": "Encapsulation in Python",
+      "outline": "This subchapter will introduce the concept of encapsulation and explain what it is as well as why it is important. It will provide examples of encapsulation of data and behavior in Python objects.",
+      "instructions": "The sub-chapter should be well-articulated, explicit and concise, providing clear and reasonable examples of encapsulation in Python without including redundant information from the previous chapters.",
+      "index": 1
+    },
+    {
+      "title": "Private and Protected Attributes and Methods in Python",
+      "outline": "This subchapter will cover the concepts of private and protected attributes and methods in Python. It will explain the use of the underscore (_) symbol to specify protected attributes and methods and the double-underscore (__) symbol to denote private attributes and methods. It will provide examples of how these can be used in encapsulation.",
+      "instructions": "The sub-chapter should be well-articulated and detailed, explaining thoroughly the concept of private and protected attributes and methods. It should provide appropriate examples of how these can be used to enforce encapsulation in Python. There should be no redundancy with details or concepts covered in the previous sub-chapters or chapters.",
+      "index": 2
+    },
+    {
+      "title": "Abstraction in Python",
+      "outline": "This subchapter will introduce the concept of abstraction in Python and explain how it is used to achieve encapsulation. It will provide practical examples to show how to use abstraction with Python objects.",
+      "instructions": "The sub-chapter should be well-articulated, providing clear and concise explanations of the concept of abstraction. It should provide relevant examples of how to use abstraction with Python objects to achieve encapsulation. There should be no redundancy with details or concepts covered in the previous sub-chapters or chapters.",
+      "index": 3
+    },
+    {
+      "title": "Abstract Classes and Interfaces in Python",
+      "outline": "This subchapter will explain the use of abstract classes and interfaces in Python. It will explain the differences between them, and their use in enforcing abstraction in Python. Examples will be provided to show their application in Python.",
+      "instructions": "The sub-chapter should be clear and concise, providing explanations about abstract classes and interfaces in Python. It should explain the differences between them and provide examples. The sub-chapter should not include redundant information from the previous sections and should include only relevant examples.",
+      "index": 4
+    }
+  ]
+}

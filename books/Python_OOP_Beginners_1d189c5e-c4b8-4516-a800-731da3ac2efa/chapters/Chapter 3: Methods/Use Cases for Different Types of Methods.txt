@@ -1,0 +1,25 @@
+# Use Cases for Different Types of Methods
+
+In Python classes, there are three types of methods that are commonly used: instance methods, class methods, and static methods. Each of these methods has its unique use cases and advantages. Understanding when to use each method type will help you write cleaner, more efficient, and more effective code.
+
+## Instance Methods
+
+Instance methods are the most common type of method in Python classes. They are associated with an instance of a class and can access and modify the attributes of that instance. They are defined with the `self` parameter in the method definition which refers to the instance being operated on.
+
+Use instance methods when you need to work with the attributes of an instance. They are frequently used to modify the internal state of an object or access its properties. A common scenario where instance methods are useful is in model objects that represent physical entities, like a car or a bank account. In this case, instance methods can perform operations such as deposits, withdrawals, and balance inquiries.
+
+## Class Methods
+
+Class methods are methods that are bound to a class rather than an instance. They are defined with the `@classmethod` decorator and the `cls` parameter in the method definition. 
+
+Use class methods when you need to operate on the class itself or create objects of that class. They are commonly used for factory methods, which create objects of a class with specific properties. Another use case for class methods is when you need to access or modify class-level variables. For instance, you could use class methods to keep track of the number of objects created from a class.
+
+## Static Methods
+
+Static methods are methods that are not bound either to the class or to the instance. They are defined with the `@staticmethod` decorator and have no parameters that refer to either a class or an instance.
+
+Use static methods when you need to perform some operation from within the class, which does not depend on either an instance or a class. For instance, you can use a static method to perform a calculation or some other operation that does not involve an instance's state, such as printing a message or logging some information.
+
+## Conclusion
+
+Understanding different types of methods and their use cases is essential to write effective and efficient code in Python. Depending on the context of your program, you can use instance, class, or static methods to make your code more readable and functional. Remember to keep in mind the design principles when choosing the type of method to use. With these techniques, you can write better code, design better classes, and solve more complex programming problems.

@@ -1,0 +1,16 @@
+# Conclusion and Exercises
+
+In this chapter, we have learned about polymorphism in Python – a key concept of Object-Oriented Programming (OOP). Polymorphism allows multiple objects to share the same interface while having different implementations. This makes the code more flexible and scalable, and results in code that is easier to modify, maintain and understand.
+
+We learned two ways to achieve polymorphism in Python: method overloading and method overriding. Method overloading is when multiple functions have the same name but different parameters, whereas method overriding is when a subclass provides a different implementation of a method that is already defined in the superclass.
+
+To summarize, polymorphism is a vital concept in OOP, and Python allows it through method overloading and method overriding. We learned that creating a good class hierarchy, understanding the difference between the two types of polymorphism, and using well-written functions are important for creating good polymorphic code.
+
+## Exercises
+
+1. Write a program that demonstrates method overloading using the same class with different parameters. 
+2. Create a subclass of a class and implement a method. Then, override the method in the subclass, and call the method using an instance of the subclass. 
+3. Write a program that demonstrates polymorphism using a class hierarchy, where the same method name is used in multiple classes with different logic. 
+4. Implement a function that can accept any object, and print its attributes and methods. 
+
+These exercises aim to reinforce the concepts learned in this chapter and help you practice your programming skills. Complete the exercises to solidify your understanding of polymorphism and Python OOP.

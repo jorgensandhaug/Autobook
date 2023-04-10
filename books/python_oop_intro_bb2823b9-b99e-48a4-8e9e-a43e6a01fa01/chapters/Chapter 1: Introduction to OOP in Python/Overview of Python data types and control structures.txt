@@ -1,0 +1,26 @@
+# Overview of Python data types and control structures
+
+This sub-chapter provides an overview of the basic data types and control structures in Python. It is intended as a refresher for readers already familiar with Python and covers only the basics. There won't be too many technical details or code examples, but the content will be concise and easy to follow.
+
+One of the most essential features of any programming language is its data types. Python has several built-in data types, including:
+
+- Numbers (integers, floats, complex)
+- Booleans
+- Strings
+- Lists
+- Tuples
+- Dictionaries
+- Sets
+
+Each data type has its specific characteristics and can be used in different ways. For instance, strings are sequences of characters enclosed in quotation marks and can be manipulated with string methods. Lists, on the other hand, are sequences of values that can be added, removed or sorted.
+
+In addition to data types, Python has control structures that allow us to perform operations on data. The most common control structures in Python are:
+
+- Loops (for and while loops)
+- Conditionals (if, else, and elif statements)
+
+Loops allow us to perform a set of instructions multiple times. For example, a for loop can be used to iterate over a set of values in a list. A while loop is often used when we want to execute a set of instructions while a condition is true.
+
+The conditional statements, if, else, and elif, evaluate an expression and perform an action based on whether the expression is true or false. This is particularly useful when we want to execute a specific set of instructions based on the value of a condition.
+
+In conclusion, data types and control structures are the backbone of any programming language, including Python. Understanding how to work with these concepts in Python is crucial to building applications and solving problems. This sub-chapter provides a foundation for readers familiar with Python and serves as a starting point for the subsequent chapters on object-oriented programming.

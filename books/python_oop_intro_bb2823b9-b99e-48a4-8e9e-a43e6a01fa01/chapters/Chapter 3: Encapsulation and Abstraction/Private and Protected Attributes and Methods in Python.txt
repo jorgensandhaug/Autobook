@@ -1,0 +1,68 @@
+## Private and Protected Attributes and Methods in Python
+
+In Python, there are concepts of private and protected modifiers that define the scope of the class attributes and methods. The `_` underscore symbol is used to define a protected attribute or method, and the `__` double-underscore symbol is used to define a private attribute or method.
+
+### Protected Attributes and Methods in Python
+
+A protected attribute or method in Python is created using the single underscore symbol before the attribute or method name. Protected attributes can be accessed only within the class and child classes. The leading underscore is a convention that programmers use to indicate that the variable or method is not intended for public use.
+
+```python
+class Person:
+    def __init__(self, name):
+        self._name = name
+
+    def _introduction(self):
+        print(f"Hello, my name is {self._name}.")
+
+class Employee(Person):
+    def __init__(self, name, employee_id):
+        super().__init__(name)
+        self._employee_id = employee_id
+
+    def introduce(self):
+        self._introduction()
+        print(f"I am an employee with ID {self._employee_id}")
+```
+
+In the above example, the `_name` attribute of the `Person` class is declared as a protected variable. The `_introduction` method is also declared as protected. By doing this, we indicate that the primary purpose of this attribute and method is to be used within the class or subclass. The `Employee` class inherits from the `Person` class and uses the `_introduction` method from `Person` as a protected method.
+
+### Private Attributes and Methods in Python
+
+Private attributes or methods are created using the double underscore symbol before the attribute or method name. Private attributes cannot be accessed outside of the class definition. If the class is inherited by another class, the subclass cannot access the private attributes or methods.
+
+```python
+class BankAccount:
+    def __init__(self, account_id, balance):
+        self.__account_id = account_id
+        self.__balance = balance
+
+    def __withdraw(self, amount):
+        self.__balance -= amount
+
+    def __deposit(self, amount):
+        self.__balance += amount
+
+    def get_balance(self):
+        return self.__balance
+
+class SavingsAccount(BankAccount):
+    def __init__(self, account_id, balance, interest_rate):
+        super().__init__(account_id, balance)
+        self.__interest_rate = interest_rate
+
+    def add_interest(self):
+        interest = self.get_balance() * self.__interest_rate
+        self.__deposit(interest) # 'AttributeError: 'SavingsAccount' object has no attribute '_SavingsAccount__deposit''
+```
+
+In the above example, the `BankAccount` class has two private attributes `_account_id` and `_balance`. The methods `__withdraw` and `__deposit` are also private methods. The `SavingsAccount` subclass inherits the `BankAccount` class, but it cannot access the private attributes or methods.
+
+### Encapsulation in Python
+
+Encapsulation is an essential aspect of OOP, and Python supports it through private and protected attributes and methods. Encapsulation helps protect the data inside a class and prevents it from being modified accidentally. Private methods and attributes are entirely hidden from the user, and even child classes cannot modify them. Protected methods and attributes are hidden, so the user does not accidentally modify them, but child classes can still access them.
+
+Encapsulation allows us to hide the implementation details of the class and only expose the necessary details to the user. This abstraction makes the code more maintainable and easier to understand, as users do not need to know how methods are implemented, only how to use them. 
+
+## Conclusion
+
+Python provides the ability to use private and protected modifiers to define the scope and accessibility of attributes and methods. Private attributes and methods can be used to enforce encapsulation and hide implementation details, while protected attributes and methods are used to allow child classes to inherit functionality while restricting its use outside of the parent and child classes. These concepts are essential for building maintainable, scalable, and secure applications.

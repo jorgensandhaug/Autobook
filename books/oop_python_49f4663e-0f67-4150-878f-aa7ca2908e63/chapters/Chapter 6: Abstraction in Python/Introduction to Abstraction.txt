@@ -1,0 +1,66 @@
+# Introduction to Abstraction
+
+Abstraction is one of the four fundamental concepts of Object Oriented Programming (OOP), alongside inheritance, encapsulation, and polymorphism. Abstraction is the process of extracting essential features from a complex entity, such as a class, object, or method, while ignoring the non-essential details. In simpler terms, abstraction means hiding the implementation details of an object or method, while emphasizing on its relevant features. 
+
+The aim of abstraction is to reduce complexity, increase efficiency, and simplify program development. By hiding the underlying implementation details, developers can work on individual components of a program without worrying about their internal workings. The benefit of abstraction can be seen when changes are made to the internal workings of a component, without affecting other parts of the program. Abstraction helps to keep the program organized, structured and maintainable.
+
+Abstraction is crucial in OOP because it enables developers to create reusable code. It promotes modularity, allowing developers to build complex software systems by combining simple, reusable, and interchangeable components. Abstraction creates a separation of concerns, which means developers can work on specific modules, without interfering with other parts of the program.
+
+Encapsulation is often confused with abstraction since both concepts are geared towards hiding details. Encapsulation, however, is centered around restricting access to an object's internal state, whereas abstraction is focused on exposing only the relevant information of an object. Encapsulation is discussed in detail in another chapter.
+
+#### Achieving Abstraction in Python
+
+Python has several built-in constructs for achieving abstraction. Developers can use abstract classes, interfaces, or abstract methods to enforce abstraction in Python.
+
+An abstract class is a class that cannot be instantiated and requires subclasses to implement its abstract methods. It provides a blueprint with a set of methods that a subclass must override before it can be instantiated. Abstract classes allow developers to define methods without providing implementations, which can later be implemented in the derived class. An abstract class can define both abstract and non-abstract methods.
+
+An interface is similar to an abstract class, except that it only provides a list of methods that a class must implement, but not their implementations. An interface typically provides a protocol for communication among objects of different classes. A class can implement multiple interfaces, but it can only inherit from a single class.
+
+An abstract method is a method that does not have an implementation. It is declared using the `@abstractmethod` decorator. Any class that inherits from an abstract class must also implement all of its abstract methods.
+
+#### Abstraction in Practice
+
+Let's use an example to illustrate abstraction. Suppose you are building a computer game. To represent the different levels of the game, you can create a class hierarchy, with base classes for levels and different subclasses for each level.
+
+```python
+class Level:
+    def __init__(self, difficulty, terrain):
+        self.difficulty = difficulty
+        self.terrain = terrain
+
+class LevelOne(Level):
+    def __init__(self):
+        super().__init__("easy", "plain")
+
+class LevelTwo(Level):
+    def __init__(self):
+        super().__init__("medium", "mountain")
+
+#... continued
+```
+
+The player might also have different abilities and weapons, which can be implemented using a similar class hierarchy. These classes can then be used to build different characters in the game which can still be used interchangeably. For example:
+
+```python
+class Character:
+    def __init__(self, name, level):
+        self.name = name
+        self.level = level
+        self.health = 100
+
+class Knight(Character):
+    def __init__(self, name, level):
+        super().__init__(name, level)
+        self.weapon = "sword"
+
+class Mage(Character):
+    def __init__(self, name, level):
+        super().__init__(name, level)
+        self.weapon = "wand"
+
+#... continued
+```
+
+In this example, the abstraction concept is demonstrated through the use of subclasses. The generic `Level` class provides relevant information about the level, without getting caught up in irrelevant details. The `Character` class provides relevant attributes, such as name, level, and health, but does not get caught up in irrelevant details, such as attributes specific to knights or mages. This abstraction hierarchy allows for easy and reusable creation of characters.
+
+In conclusion, abstraction is a fundamental concept of OOP, and plays an important role in developing high-quality and maintainable code. It helps developers to build modular, reusable, and scalable software systems. Encapsulation, another fundamental OOP concept often confused with abstraction, is discussed in detail in another chapter. The next chapter will delve deeper into classes and objects in Python.

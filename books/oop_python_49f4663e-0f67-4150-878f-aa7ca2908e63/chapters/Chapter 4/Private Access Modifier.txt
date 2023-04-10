@@ -1,0 +1,42 @@
+## Private Access Modifier
+
+In Object-Oriented Programming (OOP), we use access modifiers to control the visibility of class members. Python provides three access modifiers: public, protected, and private. A private access modifier is the most restrictive access modifier. It ensures that data is not accessible outside of a class. 
+
+The private access modifier is defined using double underscores (`__`). Any attribute or method with double underscores before its name is considered private and can only be accessed within the class in which it is defined. For example, consider the following code snippet:
+
+```python
+class BankAccount:
+   def __init__(self):
+      self.__balance = 0
+      
+   def deposit(self, amount):
+      self.__balance += amount
+      
+   def withdraw(self, amount):
+      if amount > self.__balance:
+         print("Insufficient balance")
+      else:
+         self.__balance -= amount
+```
+
+In the above code, `__balance` is a private attribute that can only be accessed within the `BankAccount` class. Similarly, `deposit` and `withdraw` are public methods that allow users to interact with the account balance. 
+
+The private access modifier ensures that the data stored in a class is protected from external modifications. It also prevents accidental modifications that may lead to errors. For instance, if we try to access the `__balance` attribute from outside the class, we will get an `AttributeError`.
+
+```python
+account = BankAccount()
+account.__balance = 500  # This will not change the balance
+print(account.__balance) # This will raise an AttributeError
+```
+
+This error occurs because Python internally changes the name of the private attribute by adding `_classname` before it. This is known as name mangling. So, to access the `__balance` attribute outside the `BankAccount` class, we need to use its mangled name, which is `_BankAccount__balance`.
+
+```python
+account = BankAccount()
+account._BankAccount__balance = 500  # This will change the balance
+print(account._BankAccount__balance) # This will print 500
+```
+
+In real-world scenarios, the private access modifier is used to protect sensitive data, such as passwords, banking information, and personal details. By keeping the data private, we can ensure that it is not accessed or modified by unauthorized users.
+
+To summarize, the private access modifier is used to control the visibility of class members. It ensures that data is not accessible outside of a class, and it protects sensitive data from external modifications. It helps to make the code more secure and less error-prone.

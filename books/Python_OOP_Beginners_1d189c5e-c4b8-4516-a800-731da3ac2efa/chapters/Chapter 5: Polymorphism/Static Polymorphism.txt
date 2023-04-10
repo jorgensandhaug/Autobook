@@ -1,0 +1,61 @@
+# Static Polymorphism
+
+In Object-Oriented Programming (OOP), polymorphism refers to the ability to use a single interface for multiple forms of data. Polymorphism in Python can be implemented in two ways: static polymorphism and dynamic polymorphism. This sub-chapter will focus on static polymorphism and its different forms.
+
+## Static Polymorphism
+
+Static polymorphism is also known as compile-time polymorphism, where the compiler determines the polymorphic behavior during the compilation phase. In Python, static polymorphism can be implemented using function overloading, method overloading, and operator overloading.
+
+Function overloading allows functions with the same name to be defined with different parameter lists to handle different data types. The function takes a different number of arguments, each with different data types. Python does not support function overloading in the way that other programming languages, such as Java or C++, do. However, Python allows function overloading in a different way, using default arguments or variable-length arguments.
+
+```python
+def calculate_total(a, b, c=0):
+    return a + b + c
+
+def calculate_total(a, b, c, d):
+    return a + b + c + d
+```
+
+In the above code, we have defined two `calculate_total` functions, one with three arguments, and another with four arguments. When calling this function with three arguments, Python will invoke the first `calculate_total` function, and with four arguments, the second `calculate_total` function will be invoked.
+
+Method overloading is similar to function overloading, but instead of having multiple functions with the same name, we have multiple methods with the same name, defined within the same class, but with different parameter lists. 
+
+```python
+class Shape:
+    def area(self):
+        pass
+    
+class Rectangle(Shape):
+    def area(self, length, breadth):
+        return length * breadth
+    
+class Square(Shape):
+    def area(self, side):
+        return side ** 2
+```
+
+In the above code, both `Square` and `Rectangle` classes have an area method, but each takes a different number of arguments. When the area method is called for `Square`, it will use the area method that accepts only one argument, and for `Rectangle`, it will use the area method that accepts two arguments.
+
+Operator overloading allows the use of the same operator for different types of data. In Python, all operators are treated as method calls.
+
+``` python
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+        
+    def __add__(self, other):
+        x = self.x + other.x
+        y = self.y + other.y
+        return Point(x,y)
+        
+p1 = Point(1,2)
+p2 = Point(2,3)
+p3 = p1 + p2
+```
+
+In the above code, we have defined the addition operator for the `Point` class. When we perform the addition operation on two `Point` objects, Python will use the `__add__` method defined in the `Point` class to perform the addition operation.
+
+## Conclusion
+
+Static polymorphism is an essential feature of OOP that allows the creation of more concise and modular code. The different forms of static polymorphism, such as function overloading, method overloading, and operator overloading, each offers unique benefits for developers. In Python, some forms of static polymorphism, such as function overloading, are implemented differently than in other programming languages, but they still provide the same benefits of concise and modular code.

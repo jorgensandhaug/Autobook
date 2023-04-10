@@ -1,0 +1,29 @@
+{
+  "chapter_title": "Chapter 1: Introduction to Object-Oriented Programming",
+  "sub_chapters": [
+    {
+      "title": "Introduction to Object-Oriented Programming",
+      "outline": "Explanation of the basic concept of OOP, comparison with other programming paradigms, benefits of OOP for software development.",
+      "instructions": "This sub-chapter should introduce what Object-Oriented Programming is and why it is an important paradigm. It should give a brief comparison with other programming paradigms and explain the benefits of OOP for software development. Any technical terms should be accompanied by simple explanations. The length should be around 3-4 pages.",
+      "index": 1
+    },
+    {
+      "title": "Classes and methods",
+      "outline": "Definition of classes and objects, explanation of methods, differences between instance, class and static methods.",
+      "instructions": "This sub-chapter should delve into classes and methods by explaining the definitions of classes and objects. There should be a definition of methods and an explanation of the differences between instance, class and static methods. Any technical terms should be accompanied by simple explanations. The length should be around 4-5 pages.",
+      "index": 2
+    },
+    {
+      "title": "Python features for OOP",
+      "outline": "How OOP concepts are implemented in Python, introduction to syntax for classes and objects in Python.",
+      "instructions": "This sub-chapter should help the reader understand how OOP concepts are implemented in Python, and the Python syntax that can be used to write classes and objects. Any technical terms should be accompanied by simple explanations. The length should be around 3-4 pages.",
+      "index": 3
+    },
+    {
+      "title": "Benefits of OOP",
+      "outline": "Explanation of how OOP leads to reusable and modular code, discussion of less time spent on maintenance due to code reuse, explanation of class hierarchies.",
+      "instructions": "This sub-chapter should discuss the benefits of OOP for the developer, such as code reusability and modular code. The importance of class hierarchies should also be discussed. Any technical terms should be accompanied by simple explanations. The length should be around 4-5 pages.",
+      "index": 4
+    }
+  ]
+}

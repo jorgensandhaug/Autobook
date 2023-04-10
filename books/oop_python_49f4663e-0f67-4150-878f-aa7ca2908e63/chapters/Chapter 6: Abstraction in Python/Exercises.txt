@@ -1,0 +1,25 @@
+# Exercises
+
+In this section, we will reinforce the concepts learned in the Abstraction in Python chapter by providing a variety of exercises. The exercises will test the reader's knowledge of abstraction in Python, and they will relate to real-world problems that are easily understood by beginners. The solutions to the exercises will be included at the end of the book.
+
+## Exercise 1
+
+Create a class called `Shape` with an abstract method called `calculate_area()`. Create two subclasses called `Rectangle` and `Triangle` that will implement the `calculate_area()` method. Test the implementation by creating objects of both subclasses and calling their `calculate_area()` methods.
+
+## Exercise 2
+
+Create a class called `Vehicle` with an abstract method called `start()`. Create two subclasses called `Car` and `Motorcycle` that will implement the `start()` method. Test the implementation by creating objects of both subclasses and calling their `start()` methods.
+
+## Exercise 3
+
+Create an abstract class called `Animal` with abstract methods called `make_sound()` and `move()`. Create two subclasses called `Dog` and `Cat` that will implement the `make_sound()` and `move()` methods. Test the implementation by creating objects of both subclasses and calling their `make_sound()` and `move()` methods.
+
+## Exercise 4
+
+Create an abstract class called `BankAccount` with abstract methods called `withdraw()` and `deposit()`. Create two subclasses called `SavingsAccount` and `CheckingAccount` that will implement the `withdraw()` and `deposit()` methods. Test the implementation by creating objects of both subclasses and calling their `withdraw()` and `deposit()` methods.
+
+## Exercise 5
+
+Create an abstract class called `Shape` with an abstract method called `draw()`. Create two subclasses called `Rectangle` and `Circle` that will implement the `draw()` method. Use the `turtle` module to draw the shapes. Test the implementation by creating objects of both subclasses and calling their `draw()` methods.
+
+These exercises will provide the reader with a solid understanding of the implementation and use of abstraction in Python. The exercises are designed to be easily understood by beginners and will help reinforce the key concepts covered in this chapter. The solutions to these exercises will be included at the end of the book.

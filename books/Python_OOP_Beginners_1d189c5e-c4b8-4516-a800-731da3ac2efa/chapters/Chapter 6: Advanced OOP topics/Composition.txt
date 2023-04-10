@@ -1,0 +1,89 @@
+# Composition
+
+Composition is a programming technique that allows us to combine multiple smaller classes to create a larger, more complex class. In other words, composition is the process of creating larger objects by using other smaller objects as its properties. It creates a relationship between the composite object and its components. 
+In composition, the composite object does not own the smaller object as in inheritance. It just uses them as a part of its internal implementation. An object can be composed of one or more objects of a different class.
+
+## How to use Composition in Python
+
+Composition can be implemented in Python classes by creating an instance of the other class as an attribute inside the main class. 
+
+```python
+class Book:
+    def __init__(self, title, author, publisher):
+        self.title = title
+        self.author = author
+        self.publisher = publisher
+         
+class Library:
+    def __init__(self):
+        self.books = []
+ 
+    def add_book(self, book):
+        self.books.append(book)
+         
+book1 = Book("Python for Beginners", "Joseph Smith", "Tech Books Publishing House")
+book2 = Book("Python Programming", "Eric Matthes", "No Starch Press")
+library = Library()
+library.add_book(book1)
+library.add_book(book2)
+```
+
+In the example above, the `Library` class is composed of one or more `Book` objects. The `Library` class creates a list of books as an attribute, and then the `add_book()` method is used to add `Book` objects to this list.
+
+## Composition vs Inheritance
+
+The main difference between composition and inheritance is that composition combines smaller classes to create a larger one, whereas inheritance involves creating new classes from existing ones. 
+Composition is flexible, and allows a class to be composed of one or more objects of a different class, whereas inheritance can lead to a rigid hierarchy of classes, which can be difficult to update or modify.
+
+Inheritance can be useful when we want to create a new class that inherits certain properties of an existing class. For example, if we want to create a new class called `Dog` that inherits from the existing class `Animal`, we can create it like this:
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+         
+    def speak(self):
+        pass
+         
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+```
+
+In the example above, the `Dog` class inherits from the `Animal` class and overrides its `speak()` method to return `"Woof!"`. 
+
+Composition can also be useful when we want to create a class that uses one or more objects of a different class. For example, if we have a `Car` class that is composed of an `Engine` object, we can create it like this:
+
+```python
+class Engine:
+    def start(self):
+        pass
+         
+    def stop(self):
+        pass
+         
+class Car:
+    def __init__(self):
+        self.engine = Engine()
+         
+    def start(self):
+        self.engine.start()
+         
+    def stop(self):
+        self.engine.stop()
+```
+
+In the example above, the `Car` class is composed of an `Engine` object, which is created in its constructor. The `Car` class uses the `start()` and `stop()` methods of the `Engine` object to start and stop the car's engine.
+
+## Tips on using Composition effectively
+
+Here are some tips on how to use composition effectively in Python:
+
+- Identify the smaller classes that can be used to create the larger class
+- Create the smaller class objects as attributes inside the larger class
+- Define methods in the larger class that use the objects of the smaller classes
+- Use encapsulation to hide the implementation details of the smaller classes from the larger class
+
+## Conclusion
+
+Composition is a powerful programming technique that allows us to create complex classes by using objects of other classes as their attributes. It is a flexible and effective alternative to inheritance, and can be used to create more modular and maintainable code. By using composition, we can create classes that are easier to update, modify, and reuse.

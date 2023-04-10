@@ -1,0 +1,11 @@
+# Practical examples and exercises
+
+This sub-chapter provides practical examples and exercises to reinforce the reader's understanding of object-oriented programming concepts in Python. The examples and exercises presented are easy to follow and will use the concepts presented in the previous sub-chapter.
+
+One simple example that illustrates the concepts of encapsulation and inheritance is creating a `Person` class that has a `name` attribute and a `talk()` method. The `talk()` method will simply return the person's name with the message "is talking". We can then create a `Student` class that inherits from the `Person` class and has an additional `student_id` attribute. We can also override the `talk()` method to include the message "is a student". This example shows how inheritance allows us to create a more specialized class from a more general one.
+
+Another example that illustrates the concept of polymorphism is creating a `Shape` class with a `draw()` method that does not have a body. We can then create several subclasses, such as `Circle`, `Square`, and `Triangle`, each with its own implementation of the `draw()` method. This example shows how we can write more flexible and reusable code by using polymorphism.
+
+The exercises provided will challenge the reader to apply the concepts learned in the previous sub-chapter to solve practical problems. For example, one exercise could be to create a simple game using classes and objects. The game could involve a player character moving around a grid, collecting items, and avoiding obstacles. The reader would need to use encapsulation, inheritance, and polymorphism to create the necessary classes and methods to make the game work.
+
+Overall, the examples and exercises presented in this sub-chapter are clear and concise, and they help the reader solidify their knowledge of object-oriented programming concepts in Python. By completing the exercises, the reader will be able to apply these concepts to their own projects and continue to build their skills in OOP.

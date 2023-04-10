@@ -1,0 +1,36 @@
+## Instance Variables and Methods
+
+In Python, instance variables represent the data which is unique to each object of a class. These variables are defined inside the constructor method and are referenced using the self keyword. The instance variables can be accessed and modified by the methods defined in the class. 
+
+For example, suppose we have a class named `Person` to represent information about a person. We can define instance variables such as name, age, and gender for each person object. The code for defining instance variables for the `Person` class would look like this:
+
+```python
+class Person:
+    def __init__(self, name, age, gender):
+        self.name = name
+        self.age = age
+        self.gender = gender
+```
+
+Here, `name`, `age`, and `gender` are instance variables of the `Person` class, which are assigned when a new object is created with the `__init__` method.
+
+Methods, on the other hand, are functions defined inside a class that can operate on the instance variables of that class. Methods are also referenced using the self keyword. 
+
+For example, let's add a `greet` method to the `Person` class that will greet the person by their name. The code for the `greet` method would look like this:
+
+```python
+class Person:
+    def __init__(self, name, age, gender):
+        self.name = name
+        self.age = age
+        self.gender = gender
+    
+    def greet(self):
+        print(f"Hello, my name is {self.name}")
+```
+
+Here, the `greet` method takes the name of the person and uses it to greet them. The `self` keyword is used to access the name instance variable of the class.
+
+Instance variables are used to store information that is specific to each object of a class, while methods are used to manipulate these variables according to the requirements of the program. 
+
+In summary, this sub-chapter covered the basic concepts of instance variables and methods in Python. Instance variables are used to store data that is unique to each object of a class, while methods are used to manipulate these variables according to the requirements of the program. By understanding these concepts, readers will be able to create more complex and useful classes in Python.

@@ -4,11 +4,14 @@ Autobook is an innovative e-book and website generation project powered by GPT-4
 
 ## Table of Contents
 
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contribution](#contribution)
-- [Support and Feedback](#support-and-feedback)
+- [Autobook](#autobook)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contribution](#contribution)
+  - [Support and Feedback](#support-and-feedback)
+  - [Website creation](#website-creation)
 
 ## Features
 
@@ -59,3 +62,6 @@ We appreciate any contributions to improve the Autobook project. Please submit i
 For support, feedback, or any questions, please feel free to reach out to us at sandhaug.investment@gmail.com.
 
 
+
+## Website creation
+The website could be structured with three different parts in the vertical layout. The first part could be just like some short copy aka marketing with a picture of the book and the title and also a buy now button. Then the next one could be a bit more in depth with the summary of the book and or some more marketing stuff. Maybe also with a generated image or something. Then the last page just like a new link to buy now with some other stuff. We could potentially also add some fake user reviews.

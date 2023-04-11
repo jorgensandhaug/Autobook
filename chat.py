@@ -1,33 +1,46 @@
 from bs4 import BeautifulSoup
 import re
 import openai
+import time
 import os
 import json
 
 total_price = 0
 
+
 def chat(messages):
     global total_price
+    model = "gpt-4"
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=messages
-    )
+    while True:
+        try:
+            response = openai.ChatCompletion.create(
+                model=model,
+                messages=messages
+            )
 
 
-    completion_tokens = response["usage"]["completion_tokens"]
-    prompt_tokens = response["usage"]["prompt_tokens"]
+            completion_tokens = response["usage"]["completion_tokens"]
+            prompt_tokens = response["usage"]["prompt_tokens"]
 
-    #$0.002 / 1K tokens
-    price = completion_tokens * 0.000002 + prompt_tokens * 0.000002
-    # print("Price: ", price)
-    total_price += price
-    # print("Total price: ", total_price)
+            #$0.002 / 1K tokens
+            if model == "gpt-3.5-turbo":
+                price = completion_tokens * 0.000002 + prompt_tokens * 0.000002
+            else :
+                price = completion_tokens * 0.00006 + prompt_tokens * 0.00003
+            # print("Price: ", price)
+            total_price += price
+            # Print with green colors.
+            print("\033[92m" + "Price: " + str(price) +"\tTotal price: "+str(total_price)+ "\033[0m")
 
 
-    content = response['choices'][0]['message']['content']
-    return content
+            content = response['choices'][0]['message']['content']
+            return content
+        except openai.error.RateLimitError:
+            # TODO: WHen we switch to langchain, this is built in
+            print("Error: ", "API Rate Limit Reached. Waiting 10 seconds...")
+            time.sleep(10)
 
 
 

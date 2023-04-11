@@ -6,6 +6,24 @@ from chat import chat, chat_json_response
 import os
 import uuid
 
+from format_book import read_json_file, read_text_file
+from format_book import main as format_book
+
+def retryChapter(index, name):
+    # name = "highschool_python_oop_c5105e3c-ba17-41b6-a08a-f5a0f47505fe"
+    folder = "books/" + name
+    book_info = read_json_file(os.path.join(folder, "book_info.json"))
+    book_instructions = book_info["book_instructions"]
+    full_outline = read_json_file(os.path.join(folder, "full_outline.json"))
+    summary = read_text_file(os.path.join(folder, "summary.txt"))
+
+    chapters = read_json_file(os.path.join(folder, "chapters.json"))["chapters"]
+
+    chapter = chapters[index]
+
+    write_chapter_expanded_outline(chapter, full_outline, summary, book_instructions)
+
+
 continous_mode = False
 folder_name = None
 # Helper function to save JSON data to file
@@ -143,8 +161,8 @@ def get_summary(book_instructions, chapters):
     summary_prompt = {
         "role": "system",
         "content": (
-            "Generate an extensive summary of the books content, considering the book info and the provided chapters. "
-            "The summary should give a clear idea of what the book is about and its main takeaways. "
+            "Generate an extensive and detailed summary of the books content, given the instructions for the book and the provided chapters. "
+            "The summary should give a clear idea of what is contained within each chapter, and how the chapters are connected."
             "In your response, only provide the text for the summary"
         ),
     }
@@ -190,7 +208,6 @@ def expand_chapter_outline(chapter, full_outline, summary, book_instructions):
         "      'title': 'The title of the sub-chapter (string)',\n"
         "      'outline': 'A brief description of the sub-chapter's content (string)',\n"
         "      'instructions': 'Any specific instructions for writing the sub-chapter (string) (be detailed and exhaustive in the instructions)',\n"
-        "      'index': 'The index of the sub-chapter in the chapter starting from 1 (integer: 1, 2, 3...)',\n"
         "    },\n"
         "    ...\n"
         "  ]\n"
@@ -219,6 +236,10 @@ def expand_chapter_outline(chapter, full_outline, summary, book_instructions):
         chapter_outline = chat_json_response(messages)
         try: 
             print("Outline for chapter: ", chapter_outline["chapter_title"])
+            if chapter_outline["chapter_title"] != chapter["title"]:
+                print("Not same chapter title as in the chapter outline. Fixing it.")
+                chapter_outline["chapter_title"] = chapter["title"]
+
             pretty_print("Chapter outline: ", chapter_outline)
             messages.append({"role": "assistant", "content": json.dumps(chapter_outline, indent=4)})
             user_feedback = get_user_feedback("Do you accept the chapter outline (Y/no)? If no, please provide your suggestions: ")
@@ -234,6 +255,7 @@ def expand_chapter_outline(chapter, full_outline, summary, book_instructions):
             messages.append({"role": "assistant", "content": chapter_outline[1]})
             messages.append({"role": "user", "content": "You did not provide your response in the correct JSON format. See the error message below:\n"+chapter_outline[0]+"\nOnly provide the chapter outline in your response in the correct json format."})
             chapter_outline = None 
+            get_user_feedback("Press enter to continue: ")
 
 
 
@@ -248,7 +270,7 @@ def write_sub_chapter(chapter_title, sub_chapter, chapter_main_outline, summary)
             "Write the content for the given sub-chapter, following the sub-chapter outline, "
             "instructions provided, the main chapter outline, and the full book summary. Ensure the content "
             "is coherent, connected, and avoids redundancy. The length and depth of "
-            "the sub-chapter should be in accordance with the instructions. In your response, only provide the full text for the sub-chapter. Remember that this is an e-book, so don't write too long paragraphs. Provide your response in Markdown format!"
+            "the sub-chapter should be in accordance with the instructions. In your response, only provide the full text for the sub-chapter. Remember that this is an e-book, so don't write too long paragraphs. Provide your response in Markdown format!. Use code blocks for code snippets, and use the appropriate formatting elsewhere. Also, make sure to include the title of the sub-chapter as a header in the beginning of the sub-chapter. This header should be ### (three hashtags) and should be followed by a blank line."
         ),
     }
     sub_chapter_message = {
@@ -302,7 +324,7 @@ def write_chapter_expanded_outline(chapter, full_outline, summary, book_instruct
 
 def main(args):
     global folder_name
-    book_idea = "Intro to object oriented programming in python. Make sure to not include any external resources in any place in the book."
+    book_idea = "an introduction to heart anatomy and physiology. The book has to be short and very compact, packed with a lot of information. It should be academic and formal, meant for medicine students who already has a bit of knowledge about medicine concepts."
     book_info = get_book_info(book_idea)
     book_title = book_info["book_title"]
     title_folder_name = book_info["title_folder_name"]
@@ -343,14 +365,30 @@ def main(args):
     print("Finished writing book: \n\n\n", "Folder name: ", folder_name)
     from chat import total_price
     print("Total price: ", total_price)
+    format_book(folder_name)
+
+    
+
+
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--continuous", action="store_true", help="Enable continuous mode")
+    parser.add_argument("--chapter", type=int, help="Retry failed chapters")
+    parser.add_argument("--book", type=str, help="Book folder name")
+    
     args = parser.parse_args()
     
     if args.continuous:
         continous_mode = True
         
-    main(args)
+    if args.chapter:
+        chapter_index = args.chapter -1
+        folder_name = args.book
+        print("Retrying chapter: ", chapter_index + 1, " in book: ", folder_name)
+        retryChapter(chapter_index, folder_name)
+    else:
+        main(args)
+
+

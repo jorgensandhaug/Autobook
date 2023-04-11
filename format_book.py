@@ -1,5 +1,10 @@
 import os
-import markdown
+import mistune
+import pygments
+from pygments import highlight
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters import html
+import mistune
 import json
 from ebooklib import epub
 from bs4 import BeautifulSoup
@@ -13,16 +18,27 @@ def read_text_file(file_path):
     with open(file_path, "r") as f:
         return f.read()
 
+class HighlightRenderer(mistune.HTMLRenderer):
+    def block_code(self, code, info=None):
+        if info:
+            lexer = get_lexer_by_name(info.strip(), stripall=True)
+            formatter = html.HtmlFormatter()
+            return highlight(code, lexer, formatter)
+        # border line.
+        return '<div style="border: 1px solid #eaecef; border-radius: 3px; padding: 16px; background-color: #f6f8fa;"><pre><code>%s</code></pre></div>' % mistune.escape(code)
+
 def read_book_data(book_folder):
     book_info = read_json_file(os.path.join(book_folder, "book_info.json"))
     title = book_info["book_title"]
     summary = read_text_file(os.path.join(book_folder, "summary.txt"))
 
     chapters_data = []
-    chapters_folder = os.path.join(book_folder, "chapters")
+    chapters_outline_file = os.path.join(book_folder, "chapters.json")
+    chapters = read_json_file(chapters_outline_file)["chapters"]
 
-    for chapter_folder in os.listdir(chapters_folder):
-        chapter_path = os.path.join(chapters_folder, chapter_folder)
+    chapters_folder = os.path.join(book_folder, "chapters")
+    for chapter in chapters:
+        chapter_path = os.path.join(chapters_folder, chapter["title"])
         chapter_outline = read_json_file(os.path.join(chapter_path, "outline.json"))
 
         sub_chapters = []
@@ -65,10 +81,15 @@ def create_ebook_from_folder(book_folder, output_dir, name):
         for sub_chapter in chapter_data["sub_chapters"]:
             sub_chapter_title = sub_chapter["title"]
             sub_chapter_content = sub_chapter["content"]
+            # Replace all Markdown code snippets with HTML code.
+            # start_pattern = re.compile(r'```')
+            # end_pattern = re.compile(r'```')
 
-            html_content = markdown.markdown(sub_chapter_content)
-            print(html_content)
-            chapter.content += f"<h2>{sub_chapter_title}</h2>{html_content}"
+            markdown = mistune.create_markdown(renderer=HighlightRenderer())
+            html_content = markdown(sub_chapter_content)
+            #html_content = markdown.markdown(sub_chapter_content)
+            #print(html_content)
+            chapter.content += html_content
 
             # soup = BeautifulSoup(sub_chapter_content, "html.parser")
             # chapter.content += f"<h2>{sub_chapter_title}</h2>"
@@ -93,13 +114,16 @@ def create_ebook_from_folder(book_folder, output_dir, name):
     epub.write_epub(os.path.join(output_dir, f"{name}.epub"), book)
 
 
-# Use the function to create an ebook from the folder structure
-name = "Python_OOP_Beginners_1d189c5e-c4b8-4516-a800-731da3ac2efa"
-book_folder = f"books/{name}"
-output_dir = book_folder
-create_ebook_from_folder(book_folder, output_dir, name)
-print("Done", "Saved to", f"{output_dir}/{name}.epub")
+def main(name):
+    # Use the function to create an ebook from the folder structure
+    book_folder = f"books/{name}"
+    output_dir = book_folder
+    create_ebook_from_folder(book_folder, output_dir, name)
+    print("Done", "Saved to", f"{output_dir}/{name}.epub")
 
-# execute java -jar epubcheck-5.0.0/epubcheck.jar books/python_oop_intro_7543d8df-7955-49fd-b04a-00c04c338fa8/Introduction\ to\ Object-Oriented\ Programming\ in\ Python.epub
-os.system(f"java -jar epubcheck-5.0.0/epubcheck.jar books/{name}/{name}.epub")
+    # execute java -jar epubcheck-5.0.0/epubcheck.jar books/python_oop_intro_7543d8df-7955-49fd-b04a-00c04c338fa8/Introduction\ to\ Object-Oriented\ Programming\ in\ Python.epub
+    os.system(f"java -jar epubcheck-5.0.0/epubcheck.jar books/{name}/{name}.epub")
+
+if __name__ == "__main__":
+    main("highschool_python_oop_c5105e3c-ba17-41b6-a08a-f5a0f47505fe")
 

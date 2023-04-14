@@ -324,7 +324,37 @@ def write_chapter_expanded_outline(chapter, full_outline, summary, book_instruct
 
 def main(args):
     global folder_name
-    book_idea = "an introduction to heart anatomy and physiology. The book has to be short and very compact, packed with a lot of information. It should be academic and formal, meant for medicine students who already has a bit of knowledge about medicine concepts."
+    book_idea = """
+    Title: Self Care Ebook: The Ultimate Guide to Putting Yourself First
+
+Style of Writing:
+
+Conversational and engaging: The writing should be approachable and easy to understand, making readers feel like they are having a conversation with a trusted friend or mentor.
+Empathetic and supportive: The tone should be warm, empathetic, and non-judgmental, recognizing that self-care is a personal journey and that everyone's needs are unique.
+Actionable and practical: The content should provide clear, step-by-step instructions and techniques that readers can immediately apply to their daily lives.
+Personal experiences and insights: While avoiding external sources, the book should draw from the author's personal experiences, observations, and insights to support its recommendations and connect with readers.
+Target Audience:
+The book should be primarily directed towards women but also inclusive of men who are interested in prioritizing self-care and improving their overall well-being. This includes:
+
+Busy working women and men struggling to find balance between work and personal life.
+Parents juggling the demands of family life and seeking ways to prioritize their own well-being.
+Individuals experiencing stress, anxiety, or burnout and looking for effective strategies to improve their mental health.
+Anyone interested in personal growth and self-improvement, regardless of their current self-care practices.
+Content:
+The book should be organized into several key sections, each addressing a specific aspect of self-care. Possible sections include:
+
+Introduction: The importance of self-care and an overview of its benefits, with an emphasis on women's unique needs.
+Healthy Habits: Strategies for improving sleep, diet, and exercise routines, considering the unique health concerns of women.
+Stress Management: Identifying stressors and implementing coping mechanisms, with special attention to issues that disproportionately affect women.
+Mindfulness and Meditation: Techniques for cultivating awareness, focus, and relaxation, suitable for both men and women.
+Emotional Self-Care: Building emotional resilience, self-compassion, and healthy boundaries, with a focus on women's experiences.
+Social Self-Care: Cultivating supportive relationships and practicing effective communication, highlighting the importance of female friendships and connections.
+Creative Self-Care: Exploring artistic and creative outlets for relaxation and self-expression that resonate with both men and women.
+Spiritual Self-Care: Discovering practices that nurture the soul and foster a sense of purpose and meaning for all readers.
+Personalizing Your Self-Care Routine: Tips for creating a sustainable, tailored self-care plan that meets each reader's unique needs, with an emphasis on women's perspectives.
+Conclusion: Encouragement for maintaining self-care practices and embracing the journey towards greater well-being, with an inclusive message for all readers.
+Each section should include a combination of explanations, anecdotes, and practical exercises, enabling readers to grasp the concepts and apply them in their daily lives. Additionally, the book should feature real-life examples and stories from the author's own experiences to illustrate the impact of self-care on people's lives and to inspire readers to prioritize their own well-being.
+    """
     book_info = get_book_info(book_idea)
     book_title = book_info["book_title"]
     title_folder_name = book_info["title_folder_name"]

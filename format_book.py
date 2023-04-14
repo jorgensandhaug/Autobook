@@ -69,6 +69,20 @@ def create_ebook_from_folder(book_folder, output_dir, name):
     book.add_item(epub.EpubNcx())
 
 
+    # Read and add the cover image
+    cover_image_path = os.path.join(book_folder, "cover.png")  # Assuming the cover image is named 'cover.png'
+    if os.path.isfile(cover_image_path):
+        with open(cover_image_path, "rb") as img:
+            cover_image = epub.EpubImage()
+            cover_image.file_name = "cover.png"
+            cover_image.media_type = "image/png"
+            cover_image.content = img.read()
+            book.add_item(cover_image)
+            book.set_unique_metadata("OPF", "meta", None, {"name": "cover", "content": cover_image.id})  # Add cover image metadata
+
+
+
+
     # Generate table of contents
     toc_items = []
     book_chapters = []
@@ -114,6 +128,19 @@ def create_ebook_from_folder(book_folder, output_dir, name):
     epub.write_epub(os.path.join(output_dir, f"{name}.epub"), book)
 
 
+def convert_epub_to_formats(name, input_dir, output_dir):
+    input_file = os.path.join(input_dir, f"{name}.epub")
+    pdf_output_file = os.path.join(output_dir, f"{name}.pdf")
+    mobi_output_file = os.path.join(output_dir, f"{name}.mobi")
+
+    # Convert EPUB to PDF
+    os.system(f"ebook-convert {input_file} {pdf_output_file}")
+    print("Done", "Saved to", pdf_output_file)
+
+    # Convert EPUB to MOBI
+    os.system(f"ebook-convert {input_file} {mobi_output_file}")
+    print("Done", "Saved to", mobi_output_file)
+
 def main(name):
     # Use the function to create an ebook from the folder structure
     book_folder = f"books/{name}"
@@ -121,9 +148,13 @@ def main(name):
     create_ebook_from_folder(book_folder, output_dir, name)
     print("Done", "Saved to", f"{output_dir}/{name}.epub")
 
-    # execute java -jar epubcheck-5.0.0/epubcheck.jar books/python_oop_intro_7543d8df-7955-49fd-b04a-00c04c338fa8/Introduction\ to\ Object-Oriented\ Programming\ in\ Python.epub
+    # Convert EPUB to PDF and MOBI
+    convert_epub_to_formats(name, output_dir, output_dir)
+
+    # check epub validity
     os.system(f"java -jar epubcheck-5.0.0/epubcheck.jar books/{name}/{name}.epub")
 
+
 if __name__ == "__main__":
-    main("highschool_python_oop_c5105e3c-ba17-41b6-a08a-f5a0f47505fe")
+    main("self_care_ebook_6c8c363c-5d47-428d-9701-8897bbe1ae94")
 

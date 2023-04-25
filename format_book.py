@@ -64,7 +64,8 @@ def create_ebook_from_folder(book_folder, output_dir, name):
     book.set_identifier("name")
     book.set_title(title)
     book.set_language("en")
-    book.add_author("Anonymous")
+    book.add_author("Sandhaug Digital")
+    
 
     book.add_item(epub.EpubNcx())
 
@@ -83,7 +84,7 @@ def create_ebook_from_folder(book_folder, output_dir, name):
 
 
 
-    # Generate table of contents
+        # Generate table of contents
     toc_items = []
     book_chapters = []
 
@@ -92,25 +93,26 @@ def create_ebook_from_folder(book_folder, output_dir, name):
         chapter = epub.EpubHtml(title=chapter_title, file_name=f"{slugify(chapter_title)}.xhtml", lang="en")
         chapter.content = f"<h1>{chapter_title}</h1>"
 
+        # List to store subchapter items for table of contents
+        subchapter_items = []
+
         for sub_chapter in chapter_data["sub_chapters"]:
             sub_chapter_title = sub_chapter["title"]
             sub_chapter_content = sub_chapter["content"]
-            # Replace all Markdown code snippets with HTML code.
-            # start_pattern = re.compile(r'```')
-            # end_pattern = re.compile(r'```')
 
             markdown = mistune.create_markdown(renderer=HighlightRenderer())
             html_content = markdown(sub_chapter_content)
-            #html_content = markdown.markdown(sub_chapter_content)
-            #print(html_content)
+
             chapter.content += html_content
 
-            # soup = BeautifulSoup(sub_chapter_content, "html.parser")
-            # chapter.content += f"<h2>{sub_chapter_title}</h2>"
-            # chapter.content += soup.prettify()
+            # Create a subchapter item and add it to the subchapter_items list
+            subchapter_item = epub.Link(chapter.file_name, sub_chapter_title, f"{slugify(chapter_title)}_{slugify(sub_chapter_title)}")
+            subchapter_items.append(subchapter_item)
 
         book.add_item(chapter)
-        toc_items.append(chapter)
+
+        # Append chapter and its subchapters to the table of contents
+        toc_items.append((chapter, subchapter_items))
         book_chapters.append(chapter)
 
     # Create a navigation file
@@ -128,19 +130,6 @@ def create_ebook_from_folder(book_folder, output_dir, name):
     epub.write_epub(os.path.join(output_dir, f"{name}.epub"), book)
 
 
-def convert_epub_to_formats(name, input_dir, output_dir):
-    input_file = os.path.join(input_dir, f"{name}.epub")
-    pdf_output_file = os.path.join(output_dir, f"{name}.pdf")
-    mobi_output_file = os.path.join(output_dir, f"{name}.mobi")
-
-    # Convert EPUB to PDF
-    os.system(f"ebook-convert {input_file} {pdf_output_file}")
-    print("Done", "Saved to", pdf_output_file)
-
-    # Convert EPUB to MOBI
-    os.system(f"ebook-convert {input_file} {mobi_output_file}")
-    print("Done", "Saved to", mobi_output_file)
-
 def main(name):
     # Use the function to create an ebook from the folder structure
     book_folder = f"books/{name}"
@@ -148,12 +137,8 @@ def main(name):
     create_ebook_from_folder(book_folder, output_dir, name)
     print("Done", "Saved to", f"{output_dir}/{name}.epub")
 
-    # Convert EPUB to PDF and MOBI
-    convert_epub_to_formats(name, output_dir, output_dir)
-
-    # check epub validity
+    # execute java -jar epubcheck-5.0.0/epubcheck.jar books/python_oop_intro_7543d8df-7955-49fd-b04a-00c04c338fa8/Introduction\ to\ Object-Oriented\ Programming\ in\ Python.epub
     os.system(f"java -jar epubcheck-5.0.0/epubcheck.jar books/{name}/{name}.epub")
-
 
 if __name__ == "__main__":
     main("self_care_ebook_6c8c363c-5d47-428d-9701-8897bbe1ae94")

@@ -1,0 +1,287 @@
+Please provide me with the paragraph to review and edit.
+
+There are no grammar or structural errors in this text. It is a list of terms without any sentences to correct. Therefore, it is good as it is.
+
+Introduction:
+
+In the present data-driven world, organizations rely heavily on data to make informed decisions. However, managing and documenting data can be a complex and time-consuming process. In response to this challenge, our team has developed a data documentation tool aimed at simplifying the documentation process for data jobs. 
+
+This tool is designed to help data professionals track and document data transformation processes, provide an overview of data dependencies, and facilitate collaboration and knowledge sharing among team members, leading to increased efficiency and productivity. In this report, we describe the design and implementation of our data documentation tool and provide an evaluation of its effectiveness in a real-world setting.
+
+Comments: 
+
+- The paragraph is correctly structured and free of grammatical errors.
+- The modification made is just a minor punctuation correction in the first sentence to make it grammatically correct.
+
+Overall, the paragraph is well-written and clear. Here are some small edits:
+
+- In the first sentence, change "which" to "that" for better clarity.
+- Combine the second and third sentences into one sentence for better flow: "It combines computer science, mathematics, and statistics, machine learning, and advanced analytics to identify patterns and relationships within the data, with the goal of using data-driven insights to make better predictions and decisions."
+- In the fourth sentence, add an article before "data collection": "due to the exponential growth of the data collection."
+- In the fifth sentence, change "modularity" to "modularization" for better clarity.
+
+Apart from that, everything else looks good. Keep up the good work!
+
+Overall, the paragraph is well-written and structured. However, there are a few small changes that could be made:
+
+1. Instead of "function as a substitute," use "serve as a replacement for" to sound more professional.
+2. Instead of "the functionality to display," use "functionality for displaying" to make the sentence flow better.
+
+Here's the corrected version: 
+
+Objective
+
+The main objective of this project is to create an easy-to-use application for documenting data jobs. The application should serve as a replacement for the existing documentation solution (DBT docs) and have extended functionality to fit the needs of Intility’s employees in the data science department. Our application should also include functionality for displaying information about business systems and the relationship between business systems and sources.
+
+A key issue Intility has with the existing solution is that there are no opportunities to develop further functionality. Since the applications used today are not made by Intility, they do not have the option to change the layout, modify existing functionality, or implement new features. Opening up such an opportunity would be very helpful to further increase automation in Intility’s data science department.
+
+lgtm
+
+lgtm
+
+lgtm.
+
+lgtm
+
+lgtm
+
+Lgtm! However, to improve the clarity of the second sentence, here is a suggestion:
+
+"We identified these requirements through extensive research, which included conducting interviews with potential users, analyzing existing data management tools, and considering industry best practices."
+
+In the image above, one can see that the manifest contains many "data models," which are a part of a hierarchy. This means that a specific data model can be one of the four classes which inherit from it. This was not illustrated in the original domain model that only included the subclasses. By detecting this feature early on, normalization became more manageable during the creation of the logic model. 
+
+Comment: Clarified the sentences to be more concise and easier to read.
+
+Lgtm.
+
+lgtm
+
+The paragraph seems to be a list of topics for discussion. Therefore, I suggest the following corrected version:
+
+- "Design" is a vague heading, please be more specific about the design aspect that will be discussed here.
+- I assume "Bifrost" is a specific tool or platform. Please provide more context and explanation about it.
+- "DBT docs vs DPM" needs to be clarified further. What are the differences and similarities between DBT docs and DPM? What is the purpose of this comparison?
+- "How DPM design compares to other Intility applications" is a good topic, but it needs to be more specific. What are the other Intility applications? How does the DPM design compare to them? 
+- It's a good idea to refer to images within the implementation chapter to show the design. Please make sure those images are clear and relevant to the discussed topics.
+
+Overall, the paragraph needs more context and explanation to provide a comprehensive and informative resource.
+
+lgtm
+
+In the sentence "Within the data folder, there is a manifestupdate folder", it is not clear what the "manifestupdate" folder is for. The sentence could be improved by adding more context or a brief explanation of what the folder is for.
+
+The development team chose to use standard technologies used in Intility. There are several reasons for this, which will be elaborated upon in this chapter. The primary reason is that the group aimed to create a product that would be useful for a company like Intility. Additionally, it was important to use the same tools and technologies that Intility employs. Doing so would allow for further development of the product with only minor changes to its application. 
+
+Comments: 
+- Reworded sentence structure for clarity and conciseness. 
+- Added "elaborated upon" to avoid repetition of "enlightened."
+
+- In the sentence "There are no problems with connecting the application to frontend and other external systems such as Azure", "frontend" should be corrected to "the frontend".
+
+- In the sentence "To use swagger, we had to authenticate with our Intility.", "Intility" should be capitalized as "Intility".
+
+- In the sentence "The current application takes some time to load because it has a lot of information, therefore it is important to choose a programming language which runs fast and efficiently.", a comma should be added after "information" to make it "because it has a lot of information, therefore...".
+
+- In the sentence "There are some teams at Intility that are using python, but compared to .NET, python is not that good at handling high-performance computing, and it is not the best language for processing substantial amounts of data. ().", the sentence does not seem to end well, and the position of the period does not seem correct. 
+
+- In the sentence "Golang is a familiar language which is like .NET, but it is a simpler language and has fewer features than .NET.", "simpler" should be corrected to "a simpler" since we are comparing Go to .NET.
+
+- In the sentence "A reason to decide on .NET instead of Java is because the development team are more familiar with Visual Studio as an IDE compared to IntelliJ which is the most used IDE for Java.", "are" should be corrected to "is" since "development team" is a singular noun. 
+
+- In the sentence "This topic will be discussed in chapter 6.1.3 (). ()", the second set of parentheses should be removed.
+
+- The sentence "In the development phase this is a useful tool to keep the cost of change low." can be improved by adding a transitional phrase such as "Moreover" at the beginning of the sentence.
+
+- In the sentence "It was also the preferred from Intility that we used either of the two compilers in order to make it as easy as possible to integrate the application with Intility’s existing applications.", "preferred" should be corrected to "preference" to make the sentence grammatically correct.
+
+- In the sentence "The was also used in the early stage of the development process, to find sources to for example marts in order to check if our endpoint for finding all information about an unique mart worked.", "The" should be removed.
+
+Corrected paragraph: 
+
+Backend
+
+At the start of this project, the development team chose to use .NET for the backend development, which is an object-oriented programming language designed by Microsoft. .NET is a great language to use with Web Api support and is perfect for this assignment.
+
+There are no problems with connecting the application to the frontend and other external systems such as Azure. In one of our previous courses called "Integrasjonsprosjekt", we struggled a little bit with connecting the frontend to the backend and making the website safe enough to have HTTPS. Fortunately, this was not a problem we encountered with this project due to our better choice of backend technologies.
+
+One reason to use .NET is how easily it can be integrated with Swagger, which we have used to manually test the endpoints. The figure xxxxx in chapter 5.2.1 shows an example of how a controller for the endpoints looks like. To use Swagger, we had to authenticate with our Intility. The backend Swagger was running at all times with the code pushed to Gitlab, but we could also run the backend locally and check if the code worked as intended with localhost Swagger. This was to ensure that the code pushed to Gitlab could run without any problems.
+
+According to https://ukad-group.com/blog/aspnet-core-8-pros-and-cons/, it is important to choose a programming language that runs fast and efficiently since the current application takes some time to load because it has a lot of information. As mentioned in chapter 3.7.1 and in chapter 3.7.2, our goals were to decrease the loading time for both the dbt docs and for the lineage graph. A possible solution to this was a fast backend that could cache large amounts of data, ensuring that the load time would be faster after the first time opening the website.
+
+Alternatives to .NET:
+
+Python is an alternative to .NET that the development team could have used. There are some teams at Intility that are using Python, but compared to .NET, Python is not as good at handling high-performance computing, and it is not the best language for processing substantial amounts of data.
+
+Golang is like .NET, but it is a simpler language and has fewer features than .NET. Features like LINQ and pattern matching are not supported in Go. According to https://cshark.com/blog/c-vs-go-which-is-better-for-your-next-application/, LINQ is a fantastic addition to a language that supplies a consistent query experience to relational databases.
+
+Java is one of the most widely used programming languages for development. For instance, Java can run on any operating system with its compilers and Java Runtime Environment. That does not apply to .NET, which only focuses on Windows users. However, the development team chose .NET instead of Java because they were more familiar with Visual Studio as an IDE compared to IntelliJ, which is the most used IDE for Java.
+
+All three languages are exceptional for web and cross-platform development, but we did not find any other reason to why we should deviate from the standard Intility backend language.
+
+Manually testing the endpoints:
+
+In order to test and develop the backend endpoints before trying them on the frontend, the development team used Swagger. Additionally, Swagger creates documentation, example requests, and data from the code, which is useful in the development phase to keep the cost of change low. Although the development team could have used Postman for manual endpoint testing, Swagger is well integrated with the verification tokens (bearer tokens) needed to get the correct response from the database.
+
+Backend compilers:
+
+The compilers used for this project were Visual Studio Code and Visual Studio 2022. These compilers were chosen because they are preferred by Intility to make it easy as possible to integrate the application with its existing applications. Moreover, Visual Studio is more familiar to the development team.
+
+Backend testing tool:
+
+xUnit
+
+Database tool:
+
+The database tool used for this assignment is Microsoft SQL Server Management Studio 18, which is a graphical integrated development environment used to administrate and manage a Microsoft SQL Server. By using this tool, our backend developers could create tables within the code and use the query editor in SSMS 18 to write and execute SQL queries to verify that the information in the database was correct. We also used it in the early stage of the development process to find sources, such as marts, to check if our endpoint for finding all information about a unique mart worked.
+
+In the first paragraph, there is a missing word in this sentence: "In the two following chapters, it will discussed why the technologies did not deviate from the standard Intility tools and compare the choice of tools with alternatives." It should be corrected to "In the two following chapters, it will be discussed why the technologies did not deviate from the standard Intility tools and how they compare to alternative tools."
+
+In the second paragraph, the first sentence doesn't have proper subject-verb agreement. It should be corrected to "In the development of our project, we utilized TypeScript, a superset of JavaScript, which is strongly typed and adds additional features to the language."
+
+In the third paragraph, the first sentence lacks punctuation. It should be corrected to "Jest and Bifrost are the testing tools used in this project."
+
+Other than these corrections, the text looks good!
+
+lgtm
+
+Gitlab:
+
+- "but the group have not been using them" should be "but the group has not been using them"
+- "the group set up a pipeline for both the frontend and backend folder" could be improved by specifying what the pipeline does exactly
+- "such that it is not possible to commit to the main branch" could be rephrased as "making it impossible to commit directly to the main branch"
+
+Communication and documentation:
+
+lgtm
+
+There are several grammar and structural issues with the given text:
+
+1. The paragraph lacks coherence and doesn't provide a clear picture of the message that the writer wants to convey. 
+
+2. The heading "Implementation" is too broad and doesn't reflect the specific context of the report. 
+
+3. The paragraph lacks details and specific information. 
+
+4. There are no errors with regards to grammar and spelling. 
+
+Here's how I'll suggest to rephrase the paragraph:
+
+"Literature on our data platform manager has been thoroughly researched and written for the benefit of educators, evaluators, and students. In accordance, this report provides a systematic order of operations of the implementation process, from inception to completion. 
+
+The report discusses the different pages, their functionalities and the development process behind them. Accompanied by snapshots, this comprehensive and informative resource provides insights into the integration of the data platform." 
+
+Hope this helps!
+
+lgtm
+
+lgtm
+
+- In the first sentence, change "functions" to "functionality" to make it clearer that functions were created, not just basic functions. 
+- In the second and third sentences, combine them to better structure the paragraph. 
+
+Corrected Paragraph:
+
+The database was set up by Intility, but we managed and populated it with functionality that we created. All information is added manually by the application user or automatically from the manifest.json file, such as business systems or business glossaries. When sending requests from the frontend to the database, functions check the input fields to ensure that only allowed characters are used, and if the input is incorrect, an error message is shown to the user. However, it's still possible to send requests through tools like Swagger or Postman, so input validation functions were created in the backend to check for invalid input using precompiled regex. Precompiling the regex allows for faster execution of the program and avoids repeatedly compiling the same expression. 
+
+Comments: 
+- The paragraph lacks a clear heading. Adding a heading such as "Input Validation" or "Database Management" would clarify the main topic. 
+- The paragraph can benefit from using simple language to make it easier to read by people with limited technical background. 
+- The paragraph can also benefit from stating why data security and backup, queries and reports, and user interface may be important in the context of the data platform. 
+
+Lgtm.
+
+The first sentence in the paragraph is missing a verb. Suggested corrected sentence: "Displaying the lineage graph on the frontend was a major part of the assignment, and finishing it was a primary objective from the very beginning." 
+
+In the sentence "There were some sketching in Figma...", 'sketching' should be changed to 'sketches'. 
+
+In the sentence "After the diagram showed the correct nodes and edges in the right position, the next issue was making the nodes interactive, to display a drawer of basic information whenever a node is clicked.", the phrase "to display a drawer of basic information whenever a node is clicked" should be changed to "that displayed a drawer of basic information whenever a node was clicked."
+
+In the sentence "There were a lot of research in order to be able to display the whole lineage graph with different nodes and information for each node.", 'research' should be changed to 'researching.'
+
+In the sentence "These functions took a lot of time to create, and we were very proud of how it turned out.", 'it' is vague and should be changed to 'the functions.' 
+
+In the sentence "A node can have many nested children, so the function needed to continue to check the children’s nodes for even more children.", 'children's' should be changed to 'children.' 
+
+Overall, the paragraph is well-written, informative, and structured. No major changes are necessary. 
+
+lgtm.
+
+lgtm
+
+LGTM.
+
+lgtm
+
+This heading is fine as it is. It's informative and concise. Therefore, it is good to go.
+
+The Scrum process consists of sprint review, sprint retrospective, and sprint planning. These three parts are discussed and planned during the Scrum meetings. Initially, there was a sprint period of one week, but it was increased to two weeks due to not having enough time to solve more complex issues. When there were shorter sprint periods, the group did not create enough issues due to underestimating the workflow. With longer sprints, there were fewer issues, but they were more complex and could take a lot more time than expected. Meetings with both Intility and the bachelor guidance consultant were primarily held every week. The group also tried to have daily stand-up meetings when there was enough time and a need to conduct a meeting.
+
+Comment: 
+- "Consisted of sprint review" should be changed to "consists of sprint review"
+- "But it increased" can be changed to "However, it was increased"
+- "Trouble-free" is not the right word, maybe "fewer issues" would be better.
+
+As mentioned earlier in this report, the development team used Jira to keep track of their issues. The group was responsible for creating enough issues for each member. Each issue had a type assigned, and when a group member started with the issue, it was moved to the "in-progress" section. The group member then assigned the issue to themselves to avoid having multiple members working on the same issue. However, the development team was unable to complete all issues, as discussed in the sprint retrospective during the scrum meetings. These issues were then moved to the next sprint.
+
+Prioritizing and discussing the order of the issues was important but not a problem, thanks to good communication in the group. There weren't any critical issues with this process, as the issues were frequently added to the sprint board during the sprint as features emerged. The group decided to implement this practice with the issues because the features appeared as the development progressed.
+
+Comments: The paragraph had some grammar and sentence structure errors, in which some words needed to be changed. Ensure to proofread the text and punctuate the correct words.
+
+Lgtm.
+
+The paragraph seems to be grammatically correct, but the sentences are too long and confusing. Here are the improvements that can be made:
+
+- The development team had weekly syncs with Intility with two representatives: one technical and another responsible for functionality. Five team members attended user tests.
+- Meetings were scheduled for an hour on Fridays but sometimes on Tuesdays. These meetings aimed to ask questions about the task or clarify requirements.
+- It was essential for the team to meet Intility's requests to keep working on the application.
+
+Although the paragraph is technically correct, it could be better structured and clearer.
+
+There are a few minor corrections in this paragraph:
+
+"A status meeting with Johanna Johansen was planned every Wednesday at 13:30. **One member** of the group **was responsible for** sending a status report to the bachelor guidance consultant. The focus of the meetings was feedback on the report and other relevant work **during** that given sprint period. Getting feedback on the report **during** the way improved the workflow. After the feedback, the group had a meeting and talked about what they needed to refine. The group also received clear indications **of** what they needed to include in the report to get their **desired** grade.
+
+Lgtm.
+
+Internal Meetings
+
+The group had several required meetings, and there were often additional group meetings right after the meetings with Intility and the bachelor guidance counselor. The purpose was to discuss notes from the meetings and identify opportunities for further improvement. The biweekly scheduled meeting was where the group held scrum meetings and discussed the previous and upcoming sprints. Key discussion points included available time and the goals for the upcoming sprint, and the group created the necessary tasks to reach their objectives.
+
+For examples of the sprint planning meetings, see Appendix xxx.
+
+The group also held daily stand-up meetings to discuss plans for the day. This allowed all group members to stay up to date on each other's progress and be aware of what they were working on. On occasion, there were not enough tasks for everyone, and in those cases, the group extended the stand-up meetings to identify and discuss additional tasks. 
+
+Comments: 
+- Clarify what are the biweekly scheduled meetings for (e.g. scrum meetings)
+- Instead of using "further improvements," use "identify opportunities for further improvement" to clarify the purpose of the meetings.
+- Use specific terminology when referring to tasks, issues, or sprints for consistent language.
+- "Upcoming sprint" should be plural as the group talks about multiple upcoming sprints.
+- Use "tasks" instead of "issues" to describe what is created in the biweekly meetings.
+
+Lgtm.
+
+Working for Intility has been a period of extensive learning that we would not have been without. It was a great experience to have a try on how it works out in a real company before we eventually start working like this every day.
+
+As mentioned earlier in this report, there were workshops set up at the start of the bachelor’s degree to ensure that we were familiar with all the tools needed for this project. It was also important that we understood how Intility as a company carries out certain parts of their workday. In the following subsections, we will discuss what we have learned working for Intility focusing on specific topics: 
+
+1. Usage of Git with branches and best practice commits 
+2. Continuous integration and continuous delivery 
+
+At the beginning of our period at Intility, several workshops were conducted to educate us on how different departments worked and what tools they used for their applications. We were informed of best practices at Intility, and a wealth of new information was passed across to us. While it wasn't expected that we learned everything within our short-time, these workshops made the development process more straightforward as we were familiar with the tools used, and the different departments.
+
+Although working in teams is something the group was familiar with before the bachelor’s project, working in a larger team with more resources and the option to get help across different teams was new to us. Whenever there were any questions related to the development process, we were given contact information for employees at Intility with the most knowledge regarding our problem. This made it possible for us to develop as much as we did within the timeframe because we got the necessary help if we were stuck and could not find a solution.
+
+Creating a product to meet the demands of a client was novel to us. In previous courses, the larger assignments have been less defined, giving a free approach to solve the task. For this project, we had weekly meetings with Intility to meet their specific objectives for the product we were developing for them. It is worth mentioning that the assignment has been very open, and we have decided a lot based on the time limits and what we were comfortable to create.
+
+Working to meet the needs of Intility has been a process whereby we have learned a great deal. In chapter 8.3, you can read more about how user testing was conducted with Intility employees. User testing a product is something the previous courses barely taught. It was beneficial to get some additional reading materials from our bachelor guidance counselor. After the user tests were done, there was a great deal to redo to meet the needs of the users. This is discussed in more detail in chapter 8.3.
+
+I'm sorry, there is no context provided for me to make necessary corrections. Please provide me with the full paragraph or text so I can assist you better.
+
+The paragraph seems well-written, with no major grammatical errors, and it conveys its points effectively. However, here are a few minor changes that can be made to make it more polished:
+
+"The group learned a lot about how to work on a project-based model in the industry during the development process. However, if they were to carry out the project again, they would have made some changes. Firstly, they would allocate more time towards the planning phase before starting with the implementation of the application functionalities. In order to utilize Scrum efficiently, the group would start by composing a backlog of all known issues for the project's duration, which would help maintain a better overall flow throughout the development. Another aspect that could have been improved was communication with the client, obtaining a better understanding between the group and the client about requirements. The requirements given at the start of the process did not fully correlate with what the client really wanted, which led to the introduction of some changes midway through the development. If the group had set expectations for a more concise set of requirements, these changes could have been avoided."
+
+Overall, the paragraph is already pretty good, but the above changes just make the points come across more clearly and eloquently.
+
+The paragraph looks good, but there's a minor grammatical error -- "Starting from the business system and going through every source, staging, mart, and exposure the selected report depends on" should have commas after 'source' and 'exposure' to separate them from 'staging' and 'mart'. So the corrected sentence is "Starting from the business system and going through every source, staging, mart, and exposure, the selected report depends on."

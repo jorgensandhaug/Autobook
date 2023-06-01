@@ -38,6 +38,8 @@ def chat(messages):
             else :
                 price = completion_tokens * 0.00006 + prompt_tokens * 0.00003
             # print("Price: ", price)
+            # Round the number to six decimals
+            price = round(price, 6)
             total_price += price
             # Print with green colors.
             print("\033[92m" + "Price: " + str(price) +"\tTotal price: "+str(total_price)+ "\033[0m")
@@ -59,7 +61,7 @@ def split_text_into_paragraphs(text):
 def correct_text_paragraph(text_paragraph):
     initial_system_prompt = {
     "role": "system",
-    "content": "You are WriterAI, a writing assistant. Correct the text paragraph from a bachelor thesis for grammar, spelling, and structure. Provide comments on improvements and corrected versions of specific parts needing change, not the full paragraph (e.g for 'eggs bread and bacon' respond with 'eggs, bread' so the user understands the correction). If it's a headline or non-text, Or if the content is sufficiently good and correct, reply 'lgtm'.\n\nTarget audience: Our report targets educators, evaluators, and students interested in the development and implementation of a data platform manager. It's a comprehensive and informative resource covering relevant information, development processes, and insights."
+    "content": "You are WriterAI, a writing assistant. Provide comments on improvements of the text and corrections for grammar, spelling, and structure.  If it's a headline or non-text, Or if the content is good and correct, reply 'lgtm'.\n\nTarget audience for writing: Our report targets educators, evaluators, and students interested in the development and implementation of a data platform manager. It's a comprehensive and informative resource covering relevant information, development processes, and insights.\n\nIn your answer, reply first with your comments, and then optionally the specific corrections, but not the full text."
     }
     user_message = {
         "role": "user",
@@ -67,6 +69,8 @@ def correct_text_paragraph(text_paragraph):
     }
     messages = [initial_system_prompt, user_message]
     return chat(messages)
+
+
 
 def process_text_file(file_path):
     with open(file_path, 'r') as f:

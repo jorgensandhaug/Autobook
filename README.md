@@ -2,6 +2,9 @@
 
 Autobook is an innovative e-book and website generation project powered by GPT-4. It is intended to generate e-books, marketing materials, and websites. The e-books are created by automatically and iteratively calling GPT-4 with clever prompt engineering to try to make the different parts of the book coherent. The process of creating the book can be steered and guided by user input at each step.
 
+## Link to one of the generated books
+https://gamma.app/public/Self-Care-Ebook-The-Ultimate-Guide-to-Putting-Yourself-First-l3rjlgygsdnpv7k
+
 ## Table of Contents
 
 - [Autobook](#autobook)
